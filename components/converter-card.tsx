@@ -46,7 +46,7 @@ export function ConverterCard({
   ) => {
     if (!fromValue || fromValue === "0" || !toValue || toValue === "0") return
 
-    const message = `🔄 Conversión de ${title}:\n${fromValue} ${fromUnit} es igual a ${toValue} ${toUnit}\n\n✨ Convertido con ConversorTotal`
+    const message = `🔄 ${title}: ${fromValue} ${fromUnit} = ${toValue} ${toUnit}\n\n✨ ConversorTotal`
 
     try {
       await navigator.clipboard.writeText(message)
@@ -67,7 +67,7 @@ export function ConverterCard({
     if (!fromValue || fromValue === "0" || !toValue || toValue === "0") return
 
     const message = `${fromValue} ${fromUnit} es igual a ${toValue} ${toUnit}`
-    const whatsappMessage = `🔄 Conversión de ${title}:\n${message}\n\n✨ Convertido con ConversorTotal`
+    const whatsappMessage = `🔄 ${title}: ${message}\n\n✨ ConversorTotal`
     const encodedMessage = encodeURIComponent(whatsappMessage)
     const whatsappUrl = `https://wa.me/?text=${encodedMessage}`
     window.open(whatsappUrl, "_blank")

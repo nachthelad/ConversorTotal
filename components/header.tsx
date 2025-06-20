@@ -18,22 +18,6 @@ export function Header() {
     setMounted(true)
   }, [])
 
-  if (!mounted) {
-    return (
-      <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-          <div className="flex items-center space-x-6">
-            <Link href="/" className="flex items-center space-x-2">
-              <Calculator className="h-6 w-6 text-primary" />
-              <span className="font-semibold text-lg">ConversorTotal</span>
-            </Link>
-          </div>
-          <div className="w-10 h-10" />
-        </div>
-      </header>
-    )
-  }
-
   return (
     <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">

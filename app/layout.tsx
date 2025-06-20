@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     "conversor gratuito",
     "calculadora de conversiones",
   ],
-  authors: [{ name: "ConvierteYa" }],
+  authors: [{ name: "ConversorTotal" }],
   creator: "ConversorTotal",
   publisher: "ConversorTotal",
   robots: {
@@ -92,7 +92,7 @@ export const metadata: Metadata = {
   verification: {
     google: "google-adsense-verification-code",
   },
-    generator: 'v0.dev'
+  generator: "v0.dev",
 }
 
 export default function RootLayout({
@@ -178,11 +178,7 @@ export default function RootLayout({
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
-              try {
-                (adsbygoogle = window.adsbygoogle || []).push({});
-              } catch (e) {
-                console.log('AdSense error:', e);
-              }
+              (adsbygoogle = window.adsbygoogle || []).push({});
             `,
           }}
         />
