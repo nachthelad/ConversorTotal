@@ -148,14 +148,10 @@ export default function HomePage() {
               <span className="text-xs text-center">Distancia</span>
             </Link>
           </Button>
-          <Button
-            asChild
-            variant="outline"
-            className="h-auto p-4 flex flex-col space-y-2 border-2 border-primary/30 bg-primary/5"
-          >
+          <Button asChild variant="outline" className="h-auto p-4 flex flex-col space-y-2">
             <Link href="/tallas-zapatillas">
-              <Footprints className="h-6 w-6 text-primary" />
-              <span className="text-xs text-center font-semibold">Tallas Zapatillas</span>
+              <Footprints className="h-6 w-6" />
+              <span className="text-xs text-center">Tallas Zapatillas</span>
             </Link>
           </Button>
           <Button asChild variant="outline" className="h-auto p-4 flex flex-col space-y-2">
