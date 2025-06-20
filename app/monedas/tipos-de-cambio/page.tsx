@@ -39,6 +39,7 @@ export default function TiposDeCambioPage() {
     try {
       setLoading(true)
       setError(null)
+      console.log("🔄 Obteniendo tipos de cambio desde nuestra API...")
 
       const response = await fetch("/api/cotizaciones", {
         method: "GET",
@@ -53,6 +54,8 @@ export default function TiposDeCambioPage() {
 
       const result: ApiResponse = await response.json()
 
+      console.log("📊 Tipos de cambio obtenidos:", result)
+
       setExchangeRates(result.data || [])
       setUsingFallback(result.usingFallback)
       setApiStats({ success: result.successCount, total: result.totalApis })
@@ -66,6 +69,7 @@ export default function TiposDeCambioPage() {
         setError(`Solo ${result.successCount}/${result.totalApis} fuentes funcionando.`)
       }
     } catch (err) {
+      console.error("💥 Error al obtener tipos de cambio:", err)
       setError("Error de conexión con el servidor.")
       setUsingFallback(true)
     } finally {

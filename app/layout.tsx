@@ -6,7 +6,6 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Toaster } from "@/components/ui/toaster"
-import { ScrollToTop } from "@/components/scroll-to-top"
 import Script from "next/script"
 
 const inter = Inter({ subsets: ["latin"] })
@@ -36,7 +35,7 @@ export const metadata: Metadata = {
     "conversor gratuito",
     "calculadora de conversiones",
   ],
-  authors: [{ name: "ConversorTotal" }],
+  authors: [{ name: "ConvierteYa" }],
   creator: "ConversorTotal",
   publisher: "ConversorTotal",
   robots: {
@@ -92,7 +91,7 @@ export const metadata: Metadata = {
   verification: {
     google: "google-adsense-verification-code",
   },
-  generator: "v0.dev",
+    generator: 'v0.dev'
 }
 
 export default function RootLayout({
@@ -178,7 +177,11 @@ export default function RootLayout({
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
-              (adsbygoogle = window.adsbygoogle || []).push({});
+              try {
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              } catch (e) {
+                console.log('AdSense error:', e);
+              }
             `,
           }}
         />
@@ -188,7 +191,6 @@ export default function RootLayout({
             <Header />
             <main className="container mx-auto px-4 py-8 flex-1">{children}</main>
             <Footer />
-            <ScrollToTop />
           </div>
           <Toaster />
         </ThemeProvider>

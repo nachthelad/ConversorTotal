@@ -40,7 +40,7 @@ function QuickConverter({ title, icon, fromCurrency, toCurrency, rate, casa }: Q
   const copyToClipboard = async () => {
     if (!fromAmount || fromAmount === "0" || !toAmount || toAmount === "0") return
 
-    const message = `🔄 ${title}${casa ? ` (${casa})` : ""}:\n${fromAmount} ${fromCurrency} = ${toAmount} ${toCurrency}`
+    const message = `🔄 ${title}${casa ? ` (${casa})` : ""}:\n${fromAmount} ${fromCurrency} = ${toAmount} ${toCurrency}\nCotización: ${rate.toFixed(4)}\n\n✨ Convertido con ConversorTotal`
 
     try {
       await navigator.clipboard.writeText(message)
@@ -60,8 +60,9 @@ function QuickConverter({ title, icon, fromCurrency, toCurrency, rate, casa }: Q
   const shareToWhatsApp = () => {
     if (!fromAmount || fromAmount === "0" || !toAmount || toAmount === "0") return
 
-    const message = `🔄 ${title}${casa ? ` (${casa})` : ""}:\n${fromAmount} ${fromCurrency} = ${toAmount} ${toCurrency}`
-    const encodedMessage = encodeURIComponent(message + "\n\n✨ Convertido con ConversorTotal")
+    const message = `${fromAmount} ${fromCurrency} = ${toAmount} ${toCurrency}`
+    const whatsappMessage = `🔄 ${title}${casa ? ` (${casa})` : ""}:\n${message}\nCotización: ${rate.toFixed(4)}\n\n✨ Convertido con ConversorTotal`
+    const encodedMessage = encodeURIComponent(whatsappMessage)
     const whatsappUrl = `https://wa.me/?text=${encodedMessage}`
     window.open(whatsappUrl, "_blank")
   }
@@ -213,6 +214,7 @@ export function QuickCurrencyConverters() {
             }
           }
         } catch (error) {
+          console.warn("Error fetching EUR/USD rate:", error)
           // Mantener el valor de fallback
         }
       } catch {

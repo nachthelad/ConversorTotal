@@ -195,13 +195,13 @@ function processExchangeRate(data: any): ExchangeRate {
 
 export async function GET() {
   try {
-    // console.log("🚀 API Route: Iniciando fetch de cotizaciones...")
+    console.log("🚀 API Route: Iniciando fetch de cotizaciones...")
 
     // Hacer todas las llamadas en paralelo con timeout
     const results = await Promise.allSettled(
       apiCalls.map(async ({ url, name, index }) => {
         try {
-          // console.log(`📡 Fetching ${name} from ${url}`)
+          console.log(`📡 Fetching ${name} from ${url}`)
 
           const controller = new AbortController()
           const timeoutId = setTimeout(() => controller.abort(), 10000)
@@ -225,10 +225,10 @@ export async function GET() {
           const data = await response.json()
           const processedData = processExchangeRate(data)
 
-          // console.log(`✅ ${name} obtenido exitosamente`)
+          console.log(`✅ ${name} obtenido exitosamente`)
           return { success: true, data: processedData, index }
         } catch (error) {
-          // console.error(`❌ Error fetching ${name}:`, error)
+          console.error(`❌ Error fetching ${name}:`, error)
           return { success: false, index }
         }
       }),
@@ -265,13 +265,13 @@ export async function GET() {
         }
       })
 
-      // console.log(`💾 Cache actualizado con ${successCount} cotizaciones exitosas`)
+      console.log(`💾 Cache actualizado con ${successCount} cotizaciones exitosas`)
     }
 
-    // console.log(`📊 Resultados: ${successCount}/${apiCalls.length} APIs exitosas`)
+    console.log(`📊 Resultados: ${successCount}/${apiCalls.length} APIs exitosas`)
 
     if (successCount === 0) {
-      // console.warn("🚨 Todas las APIs fallaron, usando datos de cache/fallback")
+      console.warn("🚨 Todas las APIs fallaron, usando datos de cache/fallback")
       usingFallback = true
     }
 
@@ -285,7 +285,7 @@ export async function GET() {
       lastSuccessfulUpdate: lastUpdateTime?.toISOString() || null,
     })
   } catch (error) {
-    // console.error("💥 Error general en API Route:", error)
+    console.error("💥 Error general en API Route:", error)
 
     // Usar cache si está disponible, sino fallback
     const dataToReturn = lastSuccessfulRates || fallbackRates
