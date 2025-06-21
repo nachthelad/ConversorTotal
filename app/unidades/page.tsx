@@ -9,12 +9,12 @@ import { TimeConverterFlexible } from "@/components/time-converter-flexible"
 import { SEOBreadcrumbs } from "@/components/seo-breadcrumbs"
 
 export const metadata: Metadata = {
-  title: "Conversores de Unidades - ConvierteYa | Herramientas de Conversión",
+  title: "Conversores de Unidades - ConversorTotal | Herramientas de Conversión",
   description:
     "Convierte entre diferentes unidades de medida: peso, longitud, temperatura, volumen, área, velocidad y tiempo. Herramientas precisas y fáciles de usar.",
   keywords: "conversor unidades, convertir medidas, peso, longitud, temperatura, volumen, área, velocidad, tiempo",
   openGraph: {
-    title: "Conversores de Unidades - ConvierteYa",
+    title: "Conversores de Unidades - ConversorTotal",
     description: "Convierte entre diferentes unidades de medida con precisión y facilidad",
     type: "website",
   },

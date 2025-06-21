@@ -1,6 +1,6 @@
 "use client"
 
-import { Moon, Sun, Calculator, ChevronDown } from "lucide-react"
+import { Moon, Sun, ChevronDown } from "lucide-react"
 import { useTheme } from "next-themes"
 import { Button } from "@/components/ui/button"
 import { useEffect, useState } from "react"
@@ -8,6 +8,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { MobileMenu } from "./mobile-menu"
+import Image from "next/image"
 
 export function Header() {
   const { theme, setTheme } = useTheme()
@@ -24,7 +25,15 @@ export function Header() {
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
           <div className="flex items-center space-x-6">
             <Link href="/" className="flex items-center space-x-2">
-              <Calculator className="h-6 w-6 text-primary" />
+              <div className="w-8 h-8 relative">
+                <Image
+                  src="/favicon-32x32.png"
+                  alt="ConversorTotal Logo"
+                  width={32}
+                  height={32}
+                  className="rounded-lg"
+                />
+              </div>
               <span className="font-semibold text-lg">ConversorTotal</span>
             </Link>
           </div>
@@ -38,8 +47,17 @@ export function Header() {
     <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         <div className="flex items-center space-x-6">
-          <Link href="/" className="flex items-center space-x-2">
-            <Calculator className="h-6 w-6 text-primary" />
+          <Link href="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
+            <div className="w-8 h-8 relative">
+              <Image
+                src="/favicon-32x32.png"
+                alt="ConversorTotal Logo"
+                width={32}
+                height={32}
+                className="rounded-lg"
+                priority
+              />
+            </div>
             <span className="font-semibold text-lg">ConversorTotal</span>
           </Link>
 

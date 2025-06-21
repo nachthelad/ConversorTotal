@@ -68,10 +68,13 @@ export function FlexibleUnitConverter({ title, icon, category }: FlexibleUnitCon
   const handleFromUnitChange = useCallback(
     (unitId: string) => {
       setFromUnitId(unitId)
-      if (fromValue && !isNaN(Number(fromValue))) {
+
+      // Si hay un valor válido en el campo de origen, recalcular
+      if (fromValue && !isNaN(Number(fromValue)) && Number(fromValue) !== 0) {
         const newFromUnit = category.units.find((unit) => unit.id === unitId) || category.units[0]
         const converted = convertUnits(Number(fromValue), newFromUnit, toUnit, category)
-        setToValue(converted.toFixed(6).replace(/\.?0+$/, ""))
+        const formattedResult = converted.toFixed(8).replace(/\.?0+$/, "")
+        setToValue(formattedResult)
       }
     },
     [fromValue, toUnit, category],
@@ -80,10 +83,13 @@ export function FlexibleUnitConverter({ title, icon, category }: FlexibleUnitCon
   const handleToUnitChange = useCallback(
     (unitId: string) => {
       setToUnitId(unitId)
-      if (fromValue && !isNaN(Number(fromValue))) {
+
+      // Si hay un valor válido en el campo de origen, recalcular
+      if (fromValue && !isNaN(Number(fromValue)) && Number(fromValue) !== 0) {
         const newToUnit = category.units.find((unit) => unit.id === unitId) || category.units[0]
         const converted = convertUnits(Number(fromValue), fromUnit, newToUnit, category)
-        setToValue(converted.toFixed(6).replace(/\.?0+$/, ""))
+        const formattedResult = converted.toFixed(8).replace(/\.?0+$/, "")
+        setToValue(formattedResult)
       }
     },
     [fromValue, fromUnit, category],

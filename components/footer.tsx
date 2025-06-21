@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { Github, Linkedin, ExternalLink, Mail, FileText } from "lucide-react"
+import Image from "next/image"
 
 export function Footer() {
   return (
@@ -9,8 +10,14 @@ export function Footer() {
           {/* Brand Section */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg">C</span>
+              <div className="w-8 h-8 relative">
+                <Image
+                  src="/favicon-32x32.png"
+                  alt="ConversorTotal Logo"
+                  width={32}
+                  height={32}
+                  className="rounded-lg"
+                />
               </div>
               <span className="font-bold text-lg">ConversorTotal</span>
             </div>
