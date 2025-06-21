@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
-import { Copy, Share, Check, RefreshCw } from "lucide-react"
+import { Copy, Share, Check } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 
 export function UsdEurConverter() {
@@ -129,26 +129,12 @@ export function UsdEurConverter() {
     <Card className="w-full">
       <CardHeader className="pb-4">
         <CardTitle className="flex items-center justify-between text-lg">
-          <div className="flex items-center space-x-2">
-            <div className="flex items-center">
-              <DollarSign className="h-5 w-5 text-green-500" />
-              <span className="mx-1">↔</span>
-              <Euro className="h-5 w-5 text-blue-500" />
-            </div>
-            <span>USD ↔ EUR</span>
+          <div className="flex items-center">
+            <DollarSign className="h-5 w-5 text-green-500" />
+            <span className="mx-1">↔</span>
+            <Euro className="h-5 w-5 text-blue-500" />
           </div>
-          <div className="flex items-center space-x-2">
-            {exchangeRate && <div className="text-sm text-muted-foreground">1 USD = {exchangeRate.toFixed(4)} EUR</div>}
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={fetchExchangeRate}
-              disabled={loading}
-              title="Actualizar cotización"
-            >
-              <RefreshCw className={`h-4 w-4 ${loading ? "animate-spin" : ""}`} />
-            </Button>
-          </div>
+          <span>USD ↔ EUR</span>
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-6">
