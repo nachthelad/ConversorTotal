@@ -7,6 +7,7 @@ import { useTheme } from "next-themes"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
+import Image from "next/image"
 
 export function MobileMenu() {
   const [open, setOpen] = useState(false)
@@ -22,7 +23,12 @@ export function MobileMenu() {
       </SheetTrigger>
       <SheetContent side="right" className="w-72">
         <SheetHeader>
-          <SheetTitle>ConversorTotal</SheetTitle>
+          <SheetTitle className="flex items-center space-x-2">
+            <div className="w-6 h-6 relative">
+              <Image src="/favicon-32x32.png" alt="ConversorTotal Logo" width={24} height={24} className="rounded" />
+            </div>
+            <span>ConversorTotal</span>
+          </SheetTitle>
         </SheetHeader>
         <div className="mt-6 space-y-4">
           <Link
