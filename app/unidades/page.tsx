@@ -7,7 +7,6 @@ import { AreaConverterFlexible } from "@/components/area-converter-flexible"
 import { SpeedConverterFlexible } from "@/components/speed-converter-flexible"
 import { TimeConverterFlexible } from "@/components/time-converter-flexible"
 import { SEOBreadcrumbs } from "@/components/seo-breadcrumbs"
-import { ConversionTest } from "@/components/conversion-test"
 
 export const metadata: Metadata = {
   title: "Conversores de Unidades - ConvierteYa | Herramientas de Conversión",
@@ -127,11 +126,6 @@ export default function UnidadesPage() {
               </p>
             </div>
           </div>
-        </div>
-
-        {/* Test de Conversiones - Solo para verificación */}
-        <div className="mt-16 max-w-4xl mx-auto">
-          <ConversionTest />
         </div>
 
         {/* Espacio final para Auto Ads */}
