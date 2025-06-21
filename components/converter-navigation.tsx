@@ -1,81 +1,68 @@
 "use client"
-
-import { Button } from "@/components/ui/button"
-import { ChevronUp } from "lucide-react"
-import { useEffect, useState } from "react"
+import Link from "next/link"
 
 const converters = [
-  { id: "temperatura", name: "Temperatura", icon: "🌡️" },
-  { id: "distancia", name: "Distancia", icon: "📏" },
-  { id: "volumen", name: "Volumen", icon: "💧" },
-  { id: "tiempo", name: "Tiempo", icon: "⏰" },
+  { id: "longitud", name: "Longitud", icon: "📏" },
   { id: "peso", name: "Peso", icon: "⚖️" },
+  { id: "temperatura", name: "Temperatura", icon: "🌡️" },
+  { id: "volumen", name: "Volumen", icon: "🥤" },
   { id: "area", name: "Área", icon: "📐" },
-  { id: "velocidad", name: "Velocidad", icon: "🏃" },
-  { id: "presion", name: "Presión", icon: "🔧" },
-  { id: "energia", name: "Energía", icon: "⚡" },
-  { id: "potencia", name: "Potencia", icon: "🔋" },
+  { id: "velocidad", name: "Velocidad", icon: "🚗" },
+  { id: "tiempo", name: "Tiempo", icon: "⏰" },
   { id: "tallas-ropa", name: "Tallas Ropa", icon: "👕" },
-  { id: "tallas-zapatos", name: "Tallas Zapatillas", icon: "👟" },
-  { id: "combustible", name: "Combustible", icon: "⛽" },
-  { id: "cocina", name: "Cocina", icon: "👨‍🍳" },
+  { id: "tallas-zapatos", name: "Tallas Zapatos", icon: "👟" },
 ]
 
-export function ConverterNavigation() {
-  const [showScrollTop, setShowScrollTop] = useState(false)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setShowScrollTop(window.scrollY > 300)
-    }
-
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
-
-  const scrollToConverter = (id: string) => {
-    const element = document.getElementById(id)
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" })
-    }
-  }
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" })
-  }
-
+const ConverterNavigation = () => {
   return (
-    <>
-      {/* Navigation Menu */}
-      <div className="bg-muted/30 rounded-lg p-4 mb-8">
-        <h3 className="text-lg font-semibold mb-4 text-center">Ir a Conversor:</h3>
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-2">
-          {converters.map((converter) => (
-            <Button
-              key={converter.id}
-              variant="ghost"
-              size="sm"
-              onClick={() => scrollToConverter(converter.id)}
-              className="flex flex-col items-center space-y-1 h-auto py-2 px-2 text-xs hover:bg-primary/10"
-            >
-              <span className="text-lg">{converter.icon}</span>
-              <span className="text-center leading-tight">{converter.name}</span>
-            </Button>
-          ))}
-        </div>
-      </div>
+    <nav>
+      <ul>
+        {converters.map((converter) => (
+          <li key={converter.id}>
+            <Link href={`/converter/${converter.id}`}>
+              <a>
+                {converter.icon} {converter.name}
+              </a>
+            </Link>
+          </li>
+        ))}
+      </ul>
+      <style jsx>{`
+        nav {
+          padding: 20px;
+          background-color: #f0f0f0;
+        }
 
-      {/* Scroll to Top Button */}
-      {showScrollTop && (
-        <Button
-          onClick={scrollToTop}
-          size="icon"
-          className="fixed bottom-6 right-6 z-50 rounded-full shadow-lg"
-          title="Volver arriba"
-        >
-          <ChevronUp className="h-4 w-4" />
-        </Button>
-      )}
-    </>
+        ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+        }
+
+        li {
+          margin-bottom: 5px;
+        }
+
+        a {
+          display: block;
+          padding: 10px 15px;
+          background-color: #fff;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          text-decoration: none;
+          color: #333;
+          transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+          background-color: #e0e0e0;
+        }
+      `}</style>
+    </nav>
   )
 }
+
+export default ConverterNavigation
