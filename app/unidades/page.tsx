@@ -1,99 +1,138 @@
-import { TemperatureConverter } from "@/components/temperature-converter"
-import { DistanceConverter } from "@/components/distance-converter"
-import { VolumeConverter } from "@/components/volume-converter"
-import { TimeConverter } from "@/components/time-converter"
-import { WeightConverter } from "@/components/weight-converter"
-import { AreaConverter } from "@/components/area-converter"
-import { SpeedConverter } from "@/components/speed-converter"
-import { PressureConverter } from "@/components/pressure-converter"
-import { EnergyConverter } from "@/components/energy-converter"
-import { PowerConverter } from "@/components/power-converter"
-import { ClothingSizeConverter } from "@/components/clothing-size-converter"
-import { ShoeSizeConverter } from "@/components/shoe-size-converter"
-import { FuelConverter } from "@/components/fuel-converter"
-import { CookingConverter } from "@/components/cooking-converter"
-import { ConverterNavigation } from "@/components/converter-navigation"
+import type { Metadata } from "next"
+import { WeightConverterFlexible } from "@/components/weight-converter-flexible"
+import { LengthConverter } from "@/components/length-converter"
+import { VolumeConverterFlexible } from "@/components/volume-converter-flexible"
+import { TemperatureConverterFlexible } from "@/components/temperature-converter-flexible"
+import { AreaConverterFlexible } from "@/components/area-converter-flexible"
+import { SpeedConverterFlexible } from "@/components/speed-converter-flexible"
+import { TimeConverterFlexible } from "@/components/time-converter-flexible"
+import { SEOBreadcrumbs } from "@/components/seo-breadcrumbs"
+
+export const metadata: Metadata = {
+  title: "Conversores de Unidades - ConvierteYa | Herramientas de Conversión",
+  description:
+    "Convierte entre diferentes unidades de medida: peso, longitud, temperatura, volumen, área, velocidad y tiempo. Herramientas precisas y fáciles de usar.",
+  keywords: "conversor unidades, convertir medidas, peso, longitud, temperatura, volumen, área, velocidad, tiempo",
+  openGraph: {
+    title: "Conversores de Unidades - ConvierteYa",
+    description: "Convierte entre diferentes unidades de medida con precisión y facilidad",
+    type: "website",
+  },
+}
+
+const breadcrumbItems = [
+  { label: "Inicio", href: "/" },
+  { label: "Conversores de Unidades", href: "/unidades" },
+]
 
 export default function UnidadesPage() {
   return (
     <div className="space-y-8">
+      <SEOBreadcrumbs items={breadcrumbItems} />
+
       <div className="text-center space-y-4">
-        <h1 className="text-4xl font-bold tracking-tight text-foreground">Conversor de Unidades</h1>
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Convierte entre diferentes unidades al instante. Copia los resultados o compártelos directamente por WhatsApp.
+        <h1 className="text-4xl font-bold tracking-tight text-foreground">Conversores de Unidades</h1>
+        <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          Convierte entre diferentes unidades de medida con precisión. Elige las unidades específicas que necesitas
+          convertir.
         </p>
       </div>
 
-      {/* Navigation Menu */}
-      <ConverterNavigation />
-
-      {/* Espacio para Auto Ads - Google colocará anuncios aquí automáticamente */}
+      {/* Espacio para Auto Ads */}
       <div className="min-h-[90px] flex items-center justify-center">
-        {/* Este div permite que Auto Ads coloque anuncios aquí */}
+        {/* Google Auto Ads puede usar este espacio */}
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
-        {/* Conversores Básicos */}
-        <div id="temperatura">
-          <TemperatureConverter />
-        </div>
-        <div id="distancia">
-          <DistanceConverter />
-        </div>
-        <div id="volumen">
-          <VolumeConverter />
-        </div>
-        <div id="tiempo">
-          <TimeConverter />
-        </div>
+      <div className="space-y-12">
+        {/* Medidas Básicas */}
+        <section>
+          <h2 className="text-2xl font-semibold text-foreground mb-6 text-center">📏 Medidas Básicas</h2>
+          <div className="grid gap-6 md:grid-cols-2 max-w-6xl mx-auto">
+            <LengthConverter />
+            <WeightConverterFlexible />
+          </div>
+        </section>
 
-        {/* Espacio entre conversores para Auto Ads */}
-        <div className="md:col-span-2 min-h-[250px] flex items-center justify-center">
+        {/* Espacio para Auto Ads */}
+        <div className="min-h-[200px] flex items-center justify-center">
           {/* Google Auto Ads puede usar este espacio */}
         </div>
 
-        {/* Nuevos Conversores de Medidas */}
-        <div id="peso">
-          <WeightConverter />
-        </div>
-        <div id="area">
-          <AreaConverter />
-        </div>
-        <div id="velocidad">
-          <SpeedConverter />
-        </div>
-        <div id="presion">
-          <PressureConverter />
-        </div>
-        <div id="energia">
-          <EnergyConverter />
-        </div>
-        <div id="potencia">
-          <PowerConverter />
-        </div>
+        {/* Temperatura y Volumen */}
+        <section>
+          <h2 className="text-2xl font-semibold text-foreground mb-6 text-center">🌡️ Temperatura y Volumen</h2>
+          <div className="grid gap-6 md:grid-cols-2 max-w-6xl mx-auto">
+            <TemperatureConverterFlexible />
+            <VolumeConverterFlexible />
+          </div>
+        </section>
 
-        {/* Espacio medio para Auto Ads */}
-        <div className="md:col-span-2 min-h-[200px] flex items-center justify-center">
+        {/* Espacio para Auto Ads */}
+        <div className="min-h-[200px] flex items-center justify-center">
           {/* Google Auto Ads puede usar este espacio */}
         </div>
 
-        {/* Conversores Especializados */}
-        <div id="tallas-ropa">
-          <ClothingSizeConverter />
+        {/* Área y Velocidad */}
+        <section>
+          <h2 className="text-2xl font-semibold text-foreground mb-6 text-center">📐 Área y Velocidad</h2>
+          <div className="grid gap-6 md:grid-cols-2 max-w-6xl mx-auto">
+            <AreaConverterFlexible />
+            <SpeedConverterFlexible />
+          </div>
+        </section>
+
+        {/* Espacio para Auto Ads */}
+        <div className="min-h-[200px] flex items-center justify-center">
+          {/* Google Auto Ads puede usar este espacio */}
         </div>
-        <div id="tallas-zapatos">
-          <ShoeSizeConverter />
+
+        {/* Tiempo */}
+        <section>
+          <h2 className="text-2xl font-semibold text-foreground mb-6 text-center">⏰ Tiempo</h2>
+          <div className="grid gap-6 md:grid-cols-1 max-w-2xl mx-auto">
+            <TimeConverterFlexible />
+          </div>
+        </section>
+
+        {/* Información adicional */}
+        <div className="mt-16 bg-card rounded-lg shadow-sm border p-8 max-w-4xl mx-auto">
+          <h2 className="text-2xl font-semibold text-card-foreground mb-4">¿Cómo usar los conversores flexibles?</h2>
+          <div className="grid gap-6 md:grid-cols-2">
+            <div>
+              <h3 className="text-lg font-medium text-card-foreground mb-2">🎯 Selección Flexible</h3>
+              <p className="text-muted-foreground">
+                Elige exactamente las unidades que necesitas convertir usando los menús desplegables. Por ejemplo:
+                "Gramos → Kilogramos" o "Centímetros → Pulgadas".
+              </p>
+            </div>
+            <div>
+              <h3 className="text-lg font-medium text-card-foreground mb-2">🔄 Conversión Bidireccional</h3>
+              <p className="text-muted-foreground">
+                Puedes escribir en cualquier campo y la conversión se actualizará automáticamente. Usa el botón de
+                intercambio para cambiar las unidades rápidamente.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-lg font-medium text-card-foreground mb-2">📋 Copiar y Compartir</h3>
+              <p className="text-muted-foreground">
+                Copia los resultados al portapapeles o compártelos directamente por WhatsApp con un formato profesional.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-lg font-medium text-card-foreground mb-2">🎯 Alta Precisión</h3>
+              <p className="text-muted-foreground">
+                Nuestros conversores utilizan factores de conversión precisos y muestran los decimales necesarios para
+                cada tipo de medida.
+              </p>
+            </div>
+          </div>
         </div>
-        <div id="combustible">
-          <FuelConverter />
-        </div>
-        <div id="cocina">
-          <CookingConverter />
+
+        {/* Espacio final para Auto Ads */}
+        <div className="min-h-[90px] flex items-center justify-center">
+          {/* Google Auto Ads puede usar este espacio */}
         </div>
       </div>
-
-      {/* Espacio final para Auto Ads */}
-      <div className="min-h-[90px] flex items-center justify-center">{/* Auto Ads puede colocar anuncios aquí */}</div>
     </div>
   )
 }
