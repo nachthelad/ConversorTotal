@@ -6,7 +6,6 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Toaster } from "@/components/ui/toaster"
-import { ScrollToTop } from "@/components/scroll-to-top"
 import Script from "next/script"
 
 const inter = Inter({ subsets: ["latin"] })
@@ -192,7 +191,6 @@ export default function RootLayout({
             <Header />
             <main className="container mx-auto px-4 py-8 flex-1">{children}</main>
             <Footer />
-            <ScrollToTop />
           </div>
           <Toaster />
         </ThemeProvider>
