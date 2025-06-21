@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     "conversor gratuito",
     "calculadora de conversiones",
   ],
-  authors: [{ name: "ConvierteYa" }],
+  authors: [{ name: "ConversorTotal" }],
   creator: "ConversorTotal",
   publisher: "ConversorTotal",
   robots: {
@@ -73,7 +73,7 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "ConvierteYa - Conversor de Unidades Online",
+        alt: "ConversorTotal - Conversor de Unidades Online",
       },
     ],
   },
