@@ -1,17 +1,11 @@
 "use client"
 
-import { FlexibleUnitConverter } from "./flexible-unit-converter"
-import { AREA_UNITS } from "@/lib/conversion-units"
+import { Square } from "lucide-react"
+import { FlexibleUnitConverter } from "@/components/flexible-unit-converter"
+import { areaUnits } from "@/lib/conversion-units"
 
 export function AreaConverterFlexible() {
   return (
-    <FlexibleUnitConverter
-      title="Conversor de Área"
-      units={AREA_UNITS}
-      defaultFromUnit="m²"
-      defaultToUnit="ft²"
-      icon="📐"
-      description="Convierte entre diferentes unidades de área"
-    />
+    <FlexibleUnitConverter title="Área" icon={<Square className="h-5 w-5 text-green-500" />} category={areaUnits} />
   )
 }

@@ -1,17 +1,11 @@
 "use client"
 
-import { FlexibleUnitConverter } from "./flexible-unit-converter"
-import { TIME_UNITS } from "@/lib/conversion-units"
+import { Clock } from "lucide-react"
+import { FlexibleUnitConverter } from "@/components/flexible-unit-converter"
+import { timeUnits } from "@/lib/conversion-units"
 
 export function TimeConverterFlexible() {
   return (
-    <FlexibleUnitConverter
-      title="Conversor de Tiempo"
-      units={TIME_UNITS}
-      defaultFromUnit="horas"
-      defaultToUnit="minutos"
-      icon="⏰"
-      description="Convierte entre diferentes unidades de tiempo"
-    />
+    <FlexibleUnitConverter title="Tiempo" icon={<Clock className="h-5 w-5 text-indigo-500" />} category={timeUnits} />
   )
 }

@@ -1,17 +1,15 @@
 "use client"
 
-import { FlexibleUnitConverter } from "./flexible-unit-converter"
-import { SPEED_UNITS } from "@/lib/conversion-units"
+import { Gauge } from "lucide-react"
+import { FlexibleUnitConverter } from "@/components/flexible-unit-converter"
+import { speedUnits } from "@/lib/conversion-units"
 
 export function SpeedConverterFlexible() {
   return (
     <FlexibleUnitConverter
-      title="Conversor de Velocidad"
-      units={SPEED_UNITS}
-      defaultFromUnit="km/h"
-      defaultToUnit="mph"
-      icon="🚗"
-      description="Convierte entre diferentes unidades de velocidad"
+      title="Velocidad"
+      icon={<Gauge className="h-5 w-5 text-orange-500" />}
+      category={speedUnits}
     />
   )
 }
