@@ -35,7 +35,7 @@ export default function ConversorTemperaturaPage() {
         <Button asChild variant="ghost" size="sm">
           <Link href="/">
             <ArrowLeft className="h-4 w-4 mr-2" />
-            Volver a Conversores
+            Volver
           </Link>
         </Button>
       </div>
