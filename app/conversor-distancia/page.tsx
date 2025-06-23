@@ -48,46 +48,52 @@ export default function ConversorDistanciaPage() {
 
       <div className="max-w-4xl mx-auto space-y-8 mt-12">
         <div className="prose prose-gray dark:prose-invert max-w-none">
-          <h2>¿Cómo convertir kilómetros a millas?</h2>
+          <h2 className="text-2xl font-bold mb-2">Conversión de Distancia: Kilómetros y Millas</h2>
           <p>
-            La conversión entre kilómetros y millas es fundamental para viajes internacionales y navegación. Utilizamos
-            las fórmulas de conversión estándar:
+            Convertir entre <strong>kilómetros (km)</strong> y <strong>millas (mi)</strong> es fundamental para viajes, deportes y navegación. Utiliza nuestro conversor para obtener resultados instantáneos y precisos.
           </p>
+
+          <h3 className="text-xl font-semibold mt-6">Fórmulas de Conversión</h3>
           <ul>
             <li>
-              <strong>Kilómetros a Millas:</strong> mi = km × 0.621371
+              <strong>Kilómetros a Millas:</strong> <code>mi = km × 0.621371</code>
             </li>
             <li>
-              <strong>Millas a Kilómetros:</strong> km = mi × 1.60934
+              <strong>Millas a Kilómetros:</strong> <code>km = mi × 1.60934</code>
             </li>
           </ul>
 
-          <h3>Ejemplos de conversión de distancia:</h3>
-          <ul>
-            <li>1 km = 0.62 millas</li>
-            <li>5 km = 3.11 millas</li>
-            <li>10 km = 6.21 millas</li>
-            <li>100 km = 62.14 millas</li>
-            <li>1 milla = 1.61 km</li>
-          </ul>
+          <h3 className="text-xl font-semibold mt-6">Ejemplos Prácticos</h3>
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 my-4">
+            <div className="bg-muted rounded-lg p-4 text-center">
+              <div className="font-bold text-lg">1 km</div>
+              <div className="text-muted-foreground">= 0.62 mi</div>
+            </div>
+            <div className="bg-muted rounded-lg p-4 text-center">
+              <div className="font-bold text-lg">5 km</div>
+              <div className="text-muted-foreground">= 3.11 mi</div>
+            </div>
+            <div className="bg-muted rounded-lg p-4 text-center">
+              <div className="font-bold text-lg">10 km</div>
+              <div className="text-muted-foreground">= 6.21 mi</div>
+            </div>
+            <div className="bg-muted rounded-lg p-4 text-center">
+              <div className="font-bold text-lg">100 km</div>
+              <div className="text-muted-foreground">= 62.14 mi</div>
+            </div>
+            <div className="bg-muted rounded-lg p-4 text-center">
+              <div className="font-bold text-lg">1 mi</div>
+              <div className="text-muted-foreground">= 1.61 km</div>
+            </div>
+          </div>
 
-          <h3>¿Cuándo necesitas convertir distancia?</h3>
+          <h3 className="text-xl font-semibold mt-6">¿Cuándo usar un conversor de distancia?</h3>
           <ul>
-            <li>
-              <strong>Viajes:</strong> Planificar rutas en diferentes países
-            </li>
-            <li>
-              <strong>GPS:</strong> Entender distancias en mapas
-            </li>
-            <li>
-              <strong>Deportes:</strong> Carreras y maratones
-            </li>
-            <li>
-              <strong>Aviación:</strong> Distancias de vuelo
-            </li>
-            <li>
-              <strong>Navegación:</strong> Rutas marítimas
-            </li>
+            <li><strong>Viajes:</strong> Planificar rutas en diferentes países.</li>
+            <li><strong>GPS:</strong> Entender distancias en mapas.</li>
+            <li><strong>Deportes:</strong> Carreras y maratones.</li>
+            <li><strong>Aviación:</strong> Distancias de vuelo.</li>
+            <li><strong>Navegación:</strong> Rutas marítimas.</li>
           </ul>
         </div>
       </div>

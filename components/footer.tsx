@@ -62,7 +62,7 @@ export function Footer() {
                   href="/tallas-zapatillas"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  Tallas
+                  Talles de zapatillas
                 </Link>
               </li>
             </ul>

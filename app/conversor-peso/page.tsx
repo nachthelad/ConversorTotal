@@ -52,64 +52,68 @@ export default function ConversorPesoPage() {
         <WeightConverter />
       </div>
 
-      {/* SEO Content */}
+      {/* SEO Content Mejorado */}
       <div className="max-w-4xl mx-auto space-y-8 mt-12">
         <div className="prose prose-gray dark:prose-invert max-w-none">
-          <h2>¿Cómo convertir kilogramos a libras?</h2>
+          <h2 className="text-2xl font-bold mb-2">Conversión de Peso: Kilogramos y Libras</h2>
           <p>
-            La conversión entre kilogramos y libras es esencial en muchas situaciones cotidianas. Nuestro conversor
-            utiliza la relación exacta entre estas unidades de masa:
+            Convertir entre <strong>kilogramos (kg)</strong> y <strong>libras (lbs)</strong> es fundamental para dietas, ejercicio, viajes y uso médico. Utiliza nuestro conversor para obtener resultados instantáneos y precisos.
           </p>
+
+          <h3 className="text-xl font-semibold mt-6">Fórmulas de Conversión</h3>
           <ul>
             <li>
-              <strong>Kilogramos a Libras:</strong> lbs = kg × 2.20462
+              <strong>Kilogramos a Libras:</strong> <code>lbs = kg × 2.20462</code>
             </li>
             <li>
-              <strong>Libras a Kilogramos:</strong> kg = lbs × 0.453592
+              <strong>Libras a Kilogramos:</strong> <code>kg = lbs × 0.453592</code>
             </li>
           </ul>
 
-          <h3>Ejemplos de conversión de peso:</h3>
+          <h3 className="text-xl font-semibold mt-6">Ejemplos Prácticos</h3>
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 my-4">
+            <div className="bg-muted rounded-lg p-4 text-center">
+              <div className="font-bold text-lg">1 kg</div>
+              <div className="text-muted-foreground">= 2.20 lbs</div>
+            </div>
+            <div className="bg-muted rounded-lg p-4 text-center">
+              <div className="font-bold text-lg">5 kg</div>
+              <div className="text-muted-foreground">= 11.02 lbs</div>
+            </div>
+            <div className="bg-muted rounded-lg p-4 text-center">
+              <div className="font-bold text-lg">10 kg</div>
+              <div className="text-muted-foreground">= 22.05 lbs</div>
+            </div>
+            <div className="bg-muted rounded-lg p-4 text-center">
+              <div className="font-bold text-lg">70 kg</div>
+              <div className="text-muted-foreground">= 154.32 lbs</div>
+              <div className="text-xs mt-1">Peso promedio adulto</div>
+            </div>
+            <div className="bg-muted rounded-lg p-4 text-center">
+              <div className="font-bold text-lg">100 lbs</div>
+              <div className="text-muted-foreground">= 45.36 kg</div>
+            </div>
+          </div>
+
+          <h3 className="text-xl font-semibold mt-6">¿Cuándo usar un conversor de peso?</h3>
           <ul>
-            <li>1 kg = 2.20 lbs</li>
-            <li>5 kg = 11.02 lbs</li>
-            <li>10 kg = 22.05 lbs</li>
-            <li>70 kg = 154.32 lbs (peso promedio adulto)</li>
-            <li>100 lbs = 45.36 kg</li>
+            <li><strong>Fitness y Dietas:</strong> Seguimiento de peso corporal.</li>
+            <li><strong>Viajes:</strong> Límites de equipaje en aerolíneas.</li>
+            <li><strong>Medicina:</strong> Dosificación de medicamentos.</li>
+            <li><strong>Cocina:</strong> Recetas internacionales.</li>
+            <li><strong>Deportes:</strong> Categorías de peso en competencias.</li>
+            <li><strong>Compras:</strong> Productos importados.</li>
           </ul>
 
-          <h3>¿Cuándo necesitas convertir peso?</h3>
-          <ul>
-            <li>
-              <strong>Fitness y Dietas:</strong> Seguimiento de peso corporal
-            </li>
-            <li>
-              <strong>Viajes:</strong> Límites de equipaje en aerolíneas
-            </li>
-            <li>
-              <strong>Medicina:</strong> Dosificación de medicamentos
-            </li>
-            <li>
-              <strong>Cocina:</strong> Recetas internacionales
-            </li>
-            <li>
-              <strong>Deportes:</strong> Categorías de peso en competencias
-            </li>
-            <li>
-              <strong>Compras:</strong> Productos importados
-            </li>
-          </ul>
-
-          <h3>Diferencia entre peso y masa:</h3>
-          <p>Aunque comúnmente usamos "peso" y "masa" indistintamente, técnicamente son diferentes:</p>
-          <ul>
-            <li>
+          <h3 className="text-xl font-semibold mt-6">Diferencia entre peso y masa</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
+            <div className="bg-muted/50 rounded-lg p-4">
               <strong>Masa:</strong> Cantidad de materia (kg, libras)
-            </li>
-            <li>
+            </div>
+            <div className="bg-muted/50 rounded-lg p-4">
               <strong>Peso:</strong> Fuerza gravitacional sobre la masa (Newtons)
-            </li>
-          </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -52,66 +52,78 @@ export default function ConversorTemperaturaPage() {
         <TemperatureConverterFlexible />
       </div>
 
-      {/* SEO Content */}
+      {/* SEO Content Mejorado */}
       <div className="max-w-4xl mx-auto space-y-8 mt-12">
         <div className="prose prose-gray dark:prose-invert max-w-none">
-          <h2>¿Cómo convertir Celsius a Fahrenheit?</h2>
+          <h2 className="text-2xl font-bold mb-2">Conversión de Temperatura: Celsius y Fahrenheit</h2>
           <p>
-            La conversión de temperatura entre Celsius y Fahrenheit es una de las más comunes en el mundo. Nuestro
-            conversor utiliza las fórmulas matemáticas exactas para garantizar resultados precisos:
+            Convertir entre <strong>Celsius (°C)</strong> y <strong>Fahrenheit (°F)</strong> es esencial para cocina, ciencia, viajes y el día a día. Utiliza nuestro conversor para obtener resultados instantáneos y precisos, sin complicaciones.
           </p>
+
+          <h3 className="text-xl font-semibold mt-6">Fórmulas de Conversión</h3>
           <ul>
             <li>
-              <strong>Celsius a Fahrenheit:</strong> °F = (°C × 9/5) + 32
+              <strong>Celsius a Fahrenheit:</strong> <code>°F = (°C × 9/5) + 32</code>
             </li>
             <li>
-              <strong>Fahrenheit a Celsius:</strong> °C = (°F - 32) × 5/9
+              <strong>Fahrenheit a Celsius:</strong> <code>°C = (°F - 32) × 5/9</code>
             </li>
           </ul>
 
-          <h3>Ejemplos de conversión de temperatura:</h3>
+          <h3 className="text-xl font-semibold mt-6">Ejemplos Prácticos</h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 my-4">
+            <div className="bg-muted rounded-lg p-4 text-center">
+              <div className="font-bold text-lg">0°C</div>
+              <div className="text-muted-foreground">= 32°F</div>
+              <div className="text-xs mt-1">Congelación del agua</div>
+            </div>
+            <div className="bg-muted rounded-lg p-4 text-center">
+              <div className="font-bold text-lg">100°C</div>
+              <div className="text-muted-foreground">= 212°F</div>
+              <div className="text-xs mt-1">Ebullición del agua</div>
+            </div>
+            <div className="bg-muted rounded-lg p-4 text-center">
+              <div className="font-bold text-lg">37°C</div>
+              <div className="text-muted-foreground">= 98.6°F</div>
+              <div className="text-xs mt-1">Temperatura corporal</div>
+            </div>
+            <div className="bg-muted rounded-lg p-4 text-center">
+              <div className="font-bold text-lg">20°C</div>
+              <div className="text-muted-foreground">= 68°F</div>
+              <div className="text-xs mt-1">Ambiente cómodo</div>
+            </div>
+          </div>
+
+          <h3 className="text-xl font-semibold mt-6">¿Cuándo usar un conversor de temperatura?</h3>
           <ul>
-            <li>0°C = 32°F (punto de congelación del agua)</li>
-            <li>100°C = 212°F (punto de ebullición del agua)</li>
-            <li>37°C = 98.6°F (temperatura corporal normal)</li>
-            <li>20°C = 68°F (temperatura ambiente cómoda)</li>
+            <li><strong>Cocina:</strong> Recetas internacionales con diferentes escalas.</li>
+            <li><strong>Viajes:</strong> Comprender el clima en otros países.</li>
+            <li><strong>Ciencia:</strong> Experimentos y cálculos precisos.</li>
+            <li><strong>Medicina:</strong> Interpretar termómetros de distintas escalas.</li>
+            <li><strong>Clima:</strong> Comparar temperaturas globales.</li>
           </ul>
 
-          <h3>¿Cuándo necesitas convertir temperatura?</h3>
-          <ul>
-            <li>
-              <strong>Cocina:</strong> Recetas internacionales con diferentes escalas
+          <h3 className="text-xl font-semibold mt-6">Ventajas de nuestro conversor</h3>
+          <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 !list-none !pl-0">
+            <li className="flex items-center gap-2">
+              <span className="text-green-600">✔️</span>
+              <span><strong>Instantáneo:</strong> Resultados en tiempo real.</span>
             </li>
-            <li>
-              <strong>Viajes:</strong> Entender el clima en otros países
+            <li className="flex items-center gap-2">
+              <span className="text-green-600">✔️</span>
+              <span><strong>Preciso:</strong> Fórmulas matemáticas exactas.</span>
             </li>
-            <li>
-              <strong>Ciencia:</strong> Experimentos y cálculos científicos
+            <li className="flex items-center gap-2">
+              <span className="text-green-600">✔️</span>
+              <span><strong>Gratuito:</strong> Sin registros ni pagos.</span>
             </li>
-            <li>
-              <strong>Medicina:</strong> Interpretar termómetros de diferentes escalas
+            <li className="flex items-center gap-2">
+              <span className="text-green-600">✔️</span>
+              <span><strong>Fácil de usar:</strong> Interfaz intuitiva y simple.</span>
             </li>
-            <li>
-              <strong>Clima:</strong> Comparar temperaturas mundiales
-            </li>
-          </ul>
-
-          <h3>Ventajas de nuestro conversor de temperatura:</h3>
-          <ul>
-            <li>
-              ✅ <strong>Instantáneo:</strong> Resultados mientras escribes
-            </li>
-            <li>
-              ✅ <strong>Preciso:</strong> Fórmulas matemáticas exactas
-            </li>
-            <li>
-              ✅ <strong>Gratuito:</strong> Sin registros ni pagos
-            </li>
-            <li>
-              ✅ <strong>Fácil:</strong> Interfaz intuitiva y simple
-            </li>
-            <li>
-              ✅ <strong>Compartir:</strong> Copia o envía por WhatsApp
+            <li className="flex items-center gap-2">
+              <span className="text-green-600">✔️</span>
+              <span><strong>Compartir:</strong> Copia o envía resultados por WhatsApp.</span>
             </li>
           </ul>
         </div>
