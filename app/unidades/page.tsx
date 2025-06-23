@@ -6,6 +6,7 @@ import { TemperatureConverterFlexible } from "@/components/temperature-converter
 import { AreaConverterFlexible } from "@/components/area-converter-flexible"
 import { SpeedConverterFlexible } from "@/components/speed-converter-flexible"
 import { TimeConverterFlexible } from "@/components/time-converter-flexible"
+import {ShoeSizeConverter } from "@/components/shoe-size-converter"
 import { SEOBreadcrumbs } from "@/components/seo-breadcrumbs"
 
 export const metadata: Metadata = {
@@ -46,7 +47,7 @@ export default function UnidadesPage() {
       <div className="space-y-12">
         {/* Medidas Básicas */}
         <section>
-          <h2 className="text-2xl font-semibold text-foreground mb-6 text-center">📏 Medidas Básicas</h2>
+          <h2 className="text-2xl font-semibold text-foreground mb-6 text-center">Medidas Básicas</h2>
           <div className="grid gap-6 md:grid-cols-2 max-w-6xl mx-auto">
             <LengthConverter />
             <WeightConverterFlexible />
@@ -60,7 +61,7 @@ export default function UnidadesPage() {
 
         {/* Temperatura y Volumen */}
         <section>
-          <h2 className="text-2xl font-semibold text-foreground mb-6 text-center">🌡️ Temperatura y Volumen</h2>
+          <h2 className="text-2xl font-semibold text-foreground mb-6 text-center">Temperatura y Volumen</h2>
           <div className="grid gap-6 md:grid-cols-2 max-w-6xl mx-auto">
             <TemperatureConverterFlexible />
             <VolumeConverterFlexible />
@@ -74,7 +75,7 @@ export default function UnidadesPage() {
 
         {/* Área y Velocidad */}
         <section>
-          <h2 className="text-2xl font-semibold text-foreground mb-6 text-center">📐 Área y Velocidad</h2>
+          <h2 className="text-2xl font-semibold text-foreground mb-6 text-center">Área y Velocidad</h2>
           <div className="grid gap-6 md:grid-cols-2 max-w-6xl mx-auto">
             <AreaConverterFlexible />
             <SpeedConverterFlexible />
@@ -88,9 +89,10 @@ export default function UnidadesPage() {
 
         {/* Tiempo */}
         <section>
-          <h2 className="text-2xl font-semibold text-foreground mb-6 text-center">⏰ Tiempo</h2>
-          <div className="grid gap-6 md:grid-cols-1 max-w-2xl mx-auto">
+          <h2 className="text-2xl font-semibold text-foreground mb-6 text-center">Tiempo y Zapatillas</h2>
+          <div className="grid gap-6 md:grid-cols-2 max-w-6xl mx-auto">
             <TimeConverterFlexible />
+            <ShoeSizeConverter />
           </div>
         </section>
 

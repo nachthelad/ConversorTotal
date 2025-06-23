@@ -53,7 +53,7 @@ export default function TallasZapatillasPage() {
     <div className="space-y-8">
       <div className="flex items-center space-x-4">
         <Button asChild variant="ghost" size="sm">
-          <Link href="/unidades">
+          <Link href="/">
             <ArrowLeft className="h-4 w-4 mr-2" />
             Volver
           </Link>

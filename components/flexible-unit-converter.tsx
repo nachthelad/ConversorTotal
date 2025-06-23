@@ -114,7 +114,7 @@ export function FlexibleUnitConverter({ title, icon, category }: FlexibleUnitCon
 
       if (!sourceValue || !targetValue) return
 
-      const message = `🔄 Conversión de ${title}:\n${sourceValue} ${sourceUnit.name} = ${targetValue} ${targetUnit.name}\n\n✨ Convertido con ConvierteYa`
+      const message = `🔄 Conversión de ${title}:\n${sourceValue} ${sourceUnit.name} = ${targetValue} ${targetUnit.name}\n\n✨ Convertido con ConversorTotal`
 
       try {
         await navigator.clipboard.writeText(message)
@@ -136,7 +136,7 @@ export function FlexibleUnitConverter({ title, icon, category }: FlexibleUnitCon
   const shareToWhatsApp = useCallback(() => {
     if (!fromValue || !toValue) return
 
-    const message = `🔄 Conversión de ${title}:\n${fromValue} ${fromUnit.name} = ${toValue} ${toUnit.name}\n\n✨ Convertido con ConvierteYa`
+    const message = `🔄 Conversión de ${title}:\n${fromValue} ${fromUnit.name} = ${toValue} ${toUnit.name}\n\n✨ Convertido con ConversorTotal`
     const encodedMessage = encodeURIComponent(message)
     const whatsappUrl = `https://wa.me/?text=${encodedMessage}`
     window.open(whatsappUrl, "_blank")
