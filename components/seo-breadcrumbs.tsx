@@ -1,30 +1,51 @@
 import Link from "next/link"
 import { ChevronRight, Home } from "lucide-react"
+import React from "react"
 
-interface BreadcrumbItem {
+export interface BreadcrumbItem {
   label: string
   href: string
 }
 
-interface SEOBreadcrumbsProps {
+export interface BreadcrumbsProps {
   items: BreadcrumbItem[]
+  separator?: React.ReactNode
+  homeIcon?: React.ReactNode
+  homeLabel?: string
+  renderCurrent?: (item: BreadcrumbItem) => React.ReactNode
+  className?: string
 }
 
-export function SEOBreadcrumbs({ items }: SEOBreadcrumbsProps) {
+export function Breadcrumbs({
+  items,
+  separator = <ChevronRight className="h-4 w-4" />,
+  homeIcon = <Home className="h-4 w-4" />,
+  homeLabel = "Inicio",
+  renderCurrent,
+  className = "mb-6",
+}: BreadcrumbsProps) {
   return (
-    <nav aria-label="Breadcrumb" className="mb-6">
+    <nav aria-label="Breadcrumb" className={className}>
       <ol className="flex items-center space-x-2 text-sm text-muted-foreground">
         <li>
-          <Link href="/" className="flex items-center hover:text-foreground transition-colors">
-            <Home className="h-4 w-4" />
-            <span className="sr-only">Inicio</span>
+          <Link
+            href="/"
+            className="flex items-center hover:text-foreground transition-colors"
+            aria-label={homeLabel}
+            title={homeLabel}
+          >
+            {homeIcon}
           </Link>
         </li>
         {items.map((item, index) => (
           <li key={item.href} className="flex items-center space-x-2">
-            <ChevronRight className="h-4 w-4" />
+            {separator}
             {index === items.length - 1 ? (
-              <span className="font-medium text-foreground">{item.label}</span>
+              renderCurrent ? (
+                renderCurrent(item)
+              ) : (
+                <span className="font-medium text-foreground">{item.label}</span>
+              )
             ) : (
               <Link href={item.href} className="hover:text-foreground transition-colors">
                 {item.label}
@@ -36,3 +57,6 @@ export function SEOBreadcrumbs({ items }: SEOBreadcrumbsProps) {
     </nav>
   )
 }
+
+// Exporta también con el nombre anterior para compatibilidad
+export { Breadcrumbs as SEOBreadcrumbs }
