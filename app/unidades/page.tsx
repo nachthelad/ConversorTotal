@@ -8,6 +8,8 @@ import { SpeedConverterFlexible } from "@/components/speed-converter-flexible"
 import { TimeConverterFlexible } from "@/components/time-converter-flexible"
 import {ShoeSizeConverter } from "@/components/shoe-size-converter"
 import { SEOBreadcrumbs } from "@/components/seo-breadcrumbs"
+import { storageUnits } from "@/lib/conversion-units"
+import { FlexibleUnitConverter } from "@/components/flexible-unit-converter"
 
 export const metadata: Metadata = {
   title: "Conversores de Unidades - ConversorTotal | Herramientas de Conversión",
@@ -95,6 +97,18 @@ export default function UnidadesPage() {
           </div>
         </section>
 
+        {/* Almacenamiento Digital */}
+        <section>
+          <h2 className="text-2xl font-semibold text-foreground mb-6 text-center">Almacenamiento Digital</h2>
+          <div className="grid gap-6 md:grid-cols-1 max-w-3xl mx-auto">
+            <FlexibleUnitConverter
+              title="Almacenamiento Digital"
+              icon={<svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V7M3 7l9-4 9 4M3 7h18" /></svg>}
+              category={storageUnits}
+            />
+          </div>
+        </section>
+        
         {/* Información adicional */}
         <div className="mt-16 bg-card rounded-lg shadow-sm border p-8 max-w-4xl mx-auto">
           <h2 className="text-2xl font-semibold text-card-foreground mb-4">¿Cómo usar los conversores flexibles?</h2>

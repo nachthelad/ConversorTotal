@@ -197,6 +197,24 @@ export const cookingUnits: UnitCategory = {
   ],
 }
 
+// Almacenamiento digital - Unidad base: Bytes
+export const storageUnits: UnitCategory = {
+  id: "storage",
+  name: "Almacenamiento Digital",
+  baseUnit: "bytes",
+  units: [
+    { id: "B", name: "Bytes", symbol: "B", factor: 1 },
+    { id: "KB", name: "Kilobytes", symbol: "KB", factor: 1024 },
+    { id: "MB", name: "Megabytes", symbol: "MB", factor: 1024 ** 2 },
+    { id: "GB", name: "Gigabytes", symbol: "GB", factor: 1024 ** 3 },
+    { id: "TB", name: "Terabytes", symbol: "TB", factor: 1024 ** 4 },
+    { id: "PB", name: "Petabytes", symbol: "PB", factor: 1024 ** 5 },
+    { id: "EB", name: "Exabytes", symbol: "EB", factor: 1024 ** 6 },
+    { id: "ZB", name: "Zettabytes", symbol: "ZB", factor: 1024 ** 7 },
+    { id: "YB", name: "Yottabytes", symbol: "YB", factor: 1024 ** 8 },
+  ],
+}
+
 // Función para convertir entre unidades
 export function convertUnits(value: number, fromUnit: Unit, toUnit: Unit, category: UnitCategory): number {
   // Casos especiales para temperatura

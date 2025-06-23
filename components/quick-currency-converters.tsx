@@ -237,7 +237,7 @@ export function QuickCurrencyConverters() {
         icon={<Euro className="h-4 w-4 text-blue-600" />}
         fromCurrency="EUR"
         toCurrency="ARS"
-        rate={Number((exchangeRates[2]?.venta || 1120))}
+        rate={Number((exchangeRates[2]?.venta.toFixed(2) || 1120))}
       />
       <QuickConverter
         title="Euro a Dólar"
