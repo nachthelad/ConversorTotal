@@ -151,7 +151,7 @@ export default function HomePage() {
           <Button
             asChild
             variant="outline"
-            className="h-auto p-4 flex flex-col space-y-2 border-2 border-primary/30 bg-primary/5"
+            className="h-auto p-4 flex flex-col space-y-2 "
           >
             <Link href="/tallas-zapatillas">
               <Footprints className="h-6 w-6 text-primary" />
