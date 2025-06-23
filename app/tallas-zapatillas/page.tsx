@@ -74,211 +74,125 @@ export default function TallasZapatillasPage() {
         <ShoeSizeConverter />
       </div>
 
-      {/* SEO Content */}
+      {/* SEO Content Mejorado */}
       <div className="max-w-4xl mx-auto space-y-8 mt-12">
         <div className="prose prose-gray dark:prose-invert max-w-none">
-          <h2>Guía Completa de Tallas de Zapatillas Internacional</h2>
+          <h2 className="text-2xl font-bold mb-2">Guía Visual de Tallas de Zapatillas Internacional</h2>
           <p>
-            En el mundo de las zapatillas y sneakers, encontrar la talla correcta es fundamental para la comodidad y el
-            estilo. Con el auge del mercado sneakerhead y las compras online internacionales, conocer las equivalencias
-            entre diferentes sistemas de tallas se ha vuelto esencial.
+            Encontrar la talla perfecta de zapatillas es clave para la comodidad y el estilo. Nuestro conversor te ayuda a comparar tallas entre <strong>US</strong>, <strong>EU</strong> y <strong>UK</strong> para marcas como Nike, Adidas, Jordan y más.
           </p>
 
-          <h3>🌍 Sistemas de Tallas de Zapatillas Principales:</h3>
-          <ul>
-            <li>
-              <strong>US (Estados Unidos):</strong> Sistema más común en Nike, Jordan, New Balance
-            </li>
-            <li>
-              <strong>EU (Europa):</strong> Usado por Adidas, Puma, y marcas europeas
-            </li>
-            <li>
-              <strong>UK (Reino Unido):</strong> Sistema británico, común en marcas clásicas
-            </li>
-          </ul>
-
-          <h3>👟 Marcas Populares y sus Sistemas de Tallas:</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 not-prose">
-            <div className="bg-muted/50 p-4 rounded-lg">
-              <h4 className="font-semibold mb-2">🇺🇸 Marcas que usan tallas US:</h4>
-              <ul className="space-y-1 text-sm">
-                <li>
-                  • <strong>Nike</strong> - Air Max, Air Force 1, Dunk
-                </li>
-                <li>
-                  • <strong>Jordan</strong> - Toda la línea Jordan
-                </li>
-                <li>
-                  • <strong>New Balance</strong> - 990, 550, 2002R
-                </li>
-                <li>
-                  • <strong>Converse</strong> - Chuck Taylor, One Star
-                </li>
-                <li>
-                  • <strong>Vans</strong> - Old Skool, Authentic
-                </li>
-              </ul>
+          <h3 className="text-xl font-semibold mt-6">Sistemas de Tallas Principales</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-4">
+            <div className="bg-muted/50 p-4 rounded-lg text-center">
+              <div className="font-bold text-lg">🇺🇸 US</div>
+              <div className="text-sm mt-1">Nike, Jordan, New Balance, Converse, Vans</div>
             </div>
-            <div className="bg-muted/50 p-4 rounded-lg">
-              <h4 className="font-semibold mb-2">🇪🇺 Marcas que usan tallas EU:</h4>
-              <ul className="space-y-1 text-sm">
-                <li>
-                  • <strong>Adidas</strong> - Stan Smith, Gazelle, Yeezy
-                </li>
-                <li>
-                  • <strong>Puma</strong> - Suede, RS-X
-                </li>
-                <li>
-                  • <strong>Balenciaga</strong> - Triple S, Track
-                </li>
-                <li>
-                  • <strong>Common Projects</strong> - Achilles
-                </li>
-                <li>
-                  • <strong>Maison Margiela</strong> - GAT
-                </li>
-              </ul>
+            <div className="bg-muted/50 p-4 rounded-lg text-center">
+              <div className="font-bold text-lg">🇪🇺 EU</div>
+              <div className="text-sm mt-1">Adidas, Puma, Balenciaga, Common Projects</div>
+            </div>
+            <div className="bg-muted/50 p-4 rounded-lg text-center">
+              <div className="font-bold text-lg">🇬🇧 UK</div>
+              <div className="text-sm mt-1">Clarks, Dr. Martens, marcas británicas</div>
             </div>
           </div>
 
-          <h3>📏 Diferencias por Género en Zapatillas:</h3>
-          <p>
-            <strong>Zapatillas de Hombre:</strong> Las tallas son más consistentes entre marcas y países. La diferencia
-            entre US y EU suele ser de 33 números (ej: US 9 = EU 42).
-          </p>
-          <p>
-            <strong>Zapatillas de Mujer:</strong> Pueden tener mayor variación. Algunas marcas usan tallas específicas
-            para mujer (Women's) que difieren de las de hombre.
-          </p>
-
-          <h3>🛒 Consejos para Comprar Zapatillas Online:</h3>
-          <ul>
-            <li>
-              ✅ <strong>Mide tus pies:</strong> Hazlo al final del día cuando están más hinchados
-            </li>
-            <li>
-              ✅ <strong>Consulta reviews:</strong> Lee comentarios sobre el fit específico del modelo
-            </li>
-            <li>
-              ✅ <strong>Conoce la marca:</strong> Nike suele tallar más pequeño, Adidas más grande
-            </li>
-            <li>
-              ✅ <strong>Considera el uso:</strong> Para correr, deja medio número más
-            </li>
-            <li>
-              ✅ <strong>Verifica devoluciones:</strong> Política de cambios del vendedor
-            </li>
-            <li>
-              ✅ <strong>Usa nuestro conversor:</strong> Siempre verifica la equivalencia
-            </li>
-          </ul>
-
-          <h3>🔥 Modelos Populares y sus Características de Talla:</h3>
-          <div className="bg-muted/30 p-6 rounded-lg">
-            <h4 className="font-semibold mb-4">Guía de Fit por Modelo Popular:</h4>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-              <div>
-                <p>
-                  <strong>Nike Air Force 1:</strong> Talla grande, considera medio número menos
-                </p>
-                <p>
-                  <strong>Nike Dunk:</strong> Talla normal a grande
-                </p>
-                <p>
-                  <strong>Jordan 1:</strong> Talla normal
-                </p>
-                <p>
-                  <strong>Jordan 4:</strong> Talla normal a pequeña
-                </p>
-              </div>
-              <div>
-                <p>
-                  <strong>Adidas Stan Smith:</strong> Talla grande
-                </p>
-                <p>
-                  <strong>Yeezy 350 V2:</strong> Talla pequeña, sube medio número
-                </p>
-                <p>
-                  <strong>New Balance 990:</strong> Talla normal
-                </p>
-                <p>
-                  <strong>Converse Chuck Taylor:</strong> Talla muy grande
-                </p>
-              </div>
+          <h3 className="text-xl font-semibold mt-6">Ejemplos de Conversión Rápida</h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 my-4">
+            <div className="bg-muted rounded-lg p-4 text-center">
+              <div className="font-bold text-lg">US 8</div>
+              <div className="text-muted-foreground">= EU 41</div>
+            </div>
+            <div className="bg-muted rounded-lg p-4 text-center">
+              <div className="font-bold text-lg">US 9</div>
+              <div className="text-muted-foreground">= EU 42</div>
+            </div>
+            <div className="bg-muted rounded-lg p-4 text-center">
+              <div className="font-bold text-lg">US 10</div>
+              <div className="text-muted-foreground">= EU 43</div>
+            </div>
+            <div className="bg-muted rounded-lg p-4 text-center">
+              <div className="font-bold text-lg">US 11</div>
+              <div className="text-muted-foreground">= EU 44</div>
             </div>
           </div>
 
-          <h3>📱 Apps y Herramientas Complementarias:</h3>
-          <ul>
-            <li>
-              <strong>Nike Fit:</strong> Escanea tus pies con la cámara
+          <h3 className="text-xl font-semibold mt-6">Consejos para Comprar Zapatillas Online</h3>
+          <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 !list-none !pl-0 mt-2">
+            <li className="flex items-center gap-2">
+              <span className="text-green-600">✔️</span>
+              <span><strong>Mide tus pies:</strong> Hazlo al final del día.</span>
             </li>
-            <li>
-              <strong>Adidas app:</strong> Recomendaciones de talla por modelo
+            <li className="flex items-center gap-2">
+              <span className="text-green-600">✔️</span>
+              <span><strong>Consulta reviews:</strong> Lee comentarios sobre el fit.</span>
             </li>
-            <li>
-              <strong>StockX/GOAT:</strong> Información de fit en cada producto
+            <li className="flex items-center gap-2">
+              <span className="text-green-600">✔️</span>
+              <span><strong>Conoce la marca:</strong> Nike talla pequeño, Adidas grande.</span>
             </li>
-            <li>
-              <strong>ConversorTotal:</strong> Nuestro conversor para equivalencias rápidas
+            <li className="flex items-center gap-2">
+              <span className="text-green-600">✔️</span>
+              <span><strong>Considera el uso:</strong> Para correr, deja medio número más.</span>
             </li>
-          </ul>
-
-          <h3>🌟 Cultura Sneakerhead y Tallas:</h3>
-          <p>
-            En la cultura sneaker, conocer las tallas es crucial no solo para el comfort, sino también para el{" "}
-            <strong>resale value</strong>. Las tallas más populares (US 9-11 para hombre, US 7-9 para mujer) suelen
-            tener mayor demanda y mejor precio de reventa.
-          </p>
-
-          <h3>🚨 Errores Comunes al Convertir Tallas:</h3>
-          <ul>
-            <li>
-              ❌ <strong>No considerar el género:</strong> Las tallas de mujer son diferentes
+            <li className="flex items-center gap-2">
+              <span className="text-green-600">✔️</span>
+              <span><strong>Verifica devoluciones:</strong> Política de cambios.</span>
             </li>
-            <li>
-              ❌ <strong>Ignorar la marca:</strong> Cada marca tiene su propio fit
-            </li>
-            <li>
-              ❌ <strong>No leer reviews:</strong> El fit puede variar por modelo
-            </li>
-            <li>
-              ❌ <strong>Comprar sin medir:</strong> Tus pies pueden cambiar con el tiempo
-            </li>
-            <li>
-              ❌ <strong>Asumir consistencia:</strong> Incluso dentro de la misma marca puede haber variaciones
+            <li className="flex items-center gap-2">
+              <span className="text-green-600">✔️</span>
+              <span><strong>Usa nuestro conversor:</strong> Verifica la equivalencia.</span>
             </li>
           </ul>
 
-          <h3>💡 Tips Pro para Sneakerheads:</h3>
-          <ul>
-            <li>
-              🎯 <strong>Crea una tabla personal:</strong> Anota tu talla en cada marca que compres
+          <h3 className="text-xl font-semibold mt-6">Errores Comunes al Convertir Tallas</h3>
+          <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 !list-none !pl-0 mt-2">
+            <li className="flex items-center gap-2">
+              <span className="text-red-500">❌</span>
+              <span><strong>No considerar el género:</strong> Las tallas de mujer son diferentes.</span>
             </li>
-            <li>
-              🎯 <strong>Únete a comunidades:</strong> Reddit r/Sneakers tiene info valiosa sobre fit
+            <li className="flex items-center gap-2">
+              <span className="text-red-500">❌</span>
+              <span><strong>Ignorar la marca:</strong> Cada marca tiene su propio fit.</span>
             </li>
-            <li>
-              🎯 <strong>Prueba en tienda física:</strong> Cuando sea posible, antes de comprar online
+            <li className="flex items-center gap-2">
+              <span className="text-red-500">❌</span>
+              <span><strong>No leer reviews:</strong> El fit varía por modelo.</span>
             </li>
-            <li>
-              🎯 <strong>Considera plantillas:</strong> Pueden ajustar zapatillas que quedan grandes
+            <li className="flex items-center gap-2">
+              <span className="text-red-500">❌</span>
+              <span><strong>Comprar sin medir:</strong> Tus pies pueden cambiar.</span>
             </li>
-            <li>
-              🎯 <strong>Guarda las cajas:</strong> Para posible reventa, mantén el packaging original
+            <li className="flex items-center gap-2">
+              <span className="text-red-500">❌</span>
+              <span><strong>Asumir consistencia:</strong> Incluso dentro de la misma marca puede haber variaciones.</span>
             </li>
           </ul>
 
-          <h3>🔄 Conversiones Más Buscadas:</h3>
-          <div className="bg-primary/5 p-4 rounded-lg">
-            <p className="font-semibold mb-2">Tallas más populares en sneakers:</p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-sm">
-              <div>US 8 = EU 41</div>
-              <div>US 9 = EU 42</div>
-              <div>US 10 = EU 43</div>
-              <div>US 11 = EU 44</div>
-            </div>
-          </div>
+          <h3 className="text-xl font-semibold mt-6">Pro tips para Sneakerheads</h3>
+          <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 !list-none !pl-0 mt-2">
+            <li className="flex items-center gap-2">
+              <span className="text-blue-600">🎯</span>
+              <span><strong>Crea una tabla personal:</strong> Anota tu talla en cada marca.</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <span className="text-blue-600">🎯</span>
+              <span><strong>Únete a comunidades:</strong> Reddit r/Sneakers tiene info valiosa.</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <span className="text-blue-600">🎯</span>
+              <span><strong>Prueba en tienda física:</strong> Cuando sea posible, antes de comprar online.</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <span className="text-blue-600">🎯</span>
+              <span><strong>Considera plantillas:</strong> Ajustan zapatillas grandes.</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <span className="text-blue-600">🎯</span>
+              <span><strong>Guarda las cajas:</strong> Para posible reventa, mantén el packaging original.</span>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
