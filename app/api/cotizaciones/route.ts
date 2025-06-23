@@ -229,6 +229,22 @@ export async function GET() {
       }),
     )
 
+    // Obtener EUR/USD
+    let eurUsdRate = 1.08
+    try {
+      const eurUsdResponse = await fetch("https://api.exchangerate-api.com/v4/latest/EUR", {
+        headers: { "Content-Type": "application/json" },
+      })
+      if (eurUsdResponse.ok) {
+        const eurUsdData = await eurUsdResponse.json()
+        if (eurUsdData.rates && eurUsdData.rates.USD) {
+          eurUsdRate = eurUsdData.rates.USD
+        }
+      }
+    } catch (error) {
+      console.warn("Error fetching EUR/USD rate:", error)
+    }
+
     // Procesar resultados
     const data: ExchangeRate[] = []
     let successCount = 0
@@ -274,6 +290,7 @@ export async function GET() {
       totalApis: apiCalls.length,
       timestamp: new Date().toISOString(),
       lastSuccessfulUpdate: lastUpdateTime?.toISOString() || null,
+      eurUsdRate,
     })
   } catch (error) {
     console.error("💥 Error general en API Route:", error)

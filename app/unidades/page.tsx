@@ -22,7 +22,6 @@ export const metadata: Metadata = {
 }
 
 const breadcrumbItems = [
-  { label: "Inicio", href: "/" },
   { label: "Conversores de Unidades", href: "/unidades" },
 ]
 

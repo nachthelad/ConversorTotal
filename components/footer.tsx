@@ -117,14 +117,6 @@ export function Footer() {
                 <Linkedin className="h-4 w-4" />
                 <span className="sr-only">LinkedIn</span>
               </Link>
-              <Link
-                href="mailto:nachthelad.dev@gmail.com"
-                className="text-muted-foreground hover:text-foreground transition-colors p-2 hover:bg-muted/50 rounded-full"
-                title="Email"
-              >
-                <Mail className="h-4 w-4" />
-                <span className="sr-only">Email</span>
-              </Link>
             </div>
             <div className="text-xs text-muted-foreground">
               <p>Powered by</p>
@@ -144,7 +136,6 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="border-t mt-8 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
           <p>© 2024 ConversorTotal. Todos los derechos reservados.</p>
-          <p>Hecho con ❤️ en Argentina</p>
         </div>
       </div>
     </footer>

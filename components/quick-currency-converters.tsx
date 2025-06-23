@@ -40,7 +40,7 @@ function QuickConverter({ title, icon, fromCurrency, toCurrency, rate, casa }: Q
   const copyToClipboard = async () => {
     if (!fromAmount || fromAmount === "0" || !toAmount || toAmount === "0") return
 
-    const message = `🔄 ${title}${casa ? ` (${casa})` : ""}:\n${fromAmount} ${fromCurrency} = ${toAmount} ${toCurrency}\nCotización: ${rate.toFixed(4)}\n\n✨ Convertido con ConversorTotal`
+    const message = `🔄 ${title}${casa ? ` (${casa})` : ""}:\n${fromAmount} ${fromCurrency} = ${toAmount} ${toCurrency}\nCotización: ${rate.toFixed(2)}\n\n✨ Convertido con ConversorTotal`
 
     try {
       await navigator.clipboard.writeText(message)
@@ -61,7 +61,7 @@ function QuickConverter({ title, icon, fromCurrency, toCurrency, rate, casa }: Q
     if (!fromAmount || fromAmount === "0" || !toAmount || toAmount === "0") return
 
     const message = `${fromAmount} ${fromCurrency} = ${toAmount} ${toCurrency}`
-    const whatsappMessage = `🔄 ${title}${casa ? ` (${casa})` : ""}:\n${message}\nCotización: ${rate.toFixed(4)}\n\n✨ Convertido con ConversorTotal`
+    const whatsappMessage = `🔄 ${title}${casa ? ` (${casa})` : ""}:\n${message}\nCotización: ${rate.toFixed(2)}\n\n✨ Convertido con ConversorTotal`
     const encodedMessage = encodeURIComponent(whatsappMessage)
     const whatsappUrl = `https://wa.me/?text=${encodedMessage}`
     window.open(whatsappUrl, "_blank")
@@ -76,7 +76,7 @@ function QuickConverter({ title, icon, fromCurrency, toCurrency, rate, casa }: Q
             <span className="text-sm">{title}</span>
             {casa && <span className="text-xs text-muted-foreground">({casa})</span>}
           </div>
-          <div className="text-sm text-muted-foreground">{rate.toFixed(4)}</div>
+          <div className="text-sm text-muted-foreground">{rate}</div>
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
@@ -169,63 +169,32 @@ export function QuickCurrencyConverters() {
   useEffect(() => {
     const fetchRates = async () => {
       try {
-        // Obtener cotizaciones ARS
-        const apiCalls = [
-          { url: "https://dolarapi.com/v1/dolares/blue", fallback: fallbackRates[0] },
-          { url: "https://dolarapi.com/v1/dolares/cripto", fallback: fallbackRates[1] },
-          { url: "https://dolarapi.com/v1/cotizaciones/eur", fallback: fallbackRates[2] },
-        ]
+        const response = await fetch("/api/cotizaciones", {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        });
+        if (!response.ok) throw new Error("Error fetching rates");
+        const result = await response.json();
+        const rates: ExchangeRate[] = result.data;
+        const eurUsdRateApi = result.eurUsdRate;
 
-        const results = await Promise.allSettled(
-          apiCalls.map(async ({ url, fallback }) => {
-            try {
-              const response = await fetch(url, {
-                method: "GET",
-                headers: { "Content-Type": "application/json" },
-                signal: AbortSignal.timeout(3000),
-              })
-              if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`)
-              return await response.json()
-            } catch {
-              return fallback
-            }
-          }),
-        )
+        // Buscar los rates que necesitas
+        const blue = rates.find(r => r.casa === "blue" && r.moneda === "USD") || fallbackRates[0];
+        const cripto = rates.find(r => r.casa === "cripto" && r.moneda === "USD") || fallbackRates[1];
+        const euro = rates.find(r => r.moneda === "EUR") || fallbackRates[2];
+        setExchangeRates([blue, cripto, euro]);
 
-        const data = results.map((result, index) => {
-          if (result.status === "fulfilled") {
-            return result.value
-          } else {
-            return apiCalls[index].fallback
-          }
-        })
-
-        setExchangeRates(data)
-
-        // Obtener cotización EUR/USD
-        try {
-          const eurUsdResponse = await fetch("https://api.exchangerate-api.com/v4/latest/EUR", {
-            signal: AbortSignal.timeout(3000),
-          })
-          if (eurUsdResponse.ok) {
-            const eurUsdData = await eurUsdResponse.json()
-            if (eurUsdData.rates && eurUsdData.rates.USD) {
-              setEurUsdRate(eurUsdData.rates.USD)
-            }
-          }
-        } catch (error) {
-          console.warn("Error fetching EUR/USD rate:", error)
-          // Mantener el valor de fallback
-        }
+        setEurUsdRate(typeof eurUsdRateApi === "number" ? eurUsdRateApi : 1.08);
       } catch {
-        setExchangeRates(fallbackRates)
+        setExchangeRates(fallbackRates);
+        setEurUsdRate(1.08);
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
-    }
+    };
 
-    fetchRates()
-  }, [])
+    fetchRates();
+  }, []);
 
   if (loading) {
     return (
@@ -252,7 +221,7 @@ export function QuickCurrencyConverters() {
         icon={<DollarSign className="h-4 w-4 text-green-600" />}
         fromCurrency="USD"
         toCurrency="ARS"
-        rate={exchangeRates[0]?.venta || 1040}
+        rate={Number((exchangeRates[0]?.venta || 1040))}
         casa="Blue"
       />
       <QuickConverter
@@ -260,7 +229,7 @@ export function QuickCurrencyConverters() {
         icon={<DollarSign className="h-4 w-4 text-orange-600" />}
         fromCurrency="USD"
         toCurrency="ARS"
-        rate={exchangeRates[1]?.venta || 1050}
+        rate={Number((exchangeRates[1]?.venta || 1050))}
         casa="Cripto"
       />
       <QuickConverter
@@ -268,7 +237,7 @@ export function QuickCurrencyConverters() {
         icon={<Euro className="h-4 w-4 text-blue-600" />}
         fromCurrency="EUR"
         toCurrency="ARS"
-        rate={exchangeRates[2]?.venta || 1120}
+        rate={Number((exchangeRates[2]?.venta || 1120))}
       />
       <QuickConverter
         title="Euro a Dólar"
@@ -281,7 +250,7 @@ export function QuickCurrencyConverters() {
         }
         fromCurrency="EUR"
         toCurrency="USD"
-        rate={eurUsdRate}
+        rate={Number(eurUsdRate)}
       />
     </div>
   )
