@@ -164,12 +164,6 @@ export default function HomePage() {
               <span className="text-xs text-center">Tallas Ropa</span>
             </Link>
           </Button>
-          <Button asChild variant="outline" className="h-auto p-4 flex flex-col space-y-2">
-            <Link href="/unidades#velocidad">
-              <Gauge className="h-6 w-6" />
-              <span className="text-xs text-center">Velocidad</span>
-            </Link>
-          </Button>
         </div>
       </div>
 
