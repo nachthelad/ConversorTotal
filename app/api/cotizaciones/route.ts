@@ -19,8 +19,8 @@ const fallbackRates: ExchangeRate[] = [
     moneda: "USD",
     casa: "oficial",
     nombre: "Dólar Oficial",
-    compra: 350.0,
-    venta: 358.0,
+    compra: 1100.0,
+    venta: 1100.0,
     fechaActualizacion: new Date().toISOString(),
   },
   {

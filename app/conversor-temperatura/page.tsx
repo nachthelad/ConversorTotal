@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { TemperatureConverter } from "@/components/temperature-converter"
+import { TemperatureConverterFlexible } from "@/components/temperature-converter-flexible"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft } from "lucide-react"
@@ -33,9 +33,9 @@ export default function ConversorTemperaturaPage() {
     <div className="space-y-8">
       <div className="flex items-center space-x-4">
         <Button asChild variant="ghost" size="sm">
-          <Link href="/unidades">
+          <Link href="/">
             <ArrowLeft className="h-4 w-4 mr-2" />
-            Volver a Conversores
+            Volver
           </Link>
         </Button>
       </div>
@@ -49,7 +49,7 @@ export default function ConversorTemperaturaPage() {
       </div>
 
       <div className="max-w-2xl mx-auto">
-        <TemperatureConverter />
+        <TemperatureConverterFlexible />
       </div>
 
       {/* SEO Content */}

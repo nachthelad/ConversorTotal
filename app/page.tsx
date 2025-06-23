@@ -125,7 +125,7 @@ export default function HomePage() {
         <p className="text-center text-muted-foreground mb-6">
           Acceso rápido a los conversores de unidades más utilizados en Argentina.
         </p>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
           <Button asChild variant="outline" className="h-auto p-4 flex flex-col space-y-2">
             <Link href="/conversor-temperatura">
               <div className="w-8 h-8 bg-red-100 dark:bg-red-900/20 rounded-full flex items-center justify-center">
@@ -151,7 +151,7 @@ export default function HomePage() {
           <Button
             asChild
             variant="outline"
-            className="h-auto p-4 flex flex-col space-y-2 border-2 border-primary/30 bg-primary/5"
+            className="h-auto p-4 flex flex-col space-y-2 "
           >
             <Link href="/tallas-zapatillas">
               <Footprints className="h-6 w-6 text-primary" />
@@ -162,12 +162,6 @@ export default function HomePage() {
             <Link href="/tallas-ropa">
               <Shirt className="h-6 w-6" />
               <span className="text-xs text-center">Tallas Ropa</span>
-            </Link>
-          </Button>
-          <Button asChild variant="outline" className="h-auto p-4 flex flex-col space-y-2">
-            <Link href="/unidades#velocidad">
-              <Gauge className="h-6 w-6" />
-              <span className="text-xs text-center">Velocidad</span>
             </Link>
           </Button>
         </div>

@@ -121,11 +121,92 @@ export const timeUnits: UnitCategory = {
   ],
 }
 
+// Presión - Unidad base: Pascal
+export const pressureUnits: UnitCategory = {
+  id: "pressure",
+  name: "Presión",
+  baseUnit: "pascal",
+  units: [
+    { id: "pa", name: "Pascal", symbol: "Pa", factor: 1 },
+    { id: "kpa", name: "Kilopascal", symbol: "kPa", factor: 1000 },
+    { id: "bar", name: "Bar", symbol: "bar", factor: 100000 },
+    { id: "psi", name: "Libras por pulgada cuadrada", symbol: "PSI", factor: 6894.76 },
+    { id: "atm", name: "Atmósferas", symbol: "atm", factor: 101325 },
+    { id: "mmhg", name: "Milímetros de mercurio", symbol: "mmHg", factor: 133.322 },
+    { id: "inhg", name: "Pulgadas de mercurio", symbol: "inHg", factor: 3386.39 },
+  ],
+}
+
+// Energía - Unidad base: Joules
+export const energyUnits: UnitCategory = {
+  id: "energy",
+  name: "Energía",
+  baseUnit: "joules",
+  units: [
+    { id: "j", name: "Joules", symbol: "J", factor: 1 },
+    { id: "kj", name: "Kilojoules", symbol: "kJ", factor: 1000 },
+    { id: "cal", name: "Calorías", symbol: "cal", factor: 4.184 },
+    { id: "kcal", name: "Kilocalorías", symbol: "kcal", factor: 4184 },
+    { id: "wh", name: "Vatios-hora", symbol: "Wh", factor: 3600 },
+    { id: "kwh", name: "Kilovatios-hora", symbol: "kWh", factor: 3600000 },
+    { id: "btu", name: "BTU", symbol: "BTU", factor: 1055.06 },
+  ],
+}
+
+// Potencia - Unidad base: Watts
+export const powerUnits: UnitCategory = {
+  id: "power",
+  name: "Potencia",
+  baseUnit: "watts",
+  units: [
+    { id: "w", name: "Watts", symbol: "W", factor: 1 },
+    { id: "kw", name: "Kilowatts", symbol: "kW", factor: 1000 },
+    { id: "hp", name: "Caballos de fuerza", symbol: "HP", factor: 745.7 },
+    { id: "ps", name: "Caballos de vapor", symbol: "PS", factor: 735.5 },
+    { id: "btu_h", name: "BTU por hora", symbol: "BTU/h", factor: 0.293071 },
+  ],
+}
+
+// Consumo de combustible - Unidad base: litros por 100 km
+export const fuelConsumptionUnits: UnitCategory = {
+  id: "fuel",
+  name: "Consumo de Combustible",
+  baseUnit: "litros por 100 km",
+  units: [
+    { id: "l100km", name: "Litros por 100 km", symbol: "L/100km", factor: 1 },
+    { id: "mpg_us", name: "Millas por galón (US)", symbol: "MPG (US)", factor: 235.214 }, // Conversión especial
+    { id: "mpg_uk", name: "Millas por galón (UK)", symbol: "MPG (UK)", factor: 282.481 }, // Conversión especial
+    { id: "kmpl", name: "Kilómetros por litro", symbol: "km/L", factor: 100 }, // Conversión especial
+  ],
+}
+
+// Medidas de cocina - Unidad base: mililitros
+export const cookingUnits: UnitCategory = {
+  id: "cooking",
+  name: "Medidas de Cocina",
+  baseUnit: "mililitros",
+  units: [
+    { id: "ml", name: "Mililitros", symbol: "ml", factor: 1 },
+    { id: "tsp", name: "Cucharaditas", symbol: "cdta", factor: 4.92892 },
+    { id: "tbsp", name: "Cucharadas", symbol: "cda", factor: 14.7868 },
+    { id: "fl_oz", name: "Onzas fluidas", symbol: "fl oz", factor: 29.5735 },
+    { id: "cup_us", name: "Tazas (US)", symbol: "cup", factor: 236.588 },
+    { id: "cup_metric", name: "Tazas métricas", symbol: "taza", factor: 250 },
+    { id: "pint", name: "Pintas", symbol: "pt", factor: 473.176 },
+    { id: "quart", name: "Cuartos", symbol: "qt", factor: 946.353 },
+  ],
+}
+
 // Función para convertir entre unidades
 export function convertUnits(value: number, fromUnit: Unit, toUnit: Unit, category: UnitCategory): number {
   // Casos especiales para temperatura
   if (category.id === "temperature") {
     return convertTemperature(value, fromUnit.id, toUnit.id)
+  }
+
+  // Casos especiales para consumo de combustible
+  if (category.id === "fuel") {
+    return convertFuelConsumption(value, fromUnit.id, toUnit.id)
   }
 
   // Conversión estándar: valor → unidad base → unidad destino
@@ -162,5 +243,42 @@ function convertTemperature(value: number, fromId: string, toId: string): number
       return celsius + 273.15
     default:
       return celsius
+  }
+}
+
+// Conversiones especiales para consumo de combustible
+function convertFuelConsumption(value: number, fromId: string, toId: string): number {
+  // Convertir todo a L/100km primero
+  let l100km: number
+
+  switch (fromId) {
+    case "l100km":
+      l100km = value
+      break
+    case "mpg_us":
+      l100km = 235.214 / value
+      break
+    case "mpg_uk":
+      l100km = 282.481 / value
+      break
+    case "kmpl":
+      l100km = 100 / value
+      break
+    default:
+      l100km = value
+  }
+
+  // Luego convertir de L/100km a la unidad destino
+  switch (toId) {
+    case "l100km":
+      return l100km
+    case "mpg_us":
+      return 235.214 / l100km
+    case "mpg_uk":
+      return 282.481 / l100km
+    case "kmpl":
+      return 100 / l100km
+    default:
+      return l100km
   }
 }
