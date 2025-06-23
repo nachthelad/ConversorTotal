@@ -29,7 +29,7 @@ export default function HomePage() {
       {/* Hero Section */}
       <div className="text-center space-y-6 max-[360px]:px-4">
         <h1 className="text-5xl font-bold tracking-tight text-foreground max-[360px]:text-3xl">
-          <span className="text-primary">ConversorTotal</span> - Conversor Online Gratuito
+          <span className="text-primary">Conversor Online Gratuito</span> 
         </h1>
         <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
           La herramienta más completa para <strong>convertir unidades de medida y monedas</strong> de forma rápida,
@@ -50,22 +50,24 @@ export default function HomePage() {
             <div className="mx-auto w-16 h-16 bg-blue-100 dark:bg-blue-900/20 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
               <Ruler className="h-8 w-8 text-blue-600 dark:text-blue-400" />
             </div>
-            <CardTitle className="text-2xl">Convertir Unidades de Medida</CardTitle>
+            <CardTitle className="text-2xl">Convertir Unidades</CardTitle>
           </CardHeader>
           <CardContent className="text-center space-y-4 flex-1 flex flex-col">
             <p className="text-muted-foreground">
-              <strong>14 conversores diferentes</strong> para todas tus necesidades: temperatura, peso, distancia, área,
-              velocidad, tallas y más.
+              <strong>Todos los conversores de unidades</strong> que necesitas en un solo lugar:
             </p>
             <ul className="text-sm text-muted-foreground space-y-1 flex-1">
               <li>
-                🌡️ <strong>Temperatura:</strong> Celsius ↔ Fahrenheit
+                🌡️ <strong>Temperatura:</strong> Celsius ↔ Fahrenheit ↔ Kelvin
               </li>
               <li>
-                ⚖️ <strong>Peso:</strong> Kilogramos ↔ Libras
+                ⚖️ <strong>Peso:</strong> Miligramos ↔ Kilogramos ↔ Libras ↔ Toneladas
               </li>
               <li>
-                📏 <strong>Distancia:</strong> Kilómetros ↔ Millas
+                📏 <strong>Distancia:</strong> Milímetros ↔ Kilómetros ↔ Millas
+              </li>
+              <li>
+                💾 <strong>Almacenamiento:</strong> Bytes ↔ KB ↔ MB ↔ GB ↔ TB
               </li>
               <li>
                 👟 <strong>Tallas Zapatillas:</strong> US ↔ EU ↔ UK
