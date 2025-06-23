@@ -49,7 +49,7 @@ export default function ConversorTemperaturaPage() {
       </div>
 
       <div className="max-w-2xl mx-auto">
-        <TemperatureConverter />
+        <TemperatureConverterFlexible />
       </div>
 
       {/* SEO Content */}
