@@ -59,10 +59,10 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/tallas-zapatillas"
+                  href="/conversor-almacenamiento"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  Talles de zapatillas
+                  Almacenamiento Digital
                 </Link>
               </li>
             </ul>

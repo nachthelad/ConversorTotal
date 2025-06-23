@@ -20,6 +20,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://conversortotal.vercel.app/conversor-distancia",
   },
+  openGraph: {
+    title: "Conversor de Distancia - Kilómetros a Millas",
+    description: "Convierte distancias de metros a kilometros y viceversa al instante. Gratis y preciso.",
+    url: "https://conversortotal.vercel.app/conversor-almacenamiento",
+  },
 }
 
 export default function ConversorDistanciaPage() {
