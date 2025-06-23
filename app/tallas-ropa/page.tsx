@@ -30,7 +30,7 @@ export default function TallasRopaPage() {
         <Button asChild variant="ghost" size="sm">
           <Link href="/unidades">
             <ArrowLeft className="h-4 w-4 mr-2" />
-            Volver a Conversores
+            Volver
           </Link>
         </Button>
       </div>
