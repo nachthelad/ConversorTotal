@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
+import { Analytics } from "@vercel/analytics/next"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -50,11 +51,6 @@ export const metadata: Metadata = {
     },
   },
   manifest: "/manifest.json",
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#5B9BD5" },
-    { media: "(prefers-color-scheme: dark)", color: "#0f172a" },
-  ],
-  viewport: "width=device-width, initial-scale=1, maximum-scale=1",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
@@ -93,6 +89,13 @@ export const metadata: Metadata = {
   },
     generator: 'v0.dev'
 }
+
+export const themeColor = [
+  { media: "(prefers-color-scheme: light)", color: "#5B9BD5" },
+  { media: "(prefers-color-scheme: dark)", color: "#0f172a" },
+]
+
+export const viewport = "width=device-width, initial-scale=1, maximum-scale=1"
 
 export default function RootLayout({
   children,
@@ -194,6 +197,7 @@ export default function RootLayout({
           </div>
           <Toaster />
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   )
