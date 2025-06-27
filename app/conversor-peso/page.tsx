@@ -19,12 +19,12 @@ export const metadata: Metadata = {
     "peso corporal",
   ],
   alternates: {
-    canonical: "https://conversortotal.vercel.app/conversor-peso",
+    canonical: "https://conversortotal.online/conversor-peso",
   },
   openGraph: {
     title: "Conversor de Peso - Kilogramos a Libras",
     description: "Convierte peso de kilogramos a libras y viceversa al instante. Gratis y preciso.",
-    url: "https://conversortotal.vercel.app/conversor-peso",
+    url: "https://conversortotal.online/conversor-peso",
   },
 }
 

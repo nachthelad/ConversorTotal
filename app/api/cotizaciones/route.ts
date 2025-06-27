@@ -206,7 +206,7 @@ export async function GET() {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
-              "User-Agent": "ConversorTotal/1.0 (https://conversortotal.vercel.app)",
+              "User-Agent": "ConversorTotal/1.0 (https://conversortotal.online)",
               Accept: "application/json",
             },
             signal: controller.signal,
