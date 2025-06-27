@@ -76,7 +76,7 @@ export default function TerminosYCondicionesPage() {
           <CardContent className="space-y-4">
             <p>
               <strong>Uso Permitido:</strong> Puede utilizar ConversorTotal para realizar conversiones de unidades,
-              consultar tipos de cambio y convertir tallas de ropa y calzado.
+              consultar tipos de cambio y convertir talles de ropa y calzado.
             </p>
             <p>
               <strong>Uso Prohibido:</strong> No está permitido:

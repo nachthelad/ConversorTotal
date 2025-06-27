@@ -18,7 +18,7 @@ export default function Head() {
               },
               {
                 "@type": "Question",
-                "name": "¿Las tallas de hombre y mujer son iguales?",
+                "name": "¿Las talles de hombre y mujer son iguales?",
                 "acceptedAnswer": {
                   "@type": "Answer",
                   "text": "No, las tallas pueden variar según el género y la marca. Consulta siempre la guía específica."

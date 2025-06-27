@@ -1,10 +1,10 @@
 "use client"
 
-import { Moon, Sun, ChevronDown } from "lucide-react"
+import { Moon, Sun, ChevronDown, Thermometer, Scale, Ruler, Shirt, Footprints, DollarSign, Database } from "lucide-react"
 import { useTheme } from "next-themes"
 import { Button } from "@/components/ui/button"
 import { useEffect, useState } from "react"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuSeparator } from "@/components/ui/dropdown-menu"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { MobileMenu } from "./mobile-menu"
@@ -69,19 +69,32 @@ export function Header() {
                 <ChevronDown className="h-4 w-4" />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="start" className="w-48">
+            <DropdownMenuContent align="start" className="w-64">
+              <div className="px-3 py-1 text-xs text-muted-foreground font-semibold">Unidades</div>
               <DropdownMenuItem asChild>
-                <Link
-                  href="/unidades"
-                  className={`w-full cursor-pointer ${pathname === "/unidades" ? "bg-accent" : ""}`}
-                >
-                  De Unidades
-                </Link>
+                <Link href="/conversor-temperatura"><Thermometer className="h-4 w-4 mr-2" />Temperatura</Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
-                <Link href="/monedas" className={`w-full cursor-pointer ${pathname === "/monedas" ? "bg-accent" : ""}`}>
-                  De Monedas
-                </Link>
+                <Link href="/conversor-peso"><Scale className="h-4 w-4 mr-2" />Peso</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="/conversor-distancia"><Ruler className="h-4 w-4 mr-2" />Distancia</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="/conversor-almacenamiento"><Database className="h-4 w-4 mr-2" />Almacenamiento</Link>
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <div className="px-3 py-1 text-xs text-muted-foreground font-semibold">Tallas</div>
+              <DropdownMenuItem asChild>
+                <Link href="/tallas-ropa"><Shirt className="h-4 w-4 mr-2" />Talles de Ropa</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="/tallas-zapatillas"><Footprints className="h-4 w-4 mr-2" />Talles de Zapatillas</Link>
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <div className="px-3 py-1 text-xs text-muted-foreground font-semibold">Monedas</div>
+              <DropdownMenuItem asChild>
+                <Link href="/monedas"><DollarSign className="h-4 w-4 mr-2" />Conversor de Monedas</Link>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>

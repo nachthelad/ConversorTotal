@@ -47,7 +47,7 @@ export function ShoeSizeConverter() {
 
   const copyToClipboard = async (region: string) => {
     const sizes = getEquivalentSizes()
-    const message = `🔄 Conversión de Tallas de Zapatillas (${gender === "men" ? "Hombre" : "Mujer"}):\nUS: ${sizes.US} | EU: ${sizes.EU} | UK: ${sizes.UK}\n\n✨ Convertido con ConversorTotal`
+    const message = `🔄 Conversión de Talles de Zapatillas (${gender === "men" ? "Hombre" : "Mujer"}):\nUS: ${sizes.US} | EU: ${sizes.EU} | UK: ${sizes.UK}\n\n✨ Convertido con ConversorTotal`
 
     try {
       await navigator.clipboard.writeText(message)
@@ -66,8 +66,8 @@ export function ShoeSizeConverter() {
 
   const shareToWhatsApp = () => {
     const sizes = getEquivalentSizes()
-    const message = `Tallas de Zapatillas (${gender === "men" ? "Hombre" : "Mujer"}): US: ${sizes.US} | EU: ${sizes.EU} | UK: ${sizes.UK}`
-    const whatsappMessage = `🔄 Conversión de Tallas de Zapatillas:\n${message}\n\n✨ Convertido con ConversorTotal`
+    const message = `Talles de Zapatillas (${gender === "men" ? "Hombre" : "Mujer"}): US: ${sizes.US} | EU: ${sizes.EU} | UK: ${sizes.UK}`
+    const whatsappMessage = `🔄 Conversión de Talles de Zapatillas:\n${message}\n\n✨ Convertido con ConversorTotal`
     const encodedMessage = encodeURIComponent(whatsappMessage)
     const whatsappUrl = `https://wa.me/?text=${encodedMessage}`
     window.open(whatsappUrl, "_blank")
@@ -78,7 +78,7 @@ export function ShoeSizeConverter() {
       <CardHeader className="pb-4">
         <CardTitle className="flex items-center space-x-2 text-lg">
           <Footprints className="h-5 w-5 text-emerald-500" />
-          <span>Tallas de Zapatillas</span>
+          <span>Talles de Zapatillas</span>
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-6">

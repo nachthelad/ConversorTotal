@@ -239,7 +239,7 @@ export default function HomePage() {
           </div>
           <h2 className="text-3xl font-bold">Especial para Sneakerheads 👟</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            ¿Eres fanático de las zapatillas? Nuestro <strong>conversor de tallas de zapatillas</strong> es perfecto
+            ¿Eres fanático de las zapatillas? Nuestro <strong>conversor de talles de zapatillas</strong> es perfecto
             para compras internacionales de Nike, Adidas, Jordan y más. <strong>Encuentra tu talla exacta</strong> y
             evita devoluciones.
           </p>
@@ -374,7 +374,7 @@ export default function HomePage() {
               <div className="flex items-center space-x-3 p-3 bg-muted/30 rounded-lg">
                 <Shirt className="h-5 w-5 text-teal-500" />
                 <div>
-                  <div className="font-medium">Tallas de Ropa</div>
+                  <div className="font-medium">Talles de Ropa</div>
                   <div className="text-sm text-muted-foreground">US ↔ EU ↔ UK</div>
                 </div>
               </div>
@@ -533,7 +533,7 @@ export default function HomePage() {
           </div>
           <div>
             <h3 className="font-semibold">¿Qué tipos de unidades puedo convertir?</h3>
-            <p>Puedes convertir temperatura, peso, distancia, área, volumen, velocidad, tallas de ropa y zapatillas, almacenamiento digital y monedas.</p>
+            <p>Puedes convertir temperatura, peso, distancia, área, volumen, velocidad, talles de ropa y zapatillas, almacenamiento digital y monedas.</p>
           </div>
         </div>
       </div>

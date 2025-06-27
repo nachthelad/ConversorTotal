@@ -5,11 +5,11 @@ import { Button } from "@/components/ui/button"
 import { ArrowLeft } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Conversor de Tallas de Zapatillas - US, EU, UK Online Gratis",
+  title: "Conversor de Talles de Zapatillas - US, EU, UK Online Gratis",
   description:
-    "Convierte tallas de zapatillas y sneakers entre Estados Unidos, Europa y Reino Unido. Guía completa para hombre y mujer. Encuentra tu talla perfecta para Nike, Adidas, Jordan y más.",
+    "Convierte talles de zapatillas y sneakers entre Estados Unidos, Europa y Reino Unido. Guía completa para hombre y mujer. Encuentra tu talla perfecta para Nike, Adidas, Jordan y más.",
   keywords: [
-    "tallas de zapatillas",
+    "talles de zapatillas",
     "tallas sneakers",
     "conversor tallas zapatos",
     "tallas US EU UK zapatillas",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     canonical: "https://conversortotal.online/tallas-zapatillas",
   },
   openGraph: {
-    title: "Conversor de Tallas de Zapatillas - Sneakers US, EU, UK",
+    title: "Conversor de Talles de Zapatillas - Sneakers US, EU, UK",
     description:
       "Encuentra tu talla perfecta de zapatillas. Convierte entre US, EU y UK para Nike, Adidas, Jordan y más marcas.",
     url: "https://conversortotal.online/tallas-zapatillas",
@@ -35,13 +35,13 @@ export const metadata: Metadata = {
         url: "/og-zapatillas.png",
         width: 1200,
         height: 630,
-        alt: "Conversor de Tallas de Zapatillas",
+        alt: "Conversor de Talles de Zapatillas",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Conversor de Tallas de Zapatillas - Sneakers",
+    title: "Conversor de Talles de Zapatillas - Sneakers",
     description:
       "Encuentra tu talla perfecta de zapatillas entre US, EU y UK. Para sneakerheads y amantes del calzado.",
     images: ["/og-zapatillas.png"],
@@ -62,7 +62,7 @@ export default function TallasZapatillasPage() {
 
       <div className="text-center space-y-4">
         <h1 className="text-4xl font-bold tracking-tight text-foreground">
-          Conversor de Tallas de Zapatillas y Sneakers
+          Conversor de Talles de Zapatillas y Sneakers
         </h1>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
           Encuentra tu talla perfecta de zapatillas al convertir entre sistemas de Estados Unidos, Europa y Reino Unido.
@@ -77,7 +77,7 @@ export default function TallasZapatillasPage() {
       {/* SEO Content Mejorado */}
       <div className="max-w-4xl mx-auto space-y-8 mt-12">
         <div className="prose prose-gray dark:prose-invert max-w-none">
-          <h2 className="text-2xl font-bold mb-2">Guía Visual de Tallas de Zapatillas Internacional</h2>
+          <h2 className="text-2xl font-bold mb-2">Guía Visual de Talles de Zapatillas Internacional</h2>
           <p>
             Encontrar la talla perfecta de zapatillas es clave para la comodidad y el estilo. Nuestro conversor te ayuda a comparar tallas entre <strong>US</strong>, <strong>EU</strong> y <strong>UK</strong> para marcas como Nike, Adidas, Jordan y más.
           </p>
@@ -150,7 +150,7 @@ export default function TallasZapatillasPage() {
           <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 !list-none !pl-0 mt-2">
             <li className="flex items-center gap-2">
               <span className="text-red-500">❌</span>
-              <span><strong>No considerar el género:</strong> Las tallas de mujer son diferentes.</span>
+              <span><strong>No considerar el género:</strong> Las talles de mujer son diferentes.</span>
             </li>
             <li className="flex items-center gap-2">
               <span className="text-red-500">❌</span>
@@ -215,7 +215,7 @@ export default function TallasZapatillasPage() {
               <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /><path d="M12 16v-4M12 8h.01" /></svg>
             </span>
             <div>
-              <h3 className="font-semibold text-lg mb-1">¿Las tallas de hombre y mujer son iguales?</h3>
+              <h3 className="font-semibold text-lg mb-1">¿Las talles de hombre y mujer son iguales?</h3>
               <p className="text-muted-foreground">No, las tallas pueden variar según el género y la marca. Consulta siempre la guía específica.</p>
             </div>
           </div>
