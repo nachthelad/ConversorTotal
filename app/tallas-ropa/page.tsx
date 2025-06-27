@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     "equivalencia tallas",
   ],
   alternates: {
-    canonical: "https://conversortotal.vercel.app/tallas-ropa",
+    canonical: "https://conversortotal.online/tallas-ropa",
   },
 }
 

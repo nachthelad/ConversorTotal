@@ -19,12 +19,12 @@ export const metadata: Metadata = {
     "conversion temperatura online",
   ],
   alternates: {
-    canonical: "https://conversortotal.vercel.app/conversor-temperatura",
+    canonical: "https://conversortotal.online/conversor-temperatura",
   },
   openGraph: {
     title: "Conversor de Temperatura - Celsius a Fahrenheit",
     description: "Convierte temperatura de Celsius a Fahrenheit y viceversa al instante. Gratis y preciso.",
-    url: "https://conversortotal.vercel.app/conversor-temperatura",
+    url: "https://conversortotal.online/conversor-temperatura",
   },
 }
 

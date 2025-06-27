@@ -18,12 +18,12 @@ export const metadata: Metadata = {
     "conversion longitud",
   ],
   alternates: {
-    canonical: "https://conversortotal.vercel.app/conversor-distancia",
+    canonical: "https://conversortotal.online/conversor-distancia",
   },
   openGraph: {
     title: "Conversor de Distancia - Kilómetros a Millas",
     description: "Convierte distancias de metros a kilometros y viceversa al instante. Gratis y preciso.",
-    url: "https://conversortotal.vercel.app/conversor-almacenamiento",
+    url: "https://conversortotal.online/conversor-almacenamiento",
   },
 }
 

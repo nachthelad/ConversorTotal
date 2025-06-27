@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Contacto | ConversorTotal",
     description: "Contáctanos para sugerencias, consultas o reportar problemas con ConversorTotal.",
-    url: "https://conversortotal.vercel.app/contacto",
+    url: "https://conversortotal.online/contacto",
     siteName: "ConversorTotal",
     locale: "es_ES",
     type: "website",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     description: "Contáctanos para sugerencias, consultas o reportar problemas con ConversorTotal.",
   },
   alternates: {
-    canonical: "https://conversortotal.vercel.app/contacto",
+    canonical: "https://conversortotal.online/contacto",
   },
 }
 

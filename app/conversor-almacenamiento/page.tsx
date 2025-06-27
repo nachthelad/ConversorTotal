@@ -21,12 +21,12 @@ export const metadata: Metadata = {
     "cloud storage",
   ],
   alternates: {
-    canonical: "https://conversortotal.vercel.app/conversor-almacenamiento",
+    canonical: "https://conversortotal.online/conversor-almacenamiento",
   },
   openGraph: {
     title: "Conversor de Almacenamiento Digital - Bytes, KB, MB, GB, TB",
     description: "Convierte almacenamiento digital entre Bytes, KB, MB, GB, TB y más. Gratis y preciso.",
-    url: "https://conversortotal.vercel.app/conversor-almacenamiento",
+    url: "https://conversortotal.online/conversor-almacenamiento",
   },
 }
 

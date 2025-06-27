@@ -12,7 +12,7 @@ import Script from "next/script"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://conversortotal.vercel.app"),
+  metadataBase: new URL("https://conversortotal.online"),
   title: {
     default: "ConversorTotal - Conversor de Unidades y Monedas Online Gratis",
     template: "%s | ConversorTotal - Conversor Online Gratis",
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "es_AR",
-    url: "https://conversortotal.vercel.app",
+    url: "https://conversortotal.online",
     siteName: "ConversorTotal",
     title: "ConversorTotal - Conversor de Unidades y Monedas Online Gratis",
     description:
@@ -82,7 +82,7 @@ export const metadata: Metadata = {
     creator: "ConversorTotal",
   },
   alternates: {
-    canonical: "https://conversortotal.vercel.app",
+    canonical: "https://conversortotal.online",
   },
   verification: {
     google: "google-adsense-verification-code",
@@ -91,7 +91,7 @@ export const metadata: Metadata = {
 }
 
 export const themeColor = [
-  { media: "(prefers-color-scheme: light)", color: "#5B9BD5" },
+  { media: "(prefers-color-scheme: light)", color: "#FFFFFF" },
   { media: "(prefers-color-scheme: dark)", color: "#0f172a" },
 ]
 
@@ -110,7 +110,7 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <meta name="google-adsense-account" content="ca-pub-1027418154196814" />
-        <meta name="google-site-verification" content="c1efNuZhhG-SikmDFge_tg2KrONNix0vCkpjSnhCj_o" />
+        <meta name="google-site-verification" content="0SpVRbuIl2TlqT3vf9qiSxWHX18CfPH9E8z5arKppCA" />
 
         {/* Schema.org structured data */}
         <script
@@ -121,7 +121,7 @@ export default function RootLayout({
               "@type": "WebApplication",
               name: "ConversorTotal",
               description: "Conversor online gratuito de unidades de medida y monedas",
-              url: "https://conversortotal.vercel.app",
+              url: "https://conversortotal.online",
               applicationCategory: "UtilitiesApplication",
               operatingSystem: "Web Browser",
               offers: {

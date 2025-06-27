@@ -23,13 +23,13 @@ export const metadata: Metadata = {
     "como saber mi talla zapatillas",
   ],
   alternates: {
-    canonical: "https://conversortotal.vercel.app/tallas-zapatillas",
+    canonical: "https://conversortotal.online/tallas-zapatillas",
   },
   openGraph: {
     title: "Conversor de Tallas de Zapatillas - Sneakers US, EU, UK",
     description:
       "Encuentra tu talla perfecta de zapatillas. Convierte entre US, EU y UK para Nike, Adidas, Jordan y más marcas.",
-    url: "https://conversortotal.vercel.app/tallas-zapatillas",
+    url: "https://conversortotal.online/tallas-zapatillas",
     images: [
       {
         url: "/og-zapatillas.png",

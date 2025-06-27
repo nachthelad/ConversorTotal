@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     title: "Términos y Condiciones | ConversorTotal",
     description:
       "Términos y condiciones de uso de ConversorTotal. Conoce nuestras políticas y condiciones para el uso de nuestros conversores.",
-    url: "https://conversortotal.vercel.app/terminos-y-condiciones",
+    url: "https://conversortotal.online/terminos-y-condiciones",
     siteName: "ConversorTotal",
     locale: "es_ES",
     type: "website",
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     description: "Términos y condiciones de uso de ConversorTotal.",
   },
   alternates: {
-    canonical: "https://conversortotal.vercel.app/terminos-y-condiciones",
+    canonical: "https://conversortotal.online/terminos-y-condiciones",
   },
 }
 
