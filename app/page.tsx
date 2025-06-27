@@ -22,6 +22,7 @@ import {
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { QuickCurrencyConverters } from "@/components/quick-currency-converters"
+import { Metadata } from "next"
 
 export default function HomePage() {
   return (
@@ -509,6 +510,74 @@ export default function HomePage() {
 
       {/* Espacio final para Auto Ads */}
       <div className="min-h-[90px] flex items-center justify-center">{/* Auto Ads aparecerán aquí */}</div>
+
+      {/* FAQ SEO Section */}
+      <div className="max-w-3xl mx-auto mt-12">
+        <h2 className="text-2xl font-bold mb-4">Preguntas Frecuentes</h2>
+        <div className="space-y-4">
+          <div>
+            <h3 className="font-semibold">¿Cómo convierto metros a centímetros?</h3>
+            <p>Solo ingresa el valor en metros, selecciona "centímetros" como unidad de destino y obtendrás el resultado al instante.</p>
+          </div>
+          <div>
+            <h3 className="font-semibold">¿Puedo convertir monedas como dólar a peso argentino?</h3>
+            <p>Sí, nuestro conversor de monedas te permite convertir entre dólar, euro, peso argentino y muchas otras monedas con cotizaciones actualizadas.</p>
+          </div>
+          <div>
+            <h3 className="font-semibold">¿El uso del conversor es gratuito?</h3>
+            <p>Sí, todas las herramientas de ConversorTotal son 100% gratuitas y no requieren registro.</p>
+          </div>
+          <div>
+            <h3 className="font-semibold">¿Puedo usar el conversor desde el celular?</h3>
+            <p>Sí, el sitio está optimizado para dispositivos móviles y computadoras.</p>
+          </div>
+          <div>
+            <h3 className="font-semibold">¿Qué tipos de unidades puedo convertir?</h3>
+            <p>Puedes convertir temperatura, peso, distancia, área, volumen, velocidad, tallas de ropa y zapatillas, almacenamiento digital y monedas.</p>
+          </div>
+        </div>
+      </div>
     </div>
   )
+}
+
+export const metadata: Metadata = {
+  title: "Conversor de Unidades y Monedas Online Gratis – ConversorTotal",
+  description: "Convierte unidades de medida y monedas al instante. Conversor online gratuito de temperatura, peso, distancia, tallas, monedas y más. Resultados rápidos y precisos.",
+  keywords: [
+    "conversor online",
+    "convertir unidades",
+    "convertir monedas",
+    "conversor de temperatura",
+    "conversor de peso",
+    "conversor de distancia",
+    "convertir mts a cm",
+    "convertir kg a libras",
+    "convertir dólares a pesos",
+    "calculadora de conversiones",
+    "conversor total"
+  ],
+  alternates: {
+    canonical: "https://conversortotal.online",
+  },
+  openGraph: {
+    title: "Conversor de Unidades y Monedas Online Gratis – ConversorTotal",
+    description: "Convierte unidades y monedas al instante. Herramienta online gratuita, rápida y precisa.",
+    url: "https://conversortotal.online",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "ConversorTotal - Conversor de Unidades Online",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Conversor de Unidades y Monedas Online Gratis",
+    description: "Convierte unidades y monedas al instante. Gratis y sin registros.",
+    images: ["/og-image.png"],
+    creator: "ConversorTotal",
+  },
 }
