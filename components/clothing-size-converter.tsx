@@ -47,7 +47,7 @@ export function ClothingSizeConverter() {
 
   const copyToClipboard = async (region: string) => {
     const sizes = getEquivalentSizes()
-    const message = `🔄 Conversión de Tallas de Ropa (${gender === "men" ? "Hombre" : "Mujer"}):\nUS: ${sizes.US} | EU: ${sizes.EU} | UK: ${sizes.UK}\n\n✨ Convertido con ConversorTotal`
+    const message = `🔄 Conversión de Talles de Ropa (${gender === "men" ? "Hombre" : "Mujer"}):\nUS: ${sizes.US} | EU: ${sizes.EU} | UK: ${sizes.UK}\n\n✨ Convertido con ConversorTotal`
 
     try {
       await navigator.clipboard.writeText(message)
@@ -66,7 +66,7 @@ export function ClothingSizeConverter() {
 
   const shareToWhatsApp = () => {
     const sizes = getEquivalentSizes()
-    const message = `Tallas de Ropa (${gender === "men" ? "Hombre" : "Mujer"}): US: ${sizes.US} | EU: ${sizes.EU} | UK: ${sizes.UK}`
+    const message = `Talles de Ropa (${gender === "men" ? "Hombre" : "Mujer"}): US: ${sizes.US} | EU: ${sizes.EU} | UK: ${sizes.UK}`
     const whatsappMessage = `🔄 Conversión de Tallas:\n${message}\n\n✨ Convertido con ConversorTotal`
     const encodedMessage = encodeURIComponent(whatsappMessage)
     const whatsappUrl = `https://wa.me/?text=${encodedMessage}`
@@ -78,7 +78,7 @@ export function ClothingSizeConverter() {
       <CardHeader className="pb-4">
         <CardTitle className="flex items-center space-x-2 text-lg">
           <Shirt className="h-5 w-5 text-teal-500" />
-          <span>Tallas de Ropa</span>
+          <span>Talles de Ropa</span>
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-6">
