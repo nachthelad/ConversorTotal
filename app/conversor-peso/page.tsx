@@ -116,6 +116,62 @@ export default function ConversorPesoPage() {
           </div>
         </div>
       </div>
+
+      <div className="max-w-3xl mx-auto mt-12">
+        <h2 className="text-2xl font-bold mb-6 text-primary text-center">Preguntas Frecuentes</h2>
+        <div className="space-y-4">
+          {/* Pregunta 1 */}
+          <div className="bg-primary/5 border border-primary/20 rounded-lg p-4 flex items-start gap-3 shadow-sm">
+            <span className="mt-1 text-primary">
+              <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /><path d="M12 16v-4M12 8h.01" /></svg>
+            </span>
+            <div>
+              <h3 className="font-semibold text-lg mb-1">¿Cómo convierto kilogramos a libras?</h3>
+              <p className="text-muted-foreground">Ingresa el valor en kilogramos, selecciona "libras" como unidad de destino y obtendrás el resultado al instante.</p>
+            </div>
+          </div>
+          {/* Pregunta 2 */}
+          <div className="bg-primary/5 border border-primary/20 rounded-lg p-4 flex items-start gap-3 shadow-sm">
+            <span className="mt-1 text-primary">
+              <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /><path d="M12 16v-4M12 8h.01" /></svg>
+            </span>
+            <div>
+              <h3 className="font-semibold text-lg mb-1">¿Cuántos gramos hay en un kilogramo?</h3>
+              <p className="text-muted-foreground">Un kilogramo equivale a 1.000 gramos.</p>
+            </div>
+          </div>
+          {/* Pregunta 3 */}
+          <div className="bg-primary/5 border border-primary/20 rounded-lg p-4 flex items-start gap-3 shadow-sm">
+            <span className="mt-1 text-primary">
+              <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /><path d="M12 16v-4M12 8h.01" /></svg>
+            </span>
+            <div>
+              <h3 className="font-semibold text-lg mb-1">¿Puedo convertir libras a gramos?</h3>
+              <p className="text-muted-foreground">Sí, selecciona "libras" como unidad de origen y "gramos" como destino para obtener la conversión.</p>
+            </div>
+          </div>
+          {/* Pregunta 4 */}
+          <div className="bg-primary/5 border border-primary/20 rounded-lg p-4 flex items-start gap-3 shadow-sm">
+            <span className="mt-1 text-primary">
+              <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /><path d="M12 16v-4M12 8h.01" /></svg>
+            </span>
+            <div>
+              <h3 className="font-semibold text-lg mb-1">¿El conversor de peso es gratuito?</h3>
+              <p className="text-muted-foreground">Sí, puedes usarlo sin límites y sin registrarte.</p>
+            </div>
+          </div>
+          {/* Pregunta 5 */}
+          <div className="bg-primary/5 border border-primary/20 rounded-lg p-4 flex items-start gap-3 shadow-sm">
+            <span className="mt-1 text-primary">
+              <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /><path d="M12 16v-4M12 8h.01" /></svg>
+            </span>
+            <div>
+              <h3 className="font-semibold text-lg mb-1">¿Sirve para recetas y dietas?</h3>
+              <p className="text-muted-foreground">Sí, es ideal para calcular ingredientes en recetas y para seguimiento de peso en dietas.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

@@ -25,6 +25,7 @@ export const metadata: Metadata = {
 
 export default function TallasRopaPage() {
   return (
+    
     <div className="space-y-8">
       <div className="flex items-center space-x-4">
         <Button asChild variant="ghost" size="sm">
@@ -97,6 +98,62 @@ export default function TallasRopaPage() {
               <strong>UK:</strong> ASOS, Topshop, Next
             </li>
           </ul>
+        </div>
+      </div>
+
+      <div className="max-w-3xl mx-auto mt-12">
+        <h2 className="text-2xl font-bold mb-6 text-primary text-center">Preguntas Frecuentes</h2>
+        <div className="space-y-4">
+          {/* Pregunta 1 */}
+          <div className="bg-primary/5 border border-primary/20 rounded-lg p-4 flex items-start gap-3 shadow-sm">
+            <span className="mt-1 text-primary">
+              <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /><path d="M12 16v-4M12 8h.01" /></svg>
+            </span>
+            <div>
+              <h3 className="font-semibold text-lg mb-1">¿Cómo convierto mi talla de ropa de US a EU?</h3>
+              <p className="text-muted-foreground">Selecciona tu talla en el sistema US y el conversor te mostrará la equivalencia en EU y UK.</p>
+            </div>
+          </div>
+          {/* Pregunta 2 */}
+          <div className="bg-primary/5 border border-primary/20 rounded-lg p-4 flex items-start gap-3 shadow-sm">
+            <span className="mt-1 text-primary">
+              <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /><path d="M12 16v-4M12 8h.01" /></svg>
+            </span>
+            <div>
+              <h3 className="font-semibold text-lg mb-1">¿Las tallas de hombre y mujer son iguales?</h3>
+              <p className="text-muted-foreground">No, las tallas varían según el género y la prenda. Consulta siempre la guía específica.</p>
+            </div>
+          </div>
+          {/* Pregunta 3 */}
+          <div className="bg-primary/5 border border-primary/20 rounded-lg p-4 flex items-start gap-3 shadow-sm">
+            <span className="mt-1 text-primary">
+              <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /><path d="M12 16v-4M12 8h.01" /></svg>
+            </span>
+            <div>
+              <h3 className="font-semibold text-lg mb-1">¿Sirve para todas las marcas?</h3>
+              <p className="text-muted-foreground">Sí, incluye Zara, H&M, Gap, Old Navy, ASOS y más.</p>
+            </div>
+          </div>
+          {/* Pregunta 4 */}
+          <div className="bg-primary/5 border border-primary/20 rounded-lg p-4 flex items-start gap-3 shadow-sm">
+            <span className="mt-1 text-primary">
+              <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /><path d="M12 16v-4M12 8h.01" /></svg>
+            </span>
+            <div>
+              <h3 className="font-semibold text-lg mb-1">¿El conversor es gratuito?</h3>
+              <p className="text-muted-foreground">Sí, puedes usarlo sin límites y sin registrarte.</p>
+            </div>
+          </div>
+          {/* Pregunta 5 */}
+          <div className="bg-primary/5 border border-primary/20 rounded-lg p-4 flex items-start gap-3 shadow-sm">
+            <span className="mt-1 text-primary">
+              <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /><path d="M12 16v-4M12 8h.01" /></svg>
+            </span>
+            <div>
+              <h3 className="font-semibold text-lg mb-1">¿Qué hago si estoy entre dos tallas?</h3>
+              <p className="text-muted-foreground">Se recomienda elegir la talla más grande o consultar la política de cambios de la tienda.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

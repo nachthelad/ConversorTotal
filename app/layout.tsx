@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     siteName: "ConversorTotal",
     title: "ConversorTotal - Conversor de Unidades y Monedas Online Gratis",
     description:
-      "Conversor online gratuito de unidades de medida y monedas. Convierte temperatura, distancia, peso, área, velocidad, tallas y más. Resultados instantáneos.",
+      "Convierte unidades de medida y monedas al instante. Conversor online gratuito de temperatura, peso, distancia, tallas, monedas y más. Resultados rápidos y precisos.",
     images: [
       {
         url: "/og-image.png",

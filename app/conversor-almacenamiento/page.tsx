@@ -111,6 +111,62 @@ export default function ConversorAlmacenamientoPage() {
           </ul>
         </div>
       </div>
+
+      <div className="max-w-3xl mx-auto mt-12">
+        <h2 className="text-2xl font-bold mb-6 text-primary text-center">Preguntas Frecuentes</h2>
+        <div className="space-y-4">
+          {/* Pregunta 1 */}
+          <div className="bg-primary/5 border border-primary/20 rounded-lg p-4 flex items-start gap-3 shadow-sm">
+            <span className="mt-1 text-primary">
+              <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /><path d="M12 16v-4M12 8h.01" /></svg>
+            </span>
+            <div>
+              <h3 className="font-semibold text-lg mb-1">¿Cómo convierto de MB a GB?</h3>
+              <p className="text-muted-foreground">Ingresa el valor en MB, selecciona 'GB' como unidad de destino y obtendrás el resultado automáticamente.</p>
+            </div>
+          </div>
+          {/* Pregunta 2 */}
+          <div className="bg-primary/5 border border-primary/20 rounded-lg p-4 flex items-start gap-3 shadow-sm">
+            <span className="mt-1 text-primary">
+              <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /><path d="M12 16v-4M12 8h.01" /></svg>
+            </span>
+            <div>
+              <h3 className="font-semibold text-lg mb-1">¿Cuántos bytes hay en un kilobyte?</h3>
+              <p className="text-muted-foreground">Un kilobyte (KB) equivale a 1.024 bytes en informática.</p>
+            </div>
+          </div>
+          {/* Pregunta 3 */}
+          <div className="bg-primary/5 border border-primary/20 rounded-lg p-4 flex items-start gap-3 shadow-sm">
+            <span className="mt-1 text-primary">
+              <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /><path d="M12 16v-4M12 8h.01" /></svg>
+            </span>
+            <div>
+              <h3 className="font-semibold text-lg mb-1">¿Puedo convertir entre cualquier unidad de almacenamiento digital?</h3>
+              <p className="text-muted-foreground">Sí, puedes convertir entre bytes, KB, MB, GB, TB y más usando el conversor flexible.</p>
+            </div>
+          </div>
+          {/* Pregunta 4 */}
+          <div className="bg-primary/5 border border-primary/20 rounded-lg p-4 flex items-start gap-3 shadow-sm">
+            <span className="mt-1 text-primary">
+              <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /><path d="M12 16v-4M12 8h.01" /></svg>
+            </span>
+            <div>
+              <h3 className="font-semibold text-lg mb-1">¿El conversor de almacenamiento es gratuito?</h3>
+              <p className="text-muted-foreground">Sí, puedes usarlo sin límites y sin registrarte.</p>
+            </div>
+          </div>
+          {/* Pregunta 5 */}
+          <div className="bg-primary/5 border border-primary/20 rounded-lg p-4 flex items-start gap-3 shadow-sm">
+            <span className="mt-1 text-primary">
+              <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /><path d="M12 16v-4M12 8h.01" /></svg>
+            </span>
+            <div>
+              <h3 className="font-semibold text-lg mb-1">¿Sirve para calcular espacio en la nube o discos externos?</h3>
+              <p className="text-muted-foreground">Sí, es ideal para planificar espacio en la nube, discos externos, transferencias de archivos y más.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   )
 } 

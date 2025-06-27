@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { ArrowLeft } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Conversor de Distancia - Kilómetros a Millas Online Gratis",
+  title: "Conversor de Distancia Online - Kilómetros a Millas Online Gratis",
   description:
     "Convierte distancia de kilómetros a millas y viceversa al instante. Conversor de distancia online gratuito, preciso y fácil de usar. Ideal para viajes y navegación.",
   keywords: [
@@ -100,6 +100,62 @@ export default function ConversorDistanciaPage() {
             <li><strong>Aviación:</strong> Distancias de vuelo.</li>
             <li><strong>Navegación:</strong> Rutas marítimas.</li>
           </ul>
+        </div>
+      </div>
+
+      <div className="max-w-3xl mx-auto mt-12">
+        <h2 className="text-2xl font-bold mb-6 text-primary text-center">Preguntas Frecuentes</h2>
+        <div className="space-y-4">
+          {/* Pregunta 1 */}
+          <div className="bg-primary/5 border border-primary/20 rounded-lg p-4 flex items-start gap-3 shadow-sm">
+            <span className="mt-1 text-primary">
+              <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /><path d="M12 16v-4M12 8h.01" /></svg>
+            </span>
+            <div>
+              <h3 className="font-semibold text-lg mb-1">¿Cómo convierto kilómetros a millas?</h3>
+              <p className="text-muted-foreground">Ingresa el valor en kilómetros, selecciona "millas" como unidad de destino y obtendrás el resultado automáticamente.</p>
+            </div>
+          </div>
+          {/* Pregunta 2 */}
+          <div className="bg-primary/5 border border-primary/20 rounded-lg p-4 flex items-start gap-3 shadow-sm">
+            <span className="mt-1 text-primary">
+              <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /><path d="M12 16v-4M12 8h.01" /></svg>
+            </span>
+            <div>
+              <h3 className="font-semibold text-lg mb-1">¿Cuántos metros hay en un kilómetro?</h3>
+              <p className="text-muted-foreground">Un kilómetro equivale a 1.000 metros.</p>
+            </div>
+          </div>
+          {/* Pregunta 3 */}
+          <div className="bg-primary/5 border border-primary/20 rounded-lg p-4 flex items-start gap-3 shadow-sm">
+            <span className="mt-1 text-primary">
+              <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /><path d="M12 16v-4M12 8h.01" /></svg>
+            </span>
+            <div>
+              <h3 className="font-semibold text-lg mb-1">¿Puedo convertir millas a metros?</h3>
+              <p className="text-muted-foreground">Sí, selecciona "millas" como unidad de origen y "metros" como destino para obtener la conversión.</p>
+            </div>
+          </div>
+          {/* Pregunta 4 */}
+          <div className="bg-primary/5 border border-primary/20 rounded-lg p-4 flex items-start gap-3 shadow-sm">
+            <span className="mt-1 text-primary">
+              <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /><path d="M12 16v-4M12 8h.01" /></svg>
+            </span>
+            <div>
+              <h3 className="font-semibold text-lg mb-1">¿El conversor de distancia es gratuito?</h3>
+              <p className="text-muted-foreground">Sí, puedes usarlo sin límites y sin registrarte.</p>
+            </div>
+          </div>
+          {/* Pregunta 5 */}
+          <div className="bg-primary/5 border border-primary/20 rounded-lg p-4 flex items-start gap-3 shadow-sm">
+            <span className="mt-1 text-primary">
+              <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /><path d="M12 16v-4M12 8h.01" /></svg>
+            </span>
+            <div>
+              <h3 className="font-semibold text-lg mb-1">¿Sirve para convertir distancias para deportes o viajes?</h3>
+              <p className="text-muted-foreground">Sí, es ideal para calcular distancias en carreras, rutas de viaje, navegación y más.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
