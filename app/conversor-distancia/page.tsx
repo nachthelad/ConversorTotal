@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { ArrowLeft } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Conversor de Distancia Online - Kilómetros a Millas Online Gratis",
+  title: "Conversor de Distancia Online -  Pulgadas a Centímetros",
   description:
     "Convierte distancia de kilómetros a millas y viceversa al instante. Conversor de distancia online gratuito, preciso y fácil de usar. Ideal para viajes y navegación.",
   keywords: [
@@ -16,14 +16,16 @@ export const metadata: Metadata = {
     "convertir distancia",
     "calculadora distancia",
     "conversion longitud",
+    "pulgadas a cm",
+    "inches to cm",
   ],
   alternates: {
     canonical: "https://conversortotal.online/conversor-distancia",
   },
   openGraph: {
-    title: "Conversor de Distancia - Kilómetros a Millas",
+    title: "Conversor de Distancia - Pulgadas a Centímetros",
     description: "Convierte distancias de metros a kilometros y viceversa al instante. Gratis y preciso.",
-    url: "https://conversortotal.online/conversor-almacenamiento",
+    url: "https://conversortotal.online/conversor-distancia",
   },
 }
 
