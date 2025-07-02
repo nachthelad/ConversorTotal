@@ -7,14 +7,32 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Copy, Share, Check, ArrowUpDown } from "lucide-react"
+import { Copy, Share, Check, ArrowUpDown, Ruler, MapPin, Scale, Droplets, Thermometer, Square, Gauge, Clock, Activity, Zap, Power, Fuel, ChefHat, Database } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 import { convertUnits, type UnitCategory } from "@/lib/conversion-units"
+import { presetsByCategory, UnitPreset } from "@/lib/presets"
 
 interface FlexibleUnitConverterProps {
   title: string
   icon: React.ReactNode
   category: UnitCategory
+}
+
+const iconMap: Record<string, React.ComponentType<any>> = {
+  Ruler,
+  MapPin,
+  Scale,
+  Droplets,
+  Thermometer,
+  Square,
+  Gauge,
+  Clock,
+  Activity,
+  Zap,
+  Power,
+  Fuel,
+  ChefHat,
+  Database,
 }
 
 export function FlexibleUnitConverter({ title, icon, category }: FlexibleUnitConverterProps) {
@@ -34,6 +52,8 @@ export function FlexibleUnitConverter({ title, icon, category }: FlexibleUnitCon
     () => category.units.find((unit) => unit.id === toUnitId) || category.units[0],
     [toUnitId, category.units],
   )
+
+  const presets: UnitPreset[] | undefined = presetsByCategory[category.id]
 
   const handleFromValueChange = useCallback(
     (value: string) => {
@@ -143,98 +163,124 @@ export function FlexibleUnitConverter({ title, icon, category }: FlexibleUnitCon
   }, [title, fromValue, toValue, fromUnit, toUnit])
 
   return (
-    <Card className="w-full">
-      <CardHeader className="pb-4">
-        <CardTitle className="flex items-center space-x-2 text-lg">
-          {icon}
-          <span>Conversor de {title}</span>
-        </CardTitle>
-      </CardHeader>
-      <CardContent className="space-y-6">
-        {/* Desde */}
-        <div className="space-y-3">
-          <Label className="text-sm font-medium">Desde:</Label>
-          <div className="flex space-x-2">
-            <Select value={fromUnitId} onValueChange={handleFromUnitChange}>
-              <SelectTrigger className="w-[180px]">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                {category.units.map((unit) => (
-                  <SelectItem key={unit.id} value={unit.id}>
-                    {unit.name} ({unit.symbol})
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-            <Input
-              type="number"
-              value={fromValue}
-              onChange={(e) => handleFromValueChange(e.target.value)}
-              placeholder={`Ingresa ${fromUnit.name.toLowerCase()}`}
-              className="flex-1"
-            />
+    <div>
+      {/* Presets de conversiones rápidas */}
+      {presets && presets.length > 0 && (
+        <div className="flex flex-wrap gap-2 mb-4 justify-center">
+          {presets.map((preset, idx) => {
+            const Icon = iconMap[preset.icon] || Ruler
+            return (
+              <Button
+                key={idx}
+                variant="secondary"
+                size="sm"
+                className="px-2 py-1 h-7 text-xs flex items-center gap-1 rounded-full"
+                onClick={() => {
+                  setFromUnitId(preset.from)
+                  setToUnitId(preset.to)
+                }}
+                type="button"
+              >
+                <Icon className="h-3 w-3" />
+                {preset.label}
+              </Button>
+            )
+          })}
+        </div>
+      )}
+      <Card className="w-full">
+        <CardHeader className="pb-4">
+          <CardTitle className="flex items-center space-x-2 text-lg">
+            {icon}
+            <span>Conversor de {title}</span>
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          {/* Desde */}
+          <div className="space-y-3">
+            <Label className="text-sm font-medium">Desde:</Label>
+            <div className="flex space-x-2">
+              <Select value={fromUnitId} onValueChange={handleFromUnitChange}>
+                <SelectTrigger className="w-[180px]">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  {category.units.map((unit) => (
+                    <SelectItem key={unit.id} value={unit.id}>
+                      {unit.name} ({unit.symbol})
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <Input
+                type="number"
+                value={fromValue}
+                onChange={(e) => handleFromValueChange(e.target.value)}
+                placeholder={`Ingresa ${fromUnit.name.toLowerCase()}`}
+                className="flex-1"
+              />
+            </div>
           </div>
-        </div>
 
-        {/* Botón de intercambio */}
-        <div className="flex justify-center">
-          <Button
-            variant="outline"
-            size="icon"
-            onClick={swapUnits}
-            className="rounded-full"
-            title="Intercambiar unidades"
-          >
-            <ArrowUpDown className="h-4 w-4" />
-          </Button>
-        </div>
-
-        {/* Hacia */}
-        <div className="space-y-3">
-          <Label className="text-sm font-medium">Hacia:</Label>
-          <div className="flex space-x-2">
-            <Select value={toUnitId} onValueChange={handleToUnitChange}>
-              <SelectTrigger className="w-[180px]">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                {category.units.map((unit) => (
-                  <SelectItem key={unit.id} value={unit.id}>
-                    {unit.name} ({unit.symbol})
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-            <Input
-              type="number"
-              value={toValue}
-              onChange={(e) => handleToValueChange(e.target.value)}
-              placeholder={`Resultado en ${toUnit.name.toLowerCase()}`}
-              className="flex-1"
-            />
-          </div>
-        </div>
-
-        {/* Botones de acción */}
-        {fromValue && toValue && (
-          <div className="flex justify-center space-x-2 pt-2">
+          {/* Botón de intercambio */}
+          <div className="flex justify-center">
             <Button
               variant="outline"
-              size="sm"
-              onClick={() => copyToClipboard("from")}
-              className="flex items-center space-x-1"
+              size="icon"
+              onClick={swapUnits}
+              className="rounded-full"
+              title="Intercambiar unidades"
             >
-              {copiedField === "from" ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
-              <span>Copiar</span>
-            </Button>
-            <Button variant="outline" size="sm" onClick={shareToWhatsApp} className="flex items-center space-x-1">
-              <Share className="h-4 w-4" />
-              <span>Compartir</span>
+              <ArrowUpDown className="h-4 w-4" />
             </Button>
           </div>
-        )}
-      </CardContent>
-    </Card>
+
+          {/* Hacia */}
+          <div className="space-y-3">
+            <Label className="text-sm font-medium">Hacia:</Label>
+            <div className="flex space-x-2">
+              <Select value={toUnitId} onValueChange={handleToUnitChange}>
+                <SelectTrigger className="w-[180px]">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  {category.units.map((unit) => (
+                    <SelectItem key={unit.id} value={unit.id}>
+                      {unit.name} ({unit.symbol})
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <Input
+                type="number"
+                value={toValue}
+                onChange={(e) => handleToValueChange(e.target.value)}
+                placeholder={`Resultado en ${toUnit.name.toLowerCase()}`}
+                className="flex-1"
+              />
+            </div>
+          </div>
+
+          {/* Botones de acción */}
+          {fromValue && toValue && (
+            <div className="flex justify-center space-x-2 pt-2">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => copyToClipboard("from")}
+                className="flex items-center space-x-1"
+              >
+                {copiedField === "from" ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+                <span>Copiar</span>
+              </Button>
+              <Button variant="outline" size="sm" onClick={shareToWhatsApp} className="flex items-center space-x-1">
+                <Share className="h-4 w-4" />
+                <span>Compartir</span>
+              </Button>
+            </div>
+          )}
+        </CardContent>
+      </Card>
+    </div>
   )
 }
