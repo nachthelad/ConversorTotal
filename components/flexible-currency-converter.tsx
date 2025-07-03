@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
 import { useShareConversion } from "@/hooks/use-share-conversion"
+import { useEffect } from "react"
 
 interface FlexibleCurrencyConverterProps {
   monedaOrigen: string
@@ -58,6 +59,25 @@ export function FlexibleCurrencyConverter({
       return "Fecha no disponible"
     }
   }
+
+  // Sincroniza los valores cuando cambian cotizacion, simbolos o nombres
+  useEffect(() => {
+    if (valorOrigen) {
+      // Recalcula el destino si hay valor de origen
+      const numValue = Number.parseFloat(valorOrigen)
+      if (!isNaN(numValue) && numValue >= 0) {
+        setValorDestino((numValue * cotizacion).toFixed(2))
+      }
+    } else if (valorDestino) {
+      // Recalcula el origen si hay valor de destino
+      const numValue = Number.parseFloat(valorDestino)
+      if (!isNaN(numValue) && numValue >= 0) {
+        setValorOrigen((numValue / cotizacion).toFixed(2))
+      }
+    }
+    // eslint-disable-next-line
+  }, [cotizacion, simboloDestino, simboloOrigen, nombreDestino, nombreOrigen])
+
   return (
     <Card className="w-full">
       <CardHeader className="pb-4">
