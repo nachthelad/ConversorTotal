@@ -21,19 +21,19 @@ interface SuperCurrencyConverterProps {
 }
 
 const PRESETS = [
-  { from: "USD_OF", to: "ARS" },
-  { from: "USD", to: "ARS" },
+  { from: "USD OF", to: "ARS" },
+  { from: "USD BL", to: "ARS" },
   { from: "EUR", to: "ARS" },
-  { from: "USD", to: "EUR" },
+  { from: "USD OF", to: "EUR" },
   { from: "BRL", to: "ARS" },
   { from: "CLP", to: "ARS" },
 ]
 
-const PRINCIPAL_COINS = ["USD_OF", "USD", "EUR", "BRL", "CLP", "UYU", "ARS"]
+const PRINCIPAL_COINS = ["USD OF", "USD BL", "EUR", "BRL", "CLP", "UYU", "ARS"]
 
 const COIN_ICONS: Record<string, React.ReactNode> = {
-  USD_OF: <DollarSign className="h-4 w-4 text-primary" />,
-  USD: <DollarSign className="h-4 w-4 text-muted-foreground" />,
+  "USD OF": <DollarSign className="h-4 w-4 text-primary" />,
+  "USD BL": <DollarSign className="h-4 w-4 text-muted-foreground" />,
   EUR: <Euro className="h-4 w-4 text-muted-foreground" />,
   BRL: <DollarSign className="h-4 w-4 text-muted-foreground" />,
   CLP: <DollarSign className="h-4 w-4 text-muted-foreground" />,
@@ -46,21 +46,23 @@ export function SuperCurrencyConverter({ exchangeRates, loading }: SuperCurrency
   const monedas = useMemo(() => {
     const set = new Set<string>()
     exchangeRates.forEach((r) => {
-      if (PRINCIPAL_COINS.includes(r.moneda)) set.add(r.moneda)
+      if (r.moneda === "USD" && r.casa === "oficial" && PRINCIPAL_COINS.includes("USD OF")) set.add("USD OF")
+      else if (r.moneda === "USD" && r.casa === "blue" && PRINCIPAL_COINS.includes("USD BL")) set.add("USD BL")
+      else if (PRINCIPAL_COINS.includes(r.moneda)) set.add(r.moneda)
     })
     set.add("ARS")
     return Array.from(set)
   }, [exchangeRates])
 
   // Estado de selección
-  const [monedaOrigen, setMonedaOrigen] = useState("USD")
+  const [monedaOrigen, setMonedaOrigen] = useState("USD OF")
   const [monedaDestino, setMonedaDestino] = useState("ARS")
 
   // Buscar cotización
   const cotizacion = useMemo(() => {
     if (monedaOrigen === monedaDestino) return 1
     // USD oficial
-    if (monedaOrigen === "USD_OF") {
+    if (monedaOrigen === "USD OF") {
       const rate = exchangeRates.find((r) => r.moneda === "USD" && r.casa === "oficial")
       if (monedaDestino === "ARS") return rate ? rate.venta || rate.compra : 1
       const rateTo = exchangeRates.find((r) => r.moneda === monedaDestino)
@@ -68,7 +70,7 @@ export function SuperCurrencyConverter({ exchangeRates, loading }: SuperCurrency
       return 1
     }
     // USD blue
-    if (monedaOrigen === "USD") {
+    if (monedaOrigen === "USD BL") {
       const rate = exchangeRates.find((r) => r.moneda === "USD" && r.casa === "blue")
       if (monedaDestino === "ARS") return rate ? rate.venta || rate.compra : 1
       // USD→otra: USDblue→ARS / otra→ARS
@@ -76,7 +78,7 @@ export function SuperCurrencyConverter({ exchangeRates, loading }: SuperCurrency
       if (rate && rateTo) return (rate.venta || rate.compra) / (rateTo.venta || rateTo.compra)
       return 1
     }
-    if (monedaDestino === "USD") {
+    if (monedaDestino === "USD BL") {
       const rate = exchangeRates.find((r) => r.moneda === "USD" && r.casa === "blue")
       const rateFrom = exchangeRates.find((r) => r.moneda === monedaOrigen)
       if (rate && rateFrom) return (rateFrom.venta || rateFrom.compra) / (rate.venta || rate.compra)
@@ -102,14 +104,14 @@ export function SuperCurrencyConverter({ exchangeRates, loading }: SuperCurrency
   // Buscar info de monedas
   const getNombre = (moneda: string) => {
     if (moneda === "ARS") return "Peso Argentino"
-    if (moneda === "USD_OF") return "Dólar Oficial"
-    if (moneda === "USD") return "Dólar Blue"
+    if (moneda === "USD OF") return "Dólar Oficial"
+    if (moneda === "USD BL") return "Dólar Blue"
     const rate = exchangeRates.find((r) => r.moneda === moneda)
     return rate ? rate.nombre : moneda
   }
   const getSimbolo = (moneda: string) => {
     if (moneda === "ARS") return "ARS$"
-    if (moneda === "USD_OF" || moneda === "USD") return "US$"
+    if (moneda === "USD OF" || moneda === "USD BL") return "US$"
     if (moneda === "EUR") return "€"
     if (moneda === "BRL") return "R$"
     if (moneda === "CLP") return "CLP$"
@@ -205,7 +207,7 @@ export function SuperCurrencyConverter({ exchangeRates, loading }: SuperCurrency
             Fuente: DolarAPI.com · Actualizado: {getFecha(monedaOrigen) ? new Date(getFecha(monedaOrigen)).toLocaleTimeString("es-AR", { hour: "2-digit", minute: "2-digit" }) : "-"}
           </span>
         </div>
-        {monedaOrigen === "USD" || monedaDestino === "USD" ? (
+        {monedaOrigen === "USD BL" || monedaDestino === "USD BL" ? (
           <div className="text-xs text-muted-foreground text-center mt-2">
             Se utiliza el <b>Dólar Blue</b> como referencia para reflejar el valor real en Argentina.
           </div>
