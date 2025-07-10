@@ -1,7 +1,7 @@
 "use client"
 
 import { ChefHat } from "lucide-react"
-import { FlexibleUnitConverter } from "@/components/flexible-unit-converter"
+import { FlexibleUnitConverter } from "@/components/flexibleUnitConverter/flexible-unit-converter"
 import { cookingUnits } from "@/lib/conversion-units"
 
 export function CookingConverter() {
