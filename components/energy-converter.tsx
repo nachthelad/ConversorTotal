@@ -1,7 +1,7 @@
 "use client"
 
 import { Zap } from "lucide-react"
-import { FlexibleUnitConverter } from "@/components/flexible-unit-converter"
+import { FlexibleUnitConverter } from "@/components/flexibleUnitConverter/flexible-unit-converter"
 import { energyUnits } from "@/lib/conversion-units"
 
 export function EnergyConverter() {

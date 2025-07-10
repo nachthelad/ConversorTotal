@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { FlexibleUnitConverter } from "@/components/flexible-unit-converter"
+import { FlexibleUnitConverter } from "@/components/flexibleUnitConverter/flexible-unit-converter"
 import { storageUnits } from "@/lib/conversion-units"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"

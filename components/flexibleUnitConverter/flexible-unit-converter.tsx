@@ -11,6 +11,7 @@ import { Copy, Share, Check, ArrowUpDown, Ruler, MapPin, Scale, Droplets, Thermo
 import { useToast } from "@/hooks/use-toast"
 import { convertUnits, type UnitCategory } from "@/lib/conversion-units"
 import { presetsByCategory, UnitPreset } from "@/lib/presets"
+import { useFlexibleUnitLogic, isCompositeDimension } from "./useFlexibleUnitLogic"
 
 interface FlexibleUnitConverterProps {
   title: string
@@ -55,64 +56,97 @@ export function FlexibleUnitConverter({ title, icon, category }: FlexibleUnitCon
 
   const presets: UnitPreset[] | undefined = presetsByCategory[category.id]
 
+  // --- Lógica flexible para dimensiones compuestas (solo para longitud) ---
+  const {
+    handleFromValueChange: flexibleFromValueChange,
+    handleToValueChange: flexibleToValueChange,
+    cleanDimensionInput,
+  } = useFlexibleUnitLogic({
+    category,
+    fromUnit,
+    toUnit,
+    onFromValue: setFromValue,
+    onToValue: setToValue,
+  })
+
+  // Handlers para inputs
   const handleFromValueChange = useCallback(
     (value: string) => {
-      setFromValue(value)
-      if (value === "" || isNaN(Number(value))) {
-        setToValue("")
-        return
+      if (category.id === "length") {
+        flexibleFromValueChange(value)
+      } else {
+        setFromValue(value)
+        if (value === "" || isNaN(Number(value))) {
+          setToValue("")
+          return
+        }
+        const numValue = Number(value)
+        const converted = convertUnits(numValue, fromUnit, toUnit, category)
+        setToValue(converted.toFixed(6).replace(/\.?0+$/, ""))
       }
-
-      const numValue = Number(value)
-      const converted = convertUnits(numValue, fromUnit, toUnit, category)
-      setToValue(converted.toFixed(6).replace(/\.?0+$/, ""))
     },
-    [fromUnit, toUnit, category],
+    [category, fromUnit, toUnit, flexibleFromValueChange],
   )
 
   const handleToValueChange = useCallback(
     (value: string) => {
-      setToValue(value)
-      if (value === "" || isNaN(Number(value))) {
-        setFromValue("")
-        return
+      if (category.id === "length") {
+        flexibleToValueChange(value)
+      } else {
+        setToValue(value)
+        if (value === "" || isNaN(Number(value))) {
+          setFromValue("")
+          return
+        }
+        const numValue = Number(value)
+        const converted = convertUnits(numValue, toUnit, fromUnit, category)
+        setFromValue(converted.toFixed(6).replace(/\.?0+$/, ""))
       }
-
-      const numValue = Number(value)
-      const converted = convertUnits(numValue, toUnit, fromUnit, category)
-      setFromValue(converted.toFixed(6).replace(/\.?0+$/, ""))
     },
-    [fromUnit, toUnit, category],
+    [category, fromUnit, toUnit, flexibleToValueChange],
+  )
+
+  // Limpiar automáticamente la entrada pegada (solo para longitud)
+  const handleFromInputPaste = useCallback(
+    (e: React.ClipboardEvent<HTMLInputElement>) => {
+      if (category.id === "length") {
+        const pasted = e.clipboardData.getData("text")
+        const cleaned = cleanDimensionInput(pasted)
+        e.preventDefault()
+        flexibleFromValueChange(cleaned)
+      }
+    },
+    [category, flexibleFromValueChange, cleanDimensionInput],
+  )
+
+  const handleToInputPaste = useCallback(
+    (e: React.ClipboardEvent<HTMLInputElement>) => {
+      if (category.id === "length") {
+        const pasted = e.clipboardData.getData("text")
+        const cleaned = cleanDimensionInput(pasted)
+        e.preventDefault()
+        flexibleToValueChange(cleaned)
+      }
+    },
+    [category, flexibleToValueChange, cleanDimensionInput],
   )
 
   const handleFromUnitChange = useCallback(
     (unitId: string) => {
       setFromUnitId(unitId)
-
-      // Si hay un valor válido en el campo de origen, recalcular
-      if (fromValue && !isNaN(Number(fromValue)) && Number(fromValue) !== 0) {
-        const newFromUnit = category.units.find((unit) => unit.id === unitId) || category.units[0]
-        const converted = convertUnits(Number(fromValue), newFromUnit, toUnit, category)
-        const formattedResult = converted.toFixed(8).replace(/\.?0+$/, "")
-        setToValue(formattedResult)
-      }
+      setFromValue("")
+      setToValue("")
     },
-    [fromValue, toUnit, category],
+    [],
   )
 
   const handleToUnitChange = useCallback(
     (unitId: string) => {
       setToUnitId(unitId)
-
-      // Si hay un valor válido en el campo de origen, recalcular
-      if (fromValue && !isNaN(Number(fromValue)) && Number(fromValue) !== 0) {
-        const newToUnit = category.units.find((unit) => unit.id === unitId) || category.units[0]
-        const converted = convertUnits(Number(fromValue), fromUnit, newToUnit, category)
-        const formattedResult = converted.toFixed(8).replace(/\.?0+$/, "")
-        setToValue(formattedResult)
-      }
+      setFromValue("")
+      setToValue("")
     },
-    [fromValue, fromUnit, category],
+    [],
   )
 
   const swapUnits = useCallback(() => {
@@ -178,6 +212,8 @@ export function FlexibleUnitConverter({ title, icon, category }: FlexibleUnitCon
                 onClick={() => {
                   setFromUnitId(preset.from)
                   setToUnitId(preset.to)
+                  setFromValue("")
+                  setToValue("")
                 }}
                 type="button"
               >
@@ -213,9 +249,10 @@ export function FlexibleUnitConverter({ title, icon, category }: FlexibleUnitCon
                 </SelectContent>
               </Select>
               <Input
-                type="number"
+                type="text"
                 value={fromValue}
                 onChange={(e) => handleFromValueChange(e.target.value)}
+                onPaste={handleFromInputPaste}
                 placeholder={`Ingresa ${fromUnit.name.toLowerCase()}`}
                 className="flex-1"
               />
@@ -252,9 +289,10 @@ export function FlexibleUnitConverter({ title, icon, category }: FlexibleUnitCon
                 </SelectContent>
               </Select>
               <Input
-                type="number"
+                type="text"
                 value={toValue}
                 onChange={(e) => handleToValueChange(e.target.value)}
+                onPaste={handleToInputPaste}
                 placeholder={`Resultado en ${toUnit.name.toLowerCase()}`}
                 className="flex-1"
               />

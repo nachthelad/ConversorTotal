@@ -1,7 +1,7 @@
 "use client"
 
 import { Scale } from "lucide-react"
-import { FlexibleUnitConverter } from "@/components/flexible-unit-converter"
+import { FlexibleUnitConverter } from "@/components/flexibleUnitConverter/flexible-unit-converter"
 import { weightUnits } from "@/lib/conversion-units"
 
 export function WeightConverter() {
