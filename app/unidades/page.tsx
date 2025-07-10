@@ -9,7 +9,7 @@ import { TimeConverterFlexible } from "@/components/time-converter-flexible"
 import {ShoeSizeConverter } from "@/components/shoe-size-converter"
 import { SEOBreadcrumbs } from "@/components/seo-breadcrumbs"
 import { storageUnits } from "@/lib/conversion-units"
-import { FlexibleUnitConverter } from "@/components/flexible-unit-converter"
+import { FlexibleUnitConverter } from "@/components/flexibleUnitConverter/flexible-unit-converter"
 
 export const metadata: Metadata = {
   title: "Conversores de Unidades - ConversorTotal | Herramientas de Conversión",
@@ -90,22 +90,23 @@ export default function UnidadesPage() {
 
         {/* Tiempo */}
         <section>
-          <h2 className="text-2xl font-semibold text-foreground mb-6 text-center">Tiempo y Zapatillas</h2>
+          <h2 className="text-2xl font-semibold text-foreground mb-6 text-center">Tiempo y Almacenamiento digital</h2>
           <div className="grid gap-6 md:grid-cols-2 max-w-6xl mx-auto">
             <TimeConverterFlexible />
-            <ShoeSizeConverter />
-          </div>
-        </section>
-
-        {/* Almacenamiento Digital */}
-        <section>
-          <h2 className="text-2xl font-semibold text-foreground mb-6 text-center">Almacenamiento Digital</h2>
-          <div className="grid gap-6 md:grid-cols-1 max-w-3xl mx-auto">
             <FlexibleUnitConverter
               title="Almacenamiento Digital"
               icon={<svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V7M3 7l9-4 9 4M3 7h18" /></svg>}
               category={storageUnits}
             />
+          </div>
+        </section>
+
+        {/* Almacenamiento Digital */}
+        <section>
+          <h2 className="text-2xl font-semibold text-foreground mb-6 text-center">Zapatillas</h2>
+          <div className="grid gap-6 md:grid-cols-1 max-w-3xl mx-auto">
+            
+          <ShoeSizeConverter />
           </div>
         </section>
         
