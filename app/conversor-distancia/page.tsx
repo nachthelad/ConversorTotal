@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { DistanceConverter } from "@/components/distance-converter"
+import { DistanceConverter } from "@/components/converters/distance-converter"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft } from "lucide-react"

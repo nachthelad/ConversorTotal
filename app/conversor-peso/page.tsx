@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { WeightConverter } from "@/components/weight-converter"
+// import { WeightConverter } from "@/components/converters/weight-converter"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft } from "lucide-react"
@@ -49,7 +49,7 @@ export default function ConversorPesoPage() {
       </div>
 
       <div className="max-w-2xl mx-auto">
-        <WeightConverter />
+        {/* <WeightConverter /> */}
       </div>
 
       {/* SEO Content Mejorado */}

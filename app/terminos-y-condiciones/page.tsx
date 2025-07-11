@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { SEOBreadcrumbs } from "@/components/seo-breadcrumbs"
+import { SEOBreadcrumbs } from "@/components/layout/seo-breadcrumbs"
 import { FileText, Shield, AlertCircle, Clock } from "lucide-react"
 
 export const metadata: Metadata = {

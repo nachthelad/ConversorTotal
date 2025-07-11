@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { SEOBreadcrumbs } from "@/components/seo-breadcrumbs"
+import { SEOBreadcrumbs } from "@/components/layout/seo-breadcrumbs"
 import { Mail, MessageCircle, Clock, Send, Github, Linkedin } from "lucide-react"
 import Link from "next/link"
 
