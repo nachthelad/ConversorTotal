@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { ShoeSizeConverter } from "@/components/shoe-size-converter"
+import { ShoeSizeConverter } from "@/components/converters/shoe-size-converter"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft } from "lucide-react"

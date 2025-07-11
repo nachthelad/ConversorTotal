@@ -108,11 +108,11 @@ export const cookingPresets: UnitPreset[] = [
 ]
 
 export const storagePresets: UnitPreset[] = [
-  { from: "b", to: "kb", label: "B → KB", icon: "Database" },
-  { from: "kb", to: "mb", label: "KB → MB", icon: "Database" },
-  { from: "mb", to: "gb", label: "MB → GB", icon: "Database" },
-  { from: "gb", to: "tb", label: "GB → TB", icon: "Database" },
-  { from: "tb", to: "gb", label: "TB → GB", icon: "Database" },
+  { from: "B", to: "KB", label: "B → KB", icon: "Database" },
+  { from: "KB", to: "MB", label: "KB → MB", icon: "Database" },
+  { from: "MB", to: "GB", label: "MB → GB", icon: "Database" },
+  { from: "GB", to: "TB", label: "GB → TB", icon: "Database" },
+  { from: "TB", to: "GB", label: "TB → GB", icon: "Database" },
 ]
 
 export const presetsByCategory: Record<string, UnitPreset[]> = {

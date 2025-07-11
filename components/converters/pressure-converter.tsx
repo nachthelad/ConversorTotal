@@ -1,7 +1,7 @@
 "use client"
 
 import { Activity } from "lucide-react"
-import { FlexibleUnitConverter } from "@/components/flexibleUnitConverter/flexible-unit-converter"
+import { FlexibleUnitConverter } from "./flexible-unit-converter"
 import { pressureUnits } from "@/lib/conversion-units"
 
 export function PressureConverter() {

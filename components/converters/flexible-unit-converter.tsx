@@ -11,7 +11,7 @@ import { Copy, Share, Check, ArrowUpDown, Ruler, MapPin, Scale, Droplets, Thermo
 import { useToast } from "@/hooks/use-toast"
 import { convertUnits, type UnitCategory } from "@/lib/conversion-units"
 import { presetsByCategory, UnitPreset } from "@/lib/presets"
-import { useFlexibleUnitLogic, isCompositeDimension } from "./useFlexibleUnitLogic"
+import { useFlexibleUnitLogic, isCompositeDimension } from "@/lib/useFlexibleUnitLogic"
 
 interface FlexibleUnitConverterProps {
   title: string

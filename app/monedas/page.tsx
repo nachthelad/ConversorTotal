@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import MonedasClient from "@/components/monedas-client"
+import MonedasClient from "@/components/converters/monedas-client"
 
 export const metadata: Metadata = {
   title: "Conversor de Monedas Online – Cotizaciones en Tiempo Real | ConversorTotal",
