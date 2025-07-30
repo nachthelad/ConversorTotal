@@ -1,5 +1,13 @@
 import Link from "next/link";
-import { Github, Linkedin, ExternalLink, Mail, FileText } from "lucide-react";
+import {
+  Github,
+  Linkedin,
+  ExternalLink,
+  Mail,
+  FileText,
+  Shield,
+  Cookie,
+} from "lucide-react";
 import Image from "next/image";
 import DonationSection from "react-donation-section";
 
@@ -90,6 +98,24 @@ export function Footer() {
                 >
                   <FileText className="h-3 w-3" />
                   <span>Términos y Condiciones</span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/politica-privacidad"
+                  className="text-muted-foreground hover:text-foreground transition-colors flex items-center space-x-1"
+                >
+                  <Shield className="h-3 w-3" />
+                  <span>Política de Privacidad</span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/politica-cookies"
+                  className="text-muted-foreground hover:text-foreground transition-colors flex items-center space-x-1"
+                >
+                  <Cookie className="h-3 w-3" />
+                  <span>Política de Cookies</span>
                 </Link>
               </li>
               <li>

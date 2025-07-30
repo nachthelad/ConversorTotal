@@ -1,8 +1,8 @@
-import type { MetadataRoute } from "next"
+import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://conversortotal.online"
-  const currentDate = new Date()
+  const baseUrl = "https://conversortotal.online";
+  const currentDate = new Date();
 
   return [
     {
@@ -97,5 +97,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.7,
     },
-  ]
+    // Páginas legales - Prioridad media
+    {
+      url: `${baseUrl}/politica-privacidad`,
+      lastModified: currentDate,
+      changeFrequency: "yearly",
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/politica-cookies`,
+      lastModified: currentDate,
+      changeFrequency: "yearly",
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/terminos-y-condiciones`,
+      lastModified: currentDate,
+      changeFrequency: "yearly",
+      priority: 0.5,
+    },
+  ];
 }

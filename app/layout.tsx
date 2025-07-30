@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/components/layout/theme-provider";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { Toaster } from "@/components/ui/toaster";
+import { CookieBanner } from "@/components/ui/cookie-banner";
 import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -177,8 +178,17 @@ export default function RootLayout({
             <Footer />
           </div>
           <Toaster />
+          <CookieBanner />
         </ThemeProvider>
         <Analytics />
+
+        {/* Google AdSense */}
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1027418154196814"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
