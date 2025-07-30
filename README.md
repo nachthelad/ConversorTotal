@@ -14,7 +14,7 @@
 
 ## Funcionalidades principales
 
-- Conversores flexibles y bidireccionales para cada tipo de unidad.
+- Conversores bidireccionales para cada tipo de unidad.
 - Presets rápidos para conversiones comunes.
 - Cotizaciones de monedas actualizadas automáticamente desde DolarAPI.com.
 - Copiar y compartir resultados fácilmente.
@@ -47,6 +47,5 @@
 El proyecto está desplegado en:
 
 **https://conversortotal.online**
-
 
 Este proyecto es open source y gratuito para uso personal y educativo.

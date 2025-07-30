@@ -1,6 +1,7 @@
-import Link from "next/link"
-import { Github, Linkedin, ExternalLink, Mail, FileText } from "lucide-react"
-import Image from "next/image"
+import Link from "next/link";
+import { Github, Linkedin, ExternalLink, Mail, FileText } from "lucide-react";
+import Image from "next/image";
+import DonationSection from "react-donation-section";
 
 export function Footer() {
   return (
@@ -22,14 +23,16 @@ export function Footer() {
               <span className="font-bold text-lg">ConversorTotal</span>
             </div>
             <p className="text-sm text-muted-foreground">
-              La herramienta más completa para convertir unidades, monedas y tallas. Rápido, preciso y siempre
-              actualizado.
+              La herramienta más completa para convertir unidades, monedas y
+              tallas. Rápido, preciso y siempre actualizado.
             </p>
           </div>
 
           {/* Converters */}
           <div className="space-y-4">
-            <h3 className="font-semibold text-sm uppercase tracking-wider">Conversores</h3>
+            <h3 className="font-semibold text-sm uppercase tracking-wider">
+              Conversores
+            </h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
@@ -40,7 +43,10 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/conversor-peso" className="text-muted-foreground hover:text-foreground transition-colors">
+                <Link
+                  href="/conversor-peso"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
                   Peso
                 </Link>
               </li>
@@ -53,7 +59,10 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/monedas" className="text-muted-foreground hover:text-foreground transition-colors">
+                <Link
+                  href="/monedas"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
                   Monedas
                 </Link>
               </li>
@@ -70,7 +79,9 @@ export function Footer() {
 
           {/* Legal */}
           <div className="space-y-4">
-            <h3 className="font-semibold text-sm uppercase tracking-wider">Legal</h3>
+            <h3 className="font-semibold text-sm uppercase tracking-wider">
+              Legal
+            </h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
@@ -95,7 +106,9 @@ export function Footer() {
 
           {/* Contact & Social */}
           <div className="space-y-4">
-            <h3 className="font-semibold text-sm uppercase tracking-wider">Síguenos</h3>
+            <h3 className="font-semibold text-sm uppercase tracking-wider">
+              Síguenos
+            </h3>
             <div className="flex items-center space-x-3">
               <Link
                 href="https://github.com/nachthelad"
@@ -133,11 +146,23 @@ export function Footer() {
           </div>
         </div>
 
+        {/* Donation Section */}
+        <div className="border-t mt-8 pt-6">
+          <DonationSection
+            title="¿Te gustó ConversorTotal? Apoya el desarrollo"
+            buttonText="Invitar un cafecito"
+            buttonUrl="https://cafecito.app/nachthelad"
+            buttonIcon="☕"
+            variant="card"
+            className="max-w-md mx-auto"
+          />
+        </div>
+
         {/* Bottom Bar */}
         <div className="border-t mt-8 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
           <p>© 2024 ConversorTotal. Todos los derechos reservados.</p>
         </div>
       </div>
     </footer>
-  )
+  );
 }

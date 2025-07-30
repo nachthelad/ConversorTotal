@@ -1,15 +1,15 @@
-import type React from "react"
-import type { Metadata } from "next"
-import { Inter } from "next/font/google"
-import "./globals.css"
-import { Analytics } from "@vercel/analytics/next"
-import { ThemeProvider } from "@/components/layout/theme-provider"
-import { Header } from "@/components/layout/header"
-import { Footer } from "@/components/layout/footer"
-import { Toaster } from "@/components/ui/toaster"
-import Script from "next/script"
+import type React from "react";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
+import { ThemeProvider } from "@/components/layout/theme-provider";
+import { Header } from "@/components/layout/header";
+import { Footer } from "@/components/layout/footer";
+import { Toaster } from "@/components/ui/toaster";
+import Script from "next/script";
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://conversortotal.online"),
@@ -87,30 +87,42 @@ export const metadata: Metadata = {
   verification: {
     google: "google-adsense-verification-code",
   },
-    generator: 'v0.dev'
-}
+  generator: "v0.dev",
+};
 
 export const themeColor = [
   { media: "(prefers-color-scheme: light)", color: "#FFFFFF" },
   { media: "(prefers-color-scheme: dark)", color: "#0f172a" },
-]
+];
 
-export const viewport = "width=device-width, initial-scale=1, maximum-scale=1"
+export const viewport = "width=device-width, initial-scale=1, maximum-scale=1";
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="es" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.ico" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon-16x16.png"
+        />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <meta name="google-adsense-account" content="ca-pub-1027418154196814" />
-        <meta name="google-site-verification" content="0SpVRbuIl2TlqT3vf9qiSxWHX18CfPH9E8z5arKppCA" />
+        <meta
+          name="google-site-verification"
+          content="0SpVRbuIl2TlqT3vf9qiSxWHX18CfPH9E8z5arKppCA"
+        />
 
         {/* Schema.org structured data */}
         <script
@@ -120,7 +132,8 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "WebApplication",
               name: "ConversorTotal",
-              description: "Conversor online gratuito de unidades de medida y monedas",
+              description:
+                "Conversor online gratuito de unidades de medida y monedas",
               url: "https://conversortotal.online",
               applicationCategory: "UtilitiesApplication",
               operatingSystem: "Web Browser",
@@ -148,52 +161,19 @@ export default function RootLayout({
             }),
           }}
         />
-
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1027418154196814"
-          crossOrigin="anonymous"
-        />
-
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.adsbygoogle = window.adsbygoogle || [];
-              (adsbygoogle = window.adsbygoogle || []).push({
-                google_ad_client: "ca-pub-1027418154196814",
-                enable_page_level_ads: true
-              });
-            `,
-          }}
-        />
       </head>
       <body className={inter.className}>
-        <Script
-          id="google-adsense"
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1027418154196814"
-          crossOrigin="anonymous"
-          strategy="beforeInteractive"
-        />
-
-        <Script
-          id="adsense-config"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              try {
-                (adsbygoogle = window.adsbygoogle || []).push({});
-              } catch (e) {
-                console.log('AdSense error:', e);
-              }
-            `,
-          }}
-        />
-
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
           <div className="min-h-screen bg-background flex flex-col">
             <Header />
-            <main className="container mx-auto px-4 py-8 flex-1">{children}</main>
+            <main className="container mx-auto px-4 py-8 flex-1">
+              {children}
+            </main>
             <Footer />
           </div>
           <Toaster />
@@ -201,5 +181,5 @@ export default function RootLayout({
         <Analytics />
       </body>
     </html>
-  )
+  );
 }
