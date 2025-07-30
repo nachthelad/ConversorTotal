@@ -1,17 +1,17 @@
-import { NextResponse } from "next/server"
+import { NextResponse } from "next/server";
 
 interface ExchangeRate {
-  moneda: string
-  casa: string
-  nombre: string
-  compra: number
-  venta: number
-  fechaActualizacion: string
+  moneda: string;
+  casa: string;
+  nombre: string;
+  compra: number;
+  venta: number;
+  fechaActualizacion: string;
 }
 
 // Cache para almacenar los últimos valores exitosos
-let lastSuccessfulRates: ExchangeRate[] | null = null
-let lastUpdateTime: Date | null = null
+let lastSuccessfulRates: ExchangeRate[] | null = null;
+let lastUpdateTime: Date | null = null;
 
 // Datos de fallback iniciales (se actualizarán con valores reales)
 const fallbackRates: ExchangeRate[] = [
@@ -95,7 +95,7 @@ const fallbackRates: ExchangeRate[] = [
     venta: 29.15,
     fechaActualizacion: new Date().toISOString(),
   },
-]
+];
 
 const apiCalls = [
   {
@@ -148,49 +148,49 @@ const apiCalls = [
     name: "Peso Uruguayo",
     index: 9,
   },
-]
+];
 
 function processExchangeRate(data: any): ExchangeRate {
   // Corregir nombres de dólar
   if (data.moneda === "USD") {
     switch (data.casa) {
       case "oficial":
-        data.nombre = "Dólar Oficial"
-        break
+        data.nombre = "Dólar Oficial";
+        break;
       case "blue":
-        data.nombre = "Dólar Blue"
-        break
+        data.nombre = "Dólar Blue";
+        break;
       case "bolsa":
-        data.nombre = "Dólar Bolsa"
-        break
+        data.nombre = "Dólar Bolsa";
+        break;
       case "cripto":
-        data.nombre = "Dólar Cripto"
-        break
+        data.nombre = "Dólar Cripto";
+        break;
       case "tarjeta":
-        data.nombre = "Dólar Tarjeta"
-        break
+        data.nombre = "Dólar Tarjeta";
+        break;
       case "mayorista":
-        data.nombre = "Dólar Mayorista"
-        break
+        data.nombre = "Dólar Mayorista";
+        break;
     }
   }
 
   // Para CLP y UYU, crear valores de compra/venta realistas
   if (data.moneda === "CLP") {
     // Si viene un solo valor, crear spread realista
-    const baseRate = data.venta || data.compra || 1.22
-    data.compra = Math.round(baseRate * 0.98 * 100) / 100 // 2% menos, redondeado
-    data.venta = Math.round(baseRate * 1.02 * 100) / 100 // 2% más, redondeado
+    const baseRate = data.venta || data.compra || 1.22;
+    data.compra = Math.round(baseRate * 0.98 * 100) / 100; // 2% menos, redondeado
+    data.venta = Math.round(baseRate * 1.02 * 100) / 100; // 2% más, redondeado
   }
 
   if (data.moneda === "UYU") {
     // Si viene un solo valor, crear spread realista
-    const baseRate = data.venta || data.compra || 28.3
-    data.compra = Math.round(baseRate * 0.97 * 100) / 100 // 3% menos, redondeado
-    data.venta = Math.round(baseRate * 1.03 * 100) / 100 // 3% más, redondeado
+    const baseRate = data.venta || data.compra || 28.3;
+    data.compra = Math.round(baseRate * 0.97 * 100) / 100; // 3% menos, redondeado
+    data.venta = Math.round(baseRate * 1.03 * 100) / 100; // 3% más, redondeado
   }
 
-  return data
+  return data;
 }
 
 export async function GET() {
@@ -199,87 +199,100 @@ export async function GET() {
     const results = await Promise.allSettled(
       apiCalls.map(async ({ url, name, index }) => {
         try {
-          const controller = new AbortController()
-          const timeoutId = setTimeout(() => controller.abort(), 10000)
+          const controller = new AbortController();
+          const timeoutId = setTimeout(() => controller.abort(), 10000);
 
           const response = await fetch(url, {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
-              "User-Agent": "ConversorTotal/1.0 (https://conversortotal.online)",
+              "User-Agent":
+                "ConversorTotal/1.0 (https://conversortotal.online)",
               Accept: "application/json",
             },
             signal: controller.signal,
-          })
+          });
 
-          clearTimeout(timeoutId)
+          clearTimeout(timeoutId);
 
           if (!response.ok) {
-            throw new Error(`HTTP ${response.status}: ${response.statusText}`)
+            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
           }
 
-          const data = await response.json()
-          const processedData = processExchangeRate(data)
+          const data = await response.json();
+          const processedData = processExchangeRate(data);
 
-          return { success: true, data: processedData, index }
+          return { success: true, data: processedData, index };
         } catch (error) {
-          console.error(`❌ Error fetching ${name}:`, error)
-          return { success: false, index }
+          console.error(`❌ Error fetching ${name}:`, error);
+          return { success: false, index };
         }
-      }),
-    )
+      })
+    );
 
     // Obtener EUR/USD
-    let eurUsdRate = 1.08
+    let eurUsdRate = 1.08;
     try {
-      const eurUsdResponse = await fetch("https://api.exchangerate-api.com/v4/latest/EUR", {
-        headers: { "Content-Type": "application/json" },
-      })
+      const eurUsdResponse = await fetch(
+        "https://api.exchangerate-api.com/v4/latest/EUR",
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
       if (eurUsdResponse.ok) {
-        const eurUsdData = await eurUsdResponse.json()
+        const eurUsdData = await eurUsdResponse.json();
         if (eurUsdData.rates && eurUsdData.rates.USD) {
-          eurUsdRate = eurUsdData.rates.USD
+          eurUsdRate = eurUsdData.rates.USD;
         }
       }
     } catch (error) {
-      console.warn("Error fetching EUR/USD rate:", error)
+      console.warn("Error fetching EUR/USD rate:", error);
     }
 
     // Procesar resultados
-    const data: ExchangeRate[] = []
-    let successCount = 0
-    let usingFallback = false
+    const data: ExchangeRate[] = [];
+    let successCount = 0;
+    let usingFallback = false;
 
     // Usar los últimos valores exitosos como fallback si están disponibles
-    const currentFallback = lastSuccessfulRates || fallbackRates
+    const currentFallback = lastSuccessfulRates || fallbackRates;
 
     results.forEach((result) => {
-      if (result.status === "fulfilled" && result.value.success) {
-        data.push(result.value.data)
-        successCount++
+      if (
+        result.status === "fulfilled" &&
+        result.value.success &&
+        result.value.data
+      ) {
+        data.push(result.value.data);
+        successCount++;
       } else {
-        const index = result.status === "fulfilled" ? result.value.index : 0
-        data.push(currentFallback[index] || fallbackRates[index])
-        usingFallback = true
+        const index = result.status === "fulfilled" ? result.value.index : 0;
+        data.push(currentFallback[index] || fallbackRates[index]);
+        usingFallback = true;
       }
-    })
+    });
 
     // Si obtuvimos datos exitosos, actualizar el cache
     if (successCount > 0) {
-      lastSuccessfulRates = [...data]
-      lastUpdateTime = new Date()
+      lastSuccessfulRates = [...data];
+      lastUpdateTime = new Date();
 
       // Actualizar fallbackRates con los nuevos valores exitosos
       data.forEach((rate, index) => {
-        if (results[index].status === "fulfilled" && results[index].value.success) {
-          fallbackRates[index] = { ...rate }
+        if (
+          results[index].status === "fulfilled" &&
+          results[index].value.success
+        ) {
+          fallbackRates[index] = { ...rate };
         }
-      })
+      });
     }
 
     if (successCount === 0) {
-      console.warn("🚨 Todas las APIs fallaron, usando datos de cache/fallback")
-      usingFallback = true
+      console.warn(
+        "🚨 Todas las APIs fallaron, usando datos de cache/fallback"
+      );
+      usingFallback = true;
     }
 
     return NextResponse.json({
@@ -291,22 +304,41 @@ export async function GET() {
       timestamp: new Date().toISOString(),
       lastSuccessfulUpdate: lastUpdateTime?.toISOString() || null,
       eurUsdRate,
-    })
+    });
   } catch (error) {
-    console.error("💥 Error general en API Route:", error)
+    console.error("💥 Error general en API Route:", error);
+
+    // Log detallado del error para debugging
+    const errorDetails = {
+      message: error instanceof Error ? error.message : "Error desconocido",
+      stack: error instanceof Error ? error.stack : undefined,
+      timestamp: new Date().toISOString(),
+      endpoint: "/api/cotizaciones",
+    };
 
     // Usar cache si está disponible, sino fallback
-    const dataToReturn = lastSuccessfulRates || fallbackRates
+    const dataToReturn = lastSuccessfulRates || fallbackRates;
 
-    return NextResponse.json({
-      data: dataToReturn,
-      success: false,
-      usingFallback: true,
-      successCount: 0,
-      totalApis: apiCalls.length,
-      error: "Error interno del servidor",
-      timestamp: new Date().toISOString(),
-      lastSuccessfulUpdate: lastUpdateTime?.toISOString() || null,
-    })
+    return NextResponse.json(
+      {
+        data: dataToReturn,
+        success: false,
+        usingFallback: true,
+        successCount: 0,
+        totalApis: apiCalls.length,
+        error: "Error interno del servidor",
+        errorDetails:
+          process.env.NODE_ENV === "development" ? errorDetails : undefined,
+        timestamp: new Date().toISOString(),
+        lastSuccessfulUpdate: lastUpdateTime?.toISOString() || null,
+      },
+      {
+        status: 500,
+        headers: {
+          "Cache-Control": "no-cache",
+          "Content-Type": "application/json",
+        },
+      }
+    );
   }
 }
