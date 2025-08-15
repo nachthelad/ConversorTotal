@@ -23,6 +23,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "daily",
       priority: 0.9,
     },
+    {
+      url: `${baseUrl}/monedas/tipos-de-cambio`,
+      lastModified: currentDate,
+      changeFrequency: "daily",
+      priority: 0.8,
+    },
     // Páginas específicas de conversores - Prioridad alta
     {
       url: `${baseUrl}/conversor-temperatura`,
@@ -43,6 +49,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${baseUrl}/conversor-almacenamiento`,
+      lastModified: currentDate,
+      changeFrequency: "monthly",
+      priority: 0.75,
+    },
+    {
       url: `${baseUrl}/tallas-zapatillas`,
       lastModified: currentDate,
       changeFrequency: "monthly",
@@ -54,48 +66,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.8,
     },
-    // Otros conversores
+    // Otros
     {
-      url: `${baseUrl}/conversor-area`,
+      url: `${baseUrl}/contacto`,
       lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/conversor-velocidad`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/conversor-presion`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/conversor-energia`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/conversor-potencia`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/conversor-combustible`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/conversor-cocina`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.7,
+      changeFrequency: "yearly",
+      priority: 0.4,
     },
     // Páginas legales - Prioridad media
     {

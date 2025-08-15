@@ -27,8 +27,8 @@ export function ComprehensiveOverview() {
         </h2>
         <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
           <strong>ConversorTotal</strong> es el conversor de unidades más
-          completo y fácil de usar en español. Ofrecemos{" "}
-          <strong>diferentes de conversores</strong> que cubren todas tus
+          completo y fácil de usar en español. Ofrecemos una
+          <strong> gran variedad de conversores</strong> que cubren todas tus
           necesidades diarias.
         </p>
       </div>

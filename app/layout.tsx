@@ -86,9 +86,8 @@ export const metadata: Metadata = {
     canonical: "https://conversortotal.online",
   },
   verification: {
-    google: "google-adsense-verification-code",
+    google: "0SpVRbuIl2TlqT3vf9qiSxWHX18CfPH9E8z5arKppCA",
   },
-  generator: "v0.dev",
 };
 
 export const themeColor = [
@@ -120,10 +119,7 @@ export default function RootLayout({
           href="/favicon-16x16.png"
         />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <meta
-          name="google-site-verification"
-          content="0SpVRbuIl2TlqT3vf9qiSxWHX18CfPH9E8z5arKppCA"
-        />
+        {/* google-site-verification is emitted via next/metadata.verification */}
 
         {/* Schema.org structured data */}
         <script
