@@ -8,6 +8,7 @@ interface AdSenseAdProps {
   adFormat?: "auto" | "fluid" | "rectangle" | "banner";
   className?: string;
   style?: React.CSSProperties;
+  enabled?: boolean;
 }
 
 export function AdSenseAd({
@@ -15,11 +16,12 @@ export function AdSenseAd({
   adFormat = "auto",
   className,
   style,
+  enabled = true,
 }: AdSenseAdProps) {
   useEffect(() => {
     try {
       // @ts-ignore - AdSense global
-      if (typeof window !== "undefined" && window.adsbygoogle) {
+      if (enabled && typeof window !== "undefined" && window.adsbygoogle) {
         // @ts-ignore - AdSense global
         window.adsbygoogle = window.adsbygoogle || [];
         // @ts-ignore - AdSense global
@@ -28,7 +30,11 @@ export function AdSenseAd({
     } catch (error) {
       console.warn("AdSense error:", error);
     }
-  }, [adSlot]);
+  }, [adSlot, enabled]);
+
+  if (!enabled) {
+    return null;
+  }
 
   return (
     <div className={cn("ad-container my-8", className)} style={style}>

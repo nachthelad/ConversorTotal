@@ -8,16 +8,21 @@ import { SneakerSection } from "@/components/sections/sneaker-section";
 import { ComprehensiveOverview } from "@/components/sections/comprehensive-overview";
 import { CTASection } from "@/components/sections/cta-section";
 import { FAQSection } from "@/components/sections/faq-section";
+import { AdSenseAd } from "@/components/ui/adsense-ad";
 
 export default function HomePage() {
   return (
     <div className="space-y-12">
       <HeroSection />
+      {/* AdSense placeholder: oculto por ahora */}
+      <AdSenseAd adSlot="0000000001" adFormat="auto" enabled={false} />
       <MainActionCards />
       <PopularConverters />
       <CurrencyConversions />
       <FeaturesSection />
       <SneakerSection />
+      {/* AdSense placeholder intermedio: oculto por ahora */}
+      <AdSenseAd adSlot="0000000002" adFormat="auto" enabled={false} />
       <ComprehensiveOverview />
       <CTASection />
       <FAQSection />

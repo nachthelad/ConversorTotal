@@ -7,6 +7,7 @@ import {
   FileText,
   Shield,
   Cookie,
+  Info,
 } from "lucide-react";
 import Image from "next/image";
 import DonationSection from "react-donation-section";
@@ -91,6 +92,15 @@ export function Footer() {
               Legal
             </h3>
             <ul className="space-y-2 text-sm">
+              <li>
+                <Link
+                  href="/sobre-nosotros"
+                  className="text-muted-foreground hover:text-foreground transition-colors flex items-center space-x-1"
+                >
+                  <Info className="h-3 w-3" />
+                  <span>Sobre nosotros</span>
+                </Link>
+              </li>
               <li>
                 <Link
                   href="/terminos-y-condiciones"
