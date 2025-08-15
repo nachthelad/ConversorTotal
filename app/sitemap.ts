@@ -73,6 +73,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "yearly",
       priority: 0.4,
     },
+    {
+      url: `${baseUrl}/sobre-nosotros`,
+      lastModified: currentDate,
+      changeFrequency: "yearly",
+      priority: 0.4,
+    },
     // Páginas legales - Prioridad media
     {
       url: `${baseUrl}/politica-privacidad`,
