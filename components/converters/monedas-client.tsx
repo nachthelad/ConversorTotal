@@ -36,6 +36,7 @@ export default function MonedasClient() {
     usingFallback,
     lastUpdated,
     lastSuccessfulUpdate,
+    refetch,
   } = useExchangeRates();
 
   const formatDate = (date: Date) => {
@@ -117,6 +118,8 @@ export default function MonedasClient() {
           variant="secondary"
           size="lg"
           className="max-[460px]:px-3 flex items-center"
+          onClick={refetch}
+          disabled={loading}
         >
           <RefreshCw className="h-4 w-4 min-[461px]:mr-2" />
           <span className="max-[460px]:hidden">Actualizar</span>

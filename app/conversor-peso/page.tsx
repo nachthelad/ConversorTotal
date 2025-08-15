@@ -3,6 +3,7 @@ import { WeightConverterFlexible } from "@/components/converters/weight-converte
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "Conversor de Peso - Kilogramos a Libras Online Gratis",
@@ -269,6 +270,32 @@ export default function ConversorPesoPage() {
           </div>
         </div>
       </div>
+
+      {/* Structured data (FAQ) */}
+      <Script id="faq-peso-schema" type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: [
+            {
+              "@type": "Question",
+              name: "¿Cómo convierto kilogramos a libras?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Ingresa el valor en kilogramos y selecciona libras como unidad de destino. La fórmula es lbs = kg × 2.20462.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "¿Cuántos gramos hay en un kilogramo?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Un kilogramo equivale a 1.000 gramos.",
+              },
+            },
+          ],
+        })}
+      </Script>
     </div>
   );
 }
