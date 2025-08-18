@@ -3,7 +3,6 @@ import withPWA from "next-pwa";
 
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",
   },
@@ -50,13 +49,10 @@ const nextConfig = {
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
-  i18n: {
-    locales: ["es"],
-    defaultLocale: "es",
-  },
 };
 
 export default withPWA({
+  disable: process.env.NODE_ENV === "development",
   dest: "public",
   register: true,
   skipWaiting: true,
