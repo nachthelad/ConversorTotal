@@ -145,10 +145,20 @@ const apiCalls = [
   },
   {
     url: "https://dolarapi.com/v1/cotizaciones/uyu",
-    name: "Peso Uruguayo",
-    index: 9,
-  },
+  name: "Peso Uruguayo",
+  index: 9,
+},
 ];
+
+type ApiResult = {
+  success: boolean;
+  data?: ExchangeRate;
+  index: number;
+};
+
+const isFulfilled = (
+  result: PromiseSettledResult<ApiResult>
+): result is PromiseFulfilledResult<ApiResult> => result.status === "fulfilled";
 
 function processExchangeRate(data: any): ExchangeRate {
   // Corregir nombres de dólar
@@ -196,7 +206,7 @@ function processExchangeRate(data: any): ExchangeRate {
 export async function GET() {
   try {
     // Hacer todas las llamadas en paralelo con timeout
-    const results = await Promise.allSettled(
+    const results = await Promise.allSettled<ApiResult>(
       apiCalls.map(async ({ url, name, index }) => {
         try {
           const controller = new AbortController();
@@ -257,17 +267,15 @@ export async function GET() {
     // Usar los últimos valores exitosos como fallback si están disponibles
     const currentFallback = lastSuccessfulRates || fallbackRates;
 
-    results.forEach((result) => {
-      if (
-        result.status === "fulfilled" &&
-        result.value.success &&
-        result.value.data
-      ) {
+    results.forEach((result, index) => {
+      if (isFulfilled(result) && result.value.success && result.value.data) {
         data.push(result.value.data);
         successCount++;
       } else {
-        const index = result.status === "fulfilled" ? result.value.index : 0;
-        data.push(currentFallback[index] || fallbackRates[index]);
+        const fallbackIndex = isFulfilled(result)
+          ? result.value.index
+          : index;
+        data.push(currentFallback[fallbackIndex] || fallbackRates[fallbackIndex]);
         usingFallback = true;
       }
     });
@@ -279,10 +287,8 @@ export async function GET() {
 
       // Actualizar fallbackRates con los nuevos valores exitosos
       data.forEach((rate, index) => {
-        if (
-          results[index].status === "fulfilled" &&
-          results[index].value.success
-        ) {
+        const result = results[index];
+        if (isFulfilled(result) && result.value.success) {
           fallbackRates[index] = { ...rate };
         }
       });
