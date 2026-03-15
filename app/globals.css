@@ -121,3 +121,9 @@ input[type="number"]::-webkit-outer-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
+/* Optimización de render para secciones below-fold */
+.below-fold {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 400px;
+}

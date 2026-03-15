@@ -292,8 +292,8 @@ export default function ConversorTemperaturaPage() {
         </div>
       </div>
 
-      {/* Structured data (FAQ + HowTo) */}
-      <Script id="faq-howto-schema" type="application/ld+json">
+      {/* Structured data — FAQPage */}
+      <Script id="faq-schema" type="application/ld+json">
         {JSON.stringify({
           "@context": "https://schema.org",
           "@type": "FAQPage",
@@ -321,6 +321,64 @@ export default function ConversorTemperaturaPage() {
                 "@type": "Answer",
                 text: "Sí, selecciona Kelvin como unidad de origen y Celsius como destino para obtener la conversión.",
               },
+            },
+          ],
+        })}
+      </Script>
+
+      {/* Structured data — HowTo */}
+      <Script id="howto-schema" type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "HowTo",
+          name: "Cómo convertir temperatura online",
+          description: "Pasos para usar el conversor de temperatura de ConversorTotal",
+          step: [
+            {
+              "@type": "HowToStep",
+              position: 1,
+              name: "Ingresá el valor",
+              text: "Escribí el número de grados que querés convertir en el campo 'Desde'.",
+            },
+            {
+              "@type": "HowToStep",
+              position: 2,
+              name: "Seleccioná la unidad de origen",
+              text: "Elegí la escala de temperatura de partida: Celsius, Fahrenheit o Kelvin.",
+            },
+            {
+              "@type": "HowToStep",
+              position: 3,
+              name: "Seleccioná la unidad de destino",
+              text: "Elegí la escala a la que querés convertir en el campo 'Hacia'.",
+            },
+            {
+              "@type": "HowToStep",
+              position: 4,
+              name: "Obtené el resultado",
+              text: "El resultado aparece automáticamente. Podés copiarlo o compartirlo por WhatsApp.",
+            },
+          ],
+        })}
+      </Script>
+
+      {/* Structured data — BreadcrumbList */}
+      <Script id="breadcrumb-schema" type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "Inicio",
+              item: "https://conversortotal.online",
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "Conversor de Temperatura",
+              item: "https://conversortotal.online/conversor-temperatura",
             },
           ],
         })}

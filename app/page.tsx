@@ -1,14 +1,27 @@
 import { Metadata } from "next";
+import { Suspense } from "react";
+import dynamic from "next/dynamic";
 import { HeroSection } from "@/components/sections/hero-section";
 import { MainActionCards } from "@/components/sections/main-action-cards";
 import { PopularConverters } from "@/components/sections/popular-converters";
 import { CurrencyConversions } from "@/components/sections/currency-conversions";
 import { FeaturesSection } from "@/components/sections/features-section";
 import { SneakerSection } from "@/components/sections/sneaker-section";
-import { ComprehensiveOverview } from "@/components/sections/comprehensive-overview";
-import { CTASection } from "@/components/sections/cta-section";
-import { FAQSection } from "@/components/sections/faq-section";
 import { AdSenseAd } from "@/components/ui/adsense-ad";
+
+const ComprehensiveOverview = dynamic(() =>
+  import("@/components/sections/comprehensive-overview").then((m) => m.ComprehensiveOverview)
+);
+const CTASection = dynamic(() =>
+  import("@/components/sections/cta-section").then((m) => m.CTASection)
+);
+const FAQSection = dynamic(() =>
+  import("@/components/sections/faq-section").then((m) => m.FAQSection)
+);
+
+const SectionSkeleton = () => (
+  <div className="h-48 animate-pulse bg-muted rounded-xl" />
+);
 
 export default function HomePage() {
   return (
@@ -18,14 +31,28 @@ export default function HomePage() {
       <AdSenseAd adSlot="0000000001" adFormat="auto" enabled={false} />
       <MainActionCards />
       <PopularConverters />
-      <CurrencyConversions />
+      <Suspense fallback={<SectionSkeleton />}>
+        <CurrencyConversions />
+      </Suspense>
       <FeaturesSection />
       <SneakerSection />
       {/* AdSense placeholder intermedio: oculto por ahora */}
       <AdSenseAd adSlot="0000000002" adFormat="auto" enabled={false} />
-      <ComprehensiveOverview />
-      <CTASection />
-      <FAQSection />
+      <div className="below-fold">
+        <Suspense fallback={<SectionSkeleton />}>
+          <ComprehensiveOverview />
+        </Suspense>
+      </div>
+      <div className="below-fold">
+        <Suspense fallback={<SectionSkeleton />}>
+          <CTASection />
+        </Suspense>
+      </div>
+      <div className="below-fold">
+        <Suspense fallback={<SectionSkeleton />}>
+          <FAQSection />
+        </Suspense>
+      </div>
     </div>
   );
 }

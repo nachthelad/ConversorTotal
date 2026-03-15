@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -29,37 +29,8 @@ import Image from "next/image";
 
 export function Header() {
   const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const pathname = usePathname();
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return (
-      <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-          <div className="flex items-center space-x-6">
-            <Link href="/" className="flex items-center space-x-2">
-              <div className="w-8 h-8 relative">
-                <Image
-                  src="/favicon-32x32.png"
-                  alt="ConversorTotal Logo"
-                  width={32}
-                  height={32}
-                  className="rounded-lg"
-                />
-              </div>
-              <span className="font-semibold text-lg">ConversorTotal</span>
-            </Link>
-          </div>
-          <div className="w-10 h-10" />
-        </div>
-      </header>
-    );
-  }
 
   return (
     <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -225,6 +196,7 @@ export function Header() {
         <div className="flex items-center space-x-2">
           {/* Desktop Theme Toggle - Visible en pantallas grandes */}
           <Button
+            suppressHydrationWarning
             variant="ghost"
             size="icon"
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}

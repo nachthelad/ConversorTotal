@@ -236,7 +236,7 @@ export function FlexibleUnitConverter({
                 key={idx}
                 variant="secondary"
                 size="sm"
-                className="px-2 py-1 h-7 text-xs flex items-center gap-1 rounded-full"
+                className="px-3 py-2 h-9 text-sm flex items-center gap-1 rounded-full"
                 onClick={() => {
                   setFromUnitId(preset.from);
                   setToUnitId(preset.to);
@@ -262,10 +262,10 @@ export function FlexibleUnitConverter({
         <CardContent className="space-y-6">
           {/* Desde */}
           <div className="space-y-3">
-            <Label className="text-sm font-medium">Desde:</Label>
-            <div className="flex space-x-2">
+            <Label htmlFor="from-input" className="text-sm font-medium">Desde:</Label>
+            <div className="flex flex-col sm:flex-row gap-2">
               <Select value={fromUnitId} onValueChange={handleFromUnitChange}>
-                <SelectTrigger className="w-[180px]">
+                <SelectTrigger className="w-full sm:w-[180px]" aria-label="Unidad de origen">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -277,12 +277,15 @@ export function FlexibleUnitConverter({
                 </SelectContent>
               </Select>
               <Input
+                id="from-input"
                 type="text"
+                inputMode={category.id === "length" ? "text" : "decimal"}
+                autoComplete="off"
                 value={fromValue}
                 onChange={(e) => handleFromValueChange(e.target.value)}
                 onPaste={handleFromInputPaste}
-                placeholder={`Ingresa ${fromUnit.name.toLowerCase()}`}
-                className="flex-1"
+                placeholder={fromValue ? "" : `Ej: 100`}
+                className="flex-1 text-base"
               />
             </div>
           </div>
@@ -291,21 +294,21 @@ export function FlexibleUnitConverter({
           <div className="flex justify-center">
             <Button
               variant="outline"
-              size="icon"
               onClick={swapUnits}
-              className="rounded-full"
-              title="Intercambiar unidades"
+              aria-label="Intercambiar unidades"
+              className="rounded-full gap-2 px-4 h-10"
             >
-              <ArrowUpDown className="h-4 w-4" />
+              <ArrowUpDown className="h-4 w-4" aria-hidden="true" />
+              <span className="sm:hidden text-sm">Intercambiar</span>
             </Button>
           </div>
 
           {/* Hacia */}
           <div className="space-y-3">
-            <Label className="text-sm font-medium">Hacia:</Label>
-            <div className="flex space-x-2">
+            <Label htmlFor="to-input" className="text-sm font-medium">Hacia:</Label>
+            <div className="flex flex-col sm:flex-row gap-2">
               <Select value={toUnitId} onValueChange={handleToUnitChange}>
-                <SelectTrigger className="w-[180px]">
+                <SelectTrigger className="w-full sm:w-[180px]" aria-label="Unidad de destino">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -317,39 +320,51 @@ export function FlexibleUnitConverter({
                 </SelectContent>
               </Select>
               <Input
+                id="to-input"
                 type="text"
+                inputMode={category.id === "length" ? "text" : "decimal"}
+                autoComplete="off"
                 value={toValue}
                 onChange={(e) => handleToValueChange(e.target.value)}
                 onPaste={handleToInputPaste}
-                placeholder={`Resultado en ${toUnit.name.toLowerCase()}`}
-                className="flex-1"
+                placeholder="Resultado"
+                className={`flex-1 text-base transition-colors ${
+                  toValue ? "bg-primary/10 font-semibold" : ""
+                }`}
               />
             </div>
           </div>
 
+          {/* Hint cuando está vacío */}
+          {!fromValue && (
+            <p className="text-center text-sm text-muted-foreground">
+              Ingresá un valor arriba para ver el resultado
+            </p>
+          )}
+
           {/* Botones de acción */}
           {fromValue && toValue && (
-            <div className="flex justify-center space-x-2 pt-2">
+            <div className="flex justify-center gap-3 pt-2">
               <Button
                 variant="outline"
-                size="sm"
                 onClick={() => copyToClipboard("from")}
-                className="flex items-center space-x-1"
+                aria-label="Copiar resultado al portapapeles"
+                className="flex items-center gap-2 h-11 px-5"
               >
                 {copiedField === "from" ? (
-                  <Check className="h-4 w-4" />
+                  <Check className="h-4 w-4" aria-hidden="true" />
                 ) : (
-                  <Copy className="h-4 w-4" />
+                  <Copy className="h-4 w-4" aria-hidden="true" />
                 )}
                 <span>Copiar</span>
               </Button>
               <Button
                 variant="outline"
-                size="sm"
                 onClick={shareToWhatsApp}
-                className="flex items-center space-x-1"
+                aria-label="Compartir resultado por WhatsApp"
+                className="flex items-center gap-2 h-11 px-5"
               >
-                <Share className="h-4 w-4" />
+                <Share className="h-4 w-4" aria-hidden="true" />
                 <span>Compartir</span>
               </Button>
             </div>

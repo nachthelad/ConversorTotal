@@ -1,10 +1,10 @@
 export function HeroSection() {
   return (
-    <div className="text-center space-y-6 max-[360px]:px-4">
-      <h1 className="text-5xl font-bold tracking-tight text-foreground max-[360px]:text-3xl">
+    <div className="text-center space-y-3 sm:space-y-6 max-[360px]:px-4">
+      <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-foreground">
         <span className="text-primary">Conversor Online Gratuito</span>
       </h1>
-      <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+      <p className="hidden sm:block text-xl text-muted-foreground max-w-3xl mx-auto">
         La herramienta más completa para{" "}
         <strong>convertir unidades de medida y monedas</strong> de forma rápida,
         precisa y gratuita. Sin registros, sin complicaciones.{" "}
