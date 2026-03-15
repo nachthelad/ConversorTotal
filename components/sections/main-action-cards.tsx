@@ -14,11 +14,11 @@ export function MainActionCards() {
           <CardTitle className="text-2xl">Convertir Unidades</CardTitle>
         </CardHeader>
         <CardContent className="text-center space-y-4 flex-1 flex flex-col">
-          <p className="text-muted-foreground">
+          <p className="hidden sm:block text-muted-foreground">
             <strong>Todos los conversores de unidades</strong> que necesitas en
             un solo lugar:
           </p>
-          <ul className="text-sm text-muted-foreground space-y-1 flex-1">
+          <ul className="hidden sm:block text-sm text-muted-foreground space-y-1 flex-1">
             <li>
               🌡️ <strong>Temperatura:</strong> Celsius ↔ Fahrenheit ↔ Kelvin
             </li>
@@ -55,11 +55,11 @@ export function MainActionCards() {
           <CardTitle className="text-2xl">Convertir Monedas</CardTitle>
         </CardHeader>
         <CardContent className="text-center space-y-4 flex-1 flex flex-col">
-          <p className="text-muted-foreground">
+          <p className="hidden sm:block text-muted-foreground">
             <strong>Cotizaciones actualizadas en tiempo real</strong> desde
             Argentina con DolarAPI.com
           </p>
-          <ul className="text-sm text-muted-foreground space-y-1 flex-1">
+          <ul className="hidden sm:block text-sm text-muted-foreground space-y-1 flex-1">
             <li>
               💵 <strong>Dólares:</strong> Oficial, Blue, Bolsa, Cripto
             </li>

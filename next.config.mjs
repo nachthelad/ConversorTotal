@@ -1,5 +1,10 @@
 /** @type {import('next').NextConfig} */
 import withPWA from "next-pwa";
+import bundleAnalyzer from "@next/bundle-analyzer";
+
+const withBundleAnalyzer = bundleAnalyzer({
+  enabled: process.env.ANALYZE === "true",
+});
 
 const nextConfig = {
   reactStrictMode: true,
@@ -43,13 +48,10 @@ const nextConfig = {
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
-  // Force webpack builds to stay compatible with next-pwa while Turbopack matures.
-  webpack(config) {
-    return config;
-  },
+  turbopack: {},
 };
 
-export default withPWA({
+export default withBundleAnalyzer(withPWA({
   disable: process.env.NODE_ENV === "development",
   dest: "public",
   register: true,
@@ -67,4 +69,4 @@ export default withPWA({
     },
   ],
   buildExcludes: [/middleware-manifest.json$/],
-})(nextConfig);
+})(nextConfig));

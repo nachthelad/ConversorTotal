@@ -1,5 +1,5 @@
 import type React from "react";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://conversortotal.online"),
   title: {
     default: "ConversorTotal - Conversor de Unidades y Monedas Online Gratis",
-    template: "%s | ConversorTotal - Conversor Online Gratis",
+    template: "%s | ConversorTotal",
   },
   description:
     "Conversor online gratuito de unidades de medida y monedas. Convierte temperatura, distancia, peso, área, velocidad, talles de ropa, zapatos y más. Resultados instantáneos y precisos.",
@@ -90,12 +90,14 @@ export const metadata: Metadata = {
   },
 };
 
-export const themeColor = [
-  { media: "(prefers-color-scheme: light)", color: "#FFFFFF" },
-  { media: "(prefers-color-scheme: dark)", color: "#0f172a" },
-];
-
-export const viewport = "width=device-width, initial-scale=1, maximum-scale=1";
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#FFFFFF" },
+    { media: "(prefers-color-scheme: dark)", color: "#0f172a" },
+  ],
+};
 
 export default function RootLayout({
   children,
@@ -167,8 +169,14 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <div className="min-h-screen bg-background flex flex-col">
+            <a
+              href="#main-content"
+              className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary text-primary-foreground px-4 py-2 rounded z-50 text-sm font-medium"
+            >
+              Ir al contenido principal
+            </a>
             <Header />
-            <main className="container mx-auto px-4 py-8 flex-1">
+            <main id="main-content" className="container mx-auto px-4 py-8 flex-1">
               {children}
             </main>
             <Footer />
