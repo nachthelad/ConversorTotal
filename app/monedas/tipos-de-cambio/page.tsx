@@ -233,7 +233,14 @@ export default function TiposDeCambioPage() {
       {/* Lista de Tipos de Cambio */}
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-          {exchangeRates.map((rate, index) => (
+          {(() => {
+            const binanceIdx = exchangeRates.findIndex(r => r.casa === "binance");
+            if (binanceIdx <= 2 || binanceIdx === -1) return exchangeRates;
+            const arr = [...exchangeRates];
+            const [binance] = arr.splice(binanceIdx, 1);
+            arr.splice(2, 0, binance);
+            return arr;
+          })().map((rate, index) => (
             <Card
               key={`${rate.moneda}-${rate.casa}-${index}`}
               className="hover:shadow-md transition-shadow"
