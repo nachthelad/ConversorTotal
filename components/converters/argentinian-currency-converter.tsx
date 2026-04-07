@@ -25,6 +25,7 @@ const DOLLAR_VARIANTS = [
   { label: "Dólar Bolsa", value: "bolsa", icon: <DollarSign className="h-4 w-4 text-muted-foreground" />, tooltip: "Operaciones bursátiles (MEP)" },
   { label: "Dólar Cripto", value: "cripto", icon: <DollarSign className="h-4 w-4 text-muted-foreground" />, tooltip: "Compra/venta de criptomonedas" },
   { label: "Dólar Mayorista", value: "mayorista", icon: <DollarSign className="h-4 w-4 text-muted-foreground" />, tooltip: "Grandes operaciones entre bancos" },
+  { label: "Binance P2P", value: "binance", icon: <DollarSign className="h-4 w-4 text-muted-foreground" />, tooltip: "Precio USDT/ARS en Binance P2P (primer vendedor real, sin anuncios promocionados)" },
 ]
 const REGIONALS = [
   { label: "Euro", value: "EUR", icon: <Euro className="h-4 w-4 text-muted-foreground" />, tooltip: "Euro oficial en Argentina" },
@@ -82,7 +83,7 @@ export function ArgentinianCurrencyConverter({ exchangeRates, loading }: Argenti
               simboloDestino="ARS$"
               cotizacion={rate.venta || rate.compra}
               fecha={rate.fechaActualizacion}
-              fuente="DolarAPI.com"
+              fuente={selected.value === "binance" ? "Binance P2P" : "DolarAPI.com"}
             />
           </div>
         )}

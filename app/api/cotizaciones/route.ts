@@ -13,6 +13,9 @@ interface ExchangeRate {
 let lastSuccessfulRates: ExchangeRate[] | null = null;
 let lastUpdateTime: Date | null = null;
 
+// Cache para el precio Binance P2P
+let lastBinanceRate: ExchangeRate | null = null;
+
 // Datos de fallback iniciales (se actualizarán con valores reales)
 const fallbackRates: ExchangeRate[] = [
   {
@@ -203,10 +206,75 @@ function processExchangeRate(data: any): ExchangeRate {
   return data;
 }
 
+async function fetchBinanceP2P(): Promise<ExchangeRate> {
+  async function fetchSide(tradeType: "SELL" | "BUY"): Promise<number> {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 10000);
+    try {
+      const res = await fetch(
+        "https://p2p.binance.com/bapi/c2c/v2/friendly/c2c/adv/search",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            fiat: "ARS",
+            page: 1,
+            rows: 10,
+            tradeType,
+            asset: "USDT",
+            countries: [],
+            additionalKycVerifyFilter: 0,
+            classifies: ["mass", "profession", "fiat_trade"],
+            filterType: "all",
+            followed: false,
+            payTypes: [],
+            periods: [],
+            proMerchantAds: false,
+            publisherType: "merchant",
+            shieldMerchantAds: false,
+            tradedWith: false,
+          }),
+          signal: controller.signal,
+        }
+      );
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
+      const ad = (data?.data ?? []).find((item: any) => !item.privilegeDesc);
+      const price = parseFloat(ad?.adv?.price ?? "0");
+      if (!price) throw new Error("No price");
+      return price;
+    } finally {
+      clearTimeout(timeoutId);
+    }
+  }
+
+  const [sellResult, buyResult] = await Promise.allSettled([
+    fetchSide("SELL"),
+    fetchSide("BUY"),
+  ]);
+
+  const compra =
+    sellResult.status === "fulfilled" ? sellResult.value : 0;
+  const venta =
+    buyResult.status === "fulfilled" ? buyResult.value : 0;
+
+  if (!compra && !venta) throw new Error("Binance P2P: no data");
+
+  return {
+    moneda: "USD",
+    casa: "binance",
+    nombre: "Dólar Cripto (Binance P2P)",
+    compra: compra || venta,
+    venta: venta || compra,
+    fechaActualizacion: new Date().toISOString(),
+  };
+}
+
 export async function GET() {
   try {
-    // Hacer todas las llamadas en paralelo con timeout
-    const results = await Promise.allSettled<ApiResult>(
+    // Hacer todas las llamadas en paralelo con timeout (incluye Binance P2P)
+    const [results, binanceSettled] = await Promise.all([
+      Promise.allSettled<ApiResult>(
       apiCalls.map(async ({ url, name, index }) => {
         try {
           const controller = new AbortController();
@@ -238,7 +306,9 @@ export async function GET() {
           return { success: false, index };
         }
       })
-    );
+      ),
+      Promise.allSettled([fetchBinanceP2P()]),
+    ]);
 
     // Obtener EUR/USD
     let eurUsdRate = 1.08;
@@ -280,13 +350,32 @@ export async function GET() {
       }
     });
 
+    // Agregar Binance P2P al resultado
+    const binanceResult = binanceSettled[0];
+    if (binanceResult.status === "fulfilled") {
+      data.push(binanceResult.value);
+      lastBinanceRate = binanceResult.value;
+      successCount++;
+    } else {
+      console.error("❌ Error fetching Binance P2P:", binanceResult.reason);
+      data.push(lastBinanceRate || {
+        moneda: "USD",
+        casa: "binance",
+        nombre: "Dólar Cripto (Binance P2P)",
+        compra: 0,
+        venta: 0,
+        fechaActualizacion: new Date().toISOString(),
+      });
+      usingFallback = true;
+    }
+
     // Si obtuvimos datos exitosos, actualizar el cache
     if (successCount > 0) {
       lastSuccessfulRates = [...data];
       lastUpdateTime = new Date();
 
       // Actualizar fallbackRates con los nuevos valores exitosos
-      data.forEach((rate, index) => {
+      data.slice(0, fallbackRates.length).forEach((rate, index) => {
         const result = results[index];
         if (isFulfilled(result) && result.value.success) {
           fallbackRates[index] = { ...rate };
@@ -306,7 +395,7 @@ export async function GET() {
       success: true,
       usingFallback,
       successCount,
-      totalApis: apiCalls.length,
+      totalApis: apiCalls.length + 1,
       timestamp: new Date().toISOString(),
       lastSuccessfulUpdate: lastUpdateTime?.toISOString() || null,
       eurUsdRate,
@@ -331,7 +420,7 @@ export async function GET() {
         success: false,
         usingFallback: true,
         successCount: 0,
-        totalApis: apiCalls.length,
+        totalApis: apiCalls.length + 1,
         error: "Error interno del servidor",
         errorDetails:
           process.env.NODE_ENV === "development" ? errorDetails : undefined,
